@@ -1,0 +1,962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbResidenciaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBL_BARRIO">
+          <Key>
+            <PropertyRef Name="BAR_ID" />
+          </Key>
+          <Property Name="BAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUN_ID" Type="int" Nullable="false" />
+          <Property Name="BAR_NOMBRE" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CUARTO">
+          <Key>
+            <PropertyRef Name="CUA_ID" />
+          </Key>
+          <Property Name="CUA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUA_NUMERO" Type="int" Nullable="false" />
+          <Property Name="CUA_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="DEP_ID" />
+          </Key>
+          <Property Name="DEP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEP_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECCION">
+          <Key>
+            <PropertyRef Name="DIR_ID" />
+          </Key>
+          <Property Name="DIR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BAR_ID" Type="int" Nullable="false" />
+          <Property Name="PER_ID" Type="int" />
+          <Property Name="DIR_NO_CASA" Type="nchar" MaxLength="10" />
+          <Property Name="DIR_DESCRIPCION" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ESTUDIANTE">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PER_ID" Type="int" Nullable="false" />
+          <Property Name="CUA_ID" Type="int" Nullable="false" />
+          <Property Name="EST_CARNET" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EST_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_HIS_ESTUDIANTE_REGISTRO">
+          <Key>
+            <PropertyRef Name="HIS_EST_REG_ID" />
+          </Key>
+          <Property Name="HIS_EST_REG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_ID" Type="int" />
+          <Property Name="RES_ID" Type="int" />
+          <Property Name="TIP_MOT_REG_ID" Type="int" Nullable="false" />
+          <Property Name="HIS_EST_REG_FECHA_INICIAL" Type="date" Nullable="false" />
+          <Property Name="HIS_EST_REG_FECHA_FINAL" Type="date" Nullable="false" />
+          <Property Name="HIS_EST_REG_FECHA_ESTIMADA" Type="date" />
+          <Property Name="HIS_EST_REG_ACTIVO" Type="bit" Nullable="false" />
+          <Property Name="HIS_EST_REG_DESCRIPCION" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HIS_EST_REG_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MUNICIPIO">
+          <Key>
+            <PropertyRef Name="MUN_ID" />
+          </Key>
+          <Property Name="MUN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEP_ID" Type="int" Nullable="false" />
+          <Property Name="MUN_NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERSONA">
+          <Key>
+            <PropertyRef Name="PER_ID" />
+          </Key>
+          <Property Name="PER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PER_CEDULA" Type="varchar" MaxLength="20" />
+          <Property Name="PER_PRIMER_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PER_SEGUNDO_NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="PER_PRIMER_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PER_SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PER_FECHA_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="PER_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_RESPONSABLE">
+          <Key>
+            <PropertyRef Name="PER_ID" />
+          </Key>
+          <Property Name="PER_ID" Type="int" Nullable="false" />
+          <Property Name="TIP_ARE_RES_ID" Type="int" Nullable="false" />
+          <Property Name="RES_FECHA_INICIAL" Type="date" Nullable="false" />
+          <Property Name="RES_FECHA_FINAL" Type="date" />
+          <Property Name="RES_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_AREA_RESPONSABLE">
+          <Key>
+            <PropertyRef Name="TIP_ARE__RES_ID" />
+          </Key>
+          <Property Name="TIP_ARE__RES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_ARE_RES_DESCRIPCION" Type="varbinary" MaxLength="100" />
+          <Property Name="TIP_ARE_RES_ESTADO" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_ASEO">
+          <Key>
+            <PropertyRef Name="TIP_ASE_ID" />
+          </Key>
+          <Property Name="TIP_ASE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_ASE_DESCRIPCION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIP_ASE_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_MOTIVO_REGISTRO">
+          <Key>
+            <PropertyRef Name="TIP_MOT_REG_ID" />
+          </Key>
+          <Property Name="TIP_MOT_REG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_MOT_REG_DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TIP_MOT_REG_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="USU_ID" />
+          </Key>
+          <Property Name="USU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PER_ID" Type="int" Nullable="false" />
+          <Property Name="USU_LOGIN" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="USU_PASSWORD" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="USU_FECHA_INICIAL" Type="date" Nullable="false" />
+          <Property Name="USU_FECHA_FINAL" Type="date" />
+          <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
+          <End Role="TBL_DEPARTAMENTO" Type="Self.TBL_DEPARTAMENTO" Multiplicity="1" />
+          <End Role="TBL_MUNICIPIO" Type="Self.TBL_MUNICIPIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DEPARTAMENTO">
+              <PropertyRef Name="DEP_ID" />
+            </Principal>
+            <Dependent Role="TBL_MUNICIPIO">
+              <PropertyRef Name="DEP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_DIRECCION_TBL_BARRIO">
+          <End Role="TBL_BARRIO" Type="Self.TBL_BARRIO" Multiplicity="1" />
+          <End Role="TBL_DIRECCION" Type="Self.TBL_DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_BARRIO">
+              <PropertyRef Name="BAR_ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCION">
+              <PropertyRef Name="BAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_DIRECCION_TBL_PERSONA">
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="0..1" />
+          <End Role="TBL_DIRECCION" Type="Self.TBL_DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCION">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ESTUDIANTE_TBL_CUARTO">
+          <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="1" />
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUARTO">
+              <PropertyRef Name="CUA_ID" />
+            </Principal>
+            <Dependent Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="CUA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ESTUDIANTE_TBL_PERSONA">
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="1" />
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE">
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="0..1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE">
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="0..1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RESPONSABLE">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO">
+          <End Role="TBL_TIPO_MOTIVO_REGISTRO" Type="Self.TBL_TIPO_MOTIVO_REGISTRO" Multiplicity="1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_MOTIVO_REGISTRO">
+              <PropertyRef Name="TIP_MOT_REG_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="TIP_MOT_REG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MUNICIPIO_TBL_BARRIO">
+          <End Role="TBL_MUNICIPIO" Type="Self.TBL_MUNICIPIO" Multiplicity="1" />
+          <End Role="TBL_BARRIO" Type="Self.TBL_BARRIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MUNICIPIO">
+              <PropertyRef Name="MUN_ID" />
+            </Principal>
+            <Dependent Role="TBL_BARRIO">
+              <PropertyRef Name="MUN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE">
+          <End Role="TBL_TIPO_AREA_RESPONSABLE" Type="Self.TBL_TIPO_AREA_RESPONSABLE" Multiplicity="1" />
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_AREA_RESPONSABLE">
+              <PropertyRef Name="TIP_ARE__RES_ID" />
+            </Principal>
+            <Dependent Role="TBL_RESPONSABLE">
+              <PropertyRef Name="TIP_ARE_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_USUARIO_TBL_RESPONSABLE">
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RESPONSABLE">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="dbResidenciaModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_BARRIO" EntityType="Self.TBL_BARRIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CUARTO" EntityType="Self.TBL_CUARTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DIRECCION" EntityType="Self.TBL_DIRECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ESTUDIANTE" EntityType="Self.TBL_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_HIS_ESTUDIANTE_REGISTRO" EntityType="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MUNICIPIO" EntityType="Self.TBL_MUNICIPIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PERSONA" EntityType="Self.TBL_PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_RESPONSABLE" EntityType="Self.TBL_RESPONSABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_AREA_RESPONSABLE" EntityType="Self.TBL_TIPO_AREA_RESPONSABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_ASEO" EntityType="Self.TBL_TIPO_ASEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" Association="Self.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
+            <End Role="TBL_DEPARTAMENTO" EntitySet="TBL_DEPARTAMENTO" />
+            <End Role="TBL_MUNICIPIO" EntitySet="TBL_MUNICIPIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_DIRECCION_TBL_BARRIO" Association="Self.FK_TBL_DIRECCION_TBL_BARRIO">
+            <End Role="TBL_BARRIO" EntitySet="TBL_BARRIO" />
+            <End Role="TBL_DIRECCION" EntitySet="TBL_DIRECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_DIRECCION_TBL_PERSONA" Association="Self.FK_TBL_DIRECCION_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_DIRECCION" EntitySet="TBL_DIRECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ESTUDIANTE_TBL_CUARTO" Association="Self.FK_TBL_ESTUDIANTE_TBL_CUARTO">
+            <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ESTUDIANTE_TBL_PERSONA" Association="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE">
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE">
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO">
+            <End Role="TBL_TIPO_MOTIVO_REGISTRO" EntitySet="TBL_TIPO_MOTIVO_REGISTRO" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MUNICIPIO_TBL_BARRIO" Association="Self.FK_TBL_MUNICIPIO_TBL_BARRIO">
+            <End Role="TBL_MUNICIPIO" EntitySet="TBL_MUNICIPIO" />
+            <End Role="TBL_BARRIO" EntitySet="TBL_BARRIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" Association="Self.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE">
+            <End Role="TBL_TIPO_AREA_RESPONSABLE" EntitySet="TBL_TIPO_AREA_RESPONSABLE" />
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_USUARIO_TBL_RESPONSABLE" Association="Self.FK_TBL_USUARIO_TBL_RESPONSABLE">
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbResidenciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBL_CUARTO">
+          <Key>
+            <PropertyRef Name="CUA_ID" />
+          </Key>
+          <Property Name="CUA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUA_NUMERO" Type="Int32" Nullable="false" />
+          <Property Name="CUA_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_ESTUDIANTE" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_CUARTO" FromRole="TBL_CUARTO" ToRole="TBL_ESTUDIANTE" />
+        </EntityType>
+        <EntityType Name="TBL_ESTUDIANTE">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PER_ID" Type="Int32" Nullable="false" />
+          <Property Name="CUA_ID" Type="Int32" Nullable="false" />
+          <Property Name="EST_CARNET" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_CUARTO" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_CUARTO" FromRole="TBL_ESTUDIANTE" ToRole="TBL_CUARTO" />
+          <NavigationProperty Name="TBL_PERSONA" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA" FromRole="TBL_ESTUDIANTE" ToRole="TBL_PERSONA" />
+          <NavigationProperty Name="TBL_HIS_ESTUDIANTE_REGISTRO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE" FromRole="TBL_ESTUDIANTE" ToRole="TBL_HIS_ESTUDIANTE_REGISTRO" />
+        </EntityType>
+        <EntityType Name="TBL_HIS_ESTUDIANTE_REGISTRO">
+          <Key>
+            <PropertyRef Name="HIS_EST_REG_ID" />
+          </Key>
+          <Property Name="HIS_EST_REG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_ID" Type="Int32" />
+          <Property Name="RES_ID" Type="Int32" />
+          <Property Name="TIP_MOT_REG_ID" Type="Int32" Nullable="false" />
+          <Property Name="HIS_EST_REG_FECHA_INICIAL" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HIS_EST_REG_FECHA_FINAL" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HIS_EST_REG_FECHA_ESTIMADA" Type="DateTime" Precision="0" />
+          <Property Name="HIS_EST_REG_ACTIVO" Type="Boolean" Nullable="false" />
+          <Property Name="HIS_EST_REG_DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HIS_EST_REG_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_ESTUDIANTE" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE" FromRole="TBL_HIS_ESTUDIANTE_REGISTRO" ToRole="TBL_ESTUDIANTE" />
+          <NavigationProperty Name="TBL_RESPONSABLE" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE" FromRole="TBL_HIS_ESTUDIANTE_REGISTRO" ToRole="TBL_RESPONSABLE" />
+          <NavigationProperty Name="TBL_TIPO_MOTIVO_REGISTRO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO" FromRole="TBL_HIS_ESTUDIANTE_REGISTRO" ToRole="TBL_TIPO_MOTIVO_REGISTRO" />
+        </EntityType>
+        <EntityType Name="TBL_PERSONA">
+          <Key>
+            <PropertyRef Name="PER_ID" />
+          </Key>
+          <Property Name="PER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PER_CEDULA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PER_PRIMER_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PER_SEGUNDO_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PER_PRIMER_APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PER_SEGUNDO_APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PER_FECHA_NACIMIENTO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PER_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_ESTUDIANTE" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_ESTUDIANTE" />
+          <NavigationProperty Name="TBL_DIRECCION" Relationship="dbResidenciaModel.FK_TBL_DIRECCION_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_DIRECCION" />
+        </EntityType>
+        <EntityType Name="TBL_RESPONSABLE">
+          <Key>
+            <PropertyRef Name="PER_ID" />
+          </Key>
+          <Property Name="PER_ID" Type="Int32" Nullable="false" />
+          <Property Name="TIP_ARE_RES_ID" Type="Int32" Nullable="false" />
+          <Property Name="RES_FECHA_INICIAL" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RES_FECHA_FINAL" Type="DateTime" Precision="0" />
+          <Property Name="RES_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_HIS_ESTUDIANTE_REGISTRO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE" FromRole="TBL_RESPONSABLE" ToRole="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          <NavigationProperty Name="TBL_TIPO_AREA_RESPONSABLE" Relationship="Self.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" FromRole="TBL_RESPONSABLE" ToRole="TBL_TIPO_AREA_RESPONSABLE" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_TBL_USUARIO_TBL_RESPONSABLE" FromRole="TBL_RESPONSABLE" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_AREA_RESPONSABLE">
+          <Key>
+            <PropertyRef Name="TIP_ARE__RES_ID" />
+          </Key>
+          <Property Name="TIP_ARE__RES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_ARE_RES_DESCRIPCION" Type="Binary" MaxLength="100" FixedLength="false" />
+          <Property Name="TIP_ARE_RES_ESTADO" Type="Boolean" />
+          <NavigationProperty Name="TBL_RESPONSABLE" Relationship="Self.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" FromRole="TBL_TIPO_AREA_RESPONSABLE" ToRole="TBL_RESPONSABLE" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_ASEO">
+          <Key>
+            <PropertyRef Name="TIP_ASE_ID" />
+          </Key>
+          <Property Name="TIP_ASE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_ASE_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TIP_ASE_ESTADO" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_MOTIVO_REGISTRO">
+          <Key>
+            <PropertyRef Name="TIP_MOT_REG_ID" />
+          </Key>
+          <Property Name="TIP_MOT_REG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_MOT_REG_DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIP_MOT_REG_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_HIS_ESTUDIANTE_REGISTRO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO" FromRole="TBL_TIPO_MOTIVO_REGISTRO" ToRole="TBL_HIS_ESTUDIANTE_REGISTRO" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="USU_ID" />
+          </Key>
+          <Property Name="USU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PER_ID" Type="Int32" Nullable="false" />
+          <Property Name="USU_LOGIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_PASSWORD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_FECHA_INICIAL" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="USU_FECHA_FINAL" Type="DateTime" Precision="0" />
+          <Property Name="USU_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_RESPONSABLE" Relationship="Self.FK_TBL_USUARIO_TBL_RESPONSABLE" FromRole="TBL_USUARIO" ToRole="TBL_RESPONSABLE" />
+        </EntityType>
+        <Association Name="FK_TBL_ESTUDIANTE_TBL_CUARTO">
+          <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="1" />
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUARTO">
+              <PropertyRef Name="CUA_ID" />
+            </Principal>
+            <Dependent Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="CUA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ESTUDIANTE_TBL_PERSONA">
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="1" />
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE">
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="0..1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE">
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="0..1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RESPONSABLE">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO">
+          <End Role="TBL_TIPO_MOTIVO_REGISTRO" Type="Self.TBL_TIPO_MOTIVO_REGISTRO" Multiplicity="1" />
+          <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" Type="Self.TBL_HIS_ESTUDIANTE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_MOTIVO_REGISTRO">
+              <PropertyRef Name="TIP_MOT_REG_ID" />
+            </Principal>
+            <Dependent Role="TBL_HIS_ESTUDIANTE_REGISTRO">
+              <PropertyRef Name="TIP_MOT_REG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE">
+          <End Role="TBL_TIPO_AREA_RESPONSABLE" Type="Self.TBL_TIPO_AREA_RESPONSABLE" Multiplicity="1" />
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_AREA_RESPONSABLE">
+              <PropertyRef Name="TIP_ARE__RES_ID" />
+            </Principal>
+            <Dependent Role="TBL_RESPONSABLE">
+              <PropertyRef Name="TIP_ARE_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_USUARIO_TBL_RESPONSABLE">
+          <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_RESPONSABLE">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbResidenciaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBL_CUARTO" EntityType="Self.TBL_CUARTO" />
+          <EntitySet Name="TBL_ESTUDIANTE" EntityType="Self.TBL_ESTUDIANTE" />
+          <EntitySet Name="TBL_HIS_ESTUDIANTE_REGISTRO" EntityType="Self.TBL_HIS_ESTUDIANTE_REGISTRO" />
+          <EntitySet Name="TBL_PERSONA" EntityType="Self.TBL_PERSONA" />
+          <EntitySet Name="TBL_RESPONSABLE" EntityType="Self.TBL_RESPONSABLE" />
+          <EntitySet Name="TBL_TIPO_AREA_RESPONSABLE" EntityType="Self.TBL_TIPO_AREA_RESPONSABLE" />
+          <EntitySet Name="TBL_TIPO_ASEO" EntityType="Self.TBL_TIPO_ASEO" />
+          <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" />
+          <AssociationSet Name="FK_TBL_ESTUDIANTE_TBL_CUARTO" Association="Self.FK_TBL_ESTUDIANTE_TBL_CUARTO">
+            <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ESTUDIANTE_TBL_PERSONA" Association="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE">
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_RESPONSABLE">
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO" Association="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO">
+            <End Role="TBL_TIPO_MOTIVO_REGISTRO" EntitySet="TBL_TIPO_MOTIVO_REGISTRO" />
+            <End Role="TBL_HIS_ESTUDIANTE_REGISTRO" EntitySet="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" Association="Self.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE">
+            <End Role="TBL_TIPO_AREA_RESPONSABLE" EntitySet="TBL_TIPO_AREA_RESPONSABLE" />
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_USUARIO_TBL_RESPONSABLE" Association="Self.FK_TBL_USUARIO_TBL_RESPONSABLE">
+            <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbResidenciaModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbResidenciaModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="TBL_BARRIO" EntityType="dbResidenciaModel.TBL_BARRIO" />
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="dbResidenciaModel.TBL_DEPARTAMENTO" />
+          <EntitySet Name="TBL_DIRECCION" EntityType="dbResidenciaModel.TBL_DIRECCION" />
+          <EntitySet Name="TBL_MUNICIPIO" EntityType="dbResidenciaModel.TBL_MUNICIPIO" />
+          <AssociationSet Name="FK_TBL_DIRECCION_TBL_BARRIO" Association="dbResidenciaModel.FK_TBL_DIRECCION_TBL_BARRIO">
+            <End Role="TBL_BARRIO" EntitySet="TBL_BARRIO" />
+            <End Role="TBL_DIRECCION" EntitySet="TBL_DIRECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MUNICIPIO_TBL_BARRIO" Association="dbResidenciaModel.FK_TBL_MUNICIPIO_TBL_BARRIO">
+            <End Role="TBL_MUNICIPIO" EntitySet="TBL_MUNICIPIO" />
+            <End Role="TBL_BARRIO" EntitySet="TBL_BARRIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" Association="dbResidenciaModel.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
+            <End Role="TBL_DEPARTAMENTO" EntitySet="TBL_DEPARTAMENTO" />
+            <End Role="TBL_MUNICIPIO" EntitySet="TBL_MUNICIPIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_DIRECCION_TBL_PERSONA" Association="dbResidenciaModel.FK_TBL_DIRECCION_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_DIRECCION" EntitySet="TBL_DIRECCION" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TBL_BARRIO">
+          <Key>
+            <PropertyRef Name="BAR_ID" />
+          </Key>
+          <Property Name="BAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="BAR_NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TBL_DIRECCION" Relationship="dbResidenciaModel.FK_TBL_DIRECCION_TBL_BARRIO" FromRole="TBL_BARRIO" ToRole="TBL_DIRECCION" />
+          <NavigationProperty Name="TBL_MUNICIPIO" Relationship="dbResidenciaModel.FK_TBL_MUNICIPIO_TBL_BARRIO" FromRole="TBL_BARRIO" ToRole="TBL_MUNICIPIO" />
+        </EntityType>
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="DEP_ID" />
+          </Key>
+          <Property Name="DEP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEP_NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_MUNICIPIO" Relationship="dbResidenciaModel.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" FromRole="TBL_DEPARTAMENTO" ToRole="TBL_MUNICIPIO" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECCION">
+          <Key>
+            <PropertyRef Name="DIR_ID" />
+          </Key>
+          <Property Name="DIR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BAR_ID" Type="Int32" Nullable="false" />
+          <Property Name="PER_ID" Type="Int32" />
+          <Property Name="DIR_NO_CASA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DIR_DESCRIPCION" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_BARRIO" Relationship="dbResidenciaModel.FK_TBL_DIRECCION_TBL_BARRIO" FromRole="TBL_DIRECCION" ToRole="TBL_BARRIO" />
+          <NavigationProperty Name="TBL_PERSONA" Relationship="dbResidenciaModel.FK_TBL_DIRECCION_TBL_PERSONA" FromRole="TBL_DIRECCION" ToRole="TBL_PERSONA" />
+        </EntityType>
+        <EntityType Name="TBL_MUNICIPIO">
+          <Key>
+            <PropertyRef Name="MUN_ID" />
+          </Key>
+          <Property Name="MUN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEP_ID" Type="Int32" Nullable="false" />
+          <Property Name="MUN_NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_BARRIO" Relationship="dbResidenciaModel.FK_TBL_MUNICIPIO_TBL_BARRIO" FromRole="TBL_MUNICIPIO" ToRole="TBL_BARRIO" />
+          <NavigationProperty Name="TBL_DEPARTAMENTO" Relationship="dbResidenciaModel.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" FromRole="TBL_MUNICIPIO" ToRole="TBL_DEPARTAMENTO" />
+        </EntityType>
+        <Association Name="FK_TBL_DIRECCION_TBL_BARRIO">
+          <End Type="dbResidenciaModel.TBL_BARRIO" Role="TBL_BARRIO" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_DIRECCION" Role="TBL_DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_BARRIO">
+              <PropertyRef Name="BAR_ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCION">
+              <PropertyRef Name="BAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MUNICIPIO_TBL_BARRIO">
+          <End Type="dbResidenciaModel.TBL_MUNICIPIO" Role="TBL_MUNICIPIO" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_BARRIO" Role="TBL_BARRIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MUNICIPIO">
+              <PropertyRef Name="MUN_ID" />
+            </Principal>
+            <Dependent Role="TBL_BARRIO">
+              <PropertyRef Name="MUN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
+          <End Type="dbResidenciaModel.TBL_DEPARTAMENTO" Role="TBL_DEPARTAMENTO" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_MUNICIPIO" Role="TBL_MUNICIPIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DEPARTAMENTO">
+              <PropertyRef Name="DEP_ID" />
+            </Principal>
+            <Dependent Role="TBL_MUNICIPIO">
+              <PropertyRef Name="DEP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_DIRECCION_TBL_PERSONA">
+          <End Type="dbResidenciaModel.TBL_PERSONA" Role="TBL_PERSONA" Multiplicity="0..1" />
+          <End Type="dbResidenciaModel.TBL_DIRECCION" Role="TBL_DIRECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCION">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbResidenciaModelStoreContainer" CdmEntityContainer="dbResidenciaEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbResidenciaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CUARTO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_CUARTO">
+              <MappingFragment StoreEntitySet="TBL_CUARTO">
+                <ScalarProperty Name="CUA_ID" ColumnName="CUA_ID" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="CUA_ESTADO" ColumnName="CUA_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ESTUDIANTE">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_ESTUDIANTE">
+              <MappingFragment StoreEntitySet="TBL_ESTUDIANTE">
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="CUA_ID" ColumnName="CUA_ID" />
+                <ScalarProperty Name="EST_CARNET" ColumnName="EST_CARNET" />
+                <ScalarProperty Name="EST_ESTADO" ColumnName="EST_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_HIS_ESTUDIANTE_REGISTRO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_HIS_ESTUDIANTE_REGISTRO">
+              <MappingFragment StoreEntitySet="TBL_HIS_ESTUDIANTE_REGISTRO">
+                <ScalarProperty Name="HIS_EST_REG_ID" ColumnName="HIS_EST_REG_ID" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="TIP_MOT_REG_ID" ColumnName="TIP_MOT_REG_ID" />
+                <ScalarProperty Name="HIS_EST_REG_FECHA_INICIAL" ColumnName="HIS_EST_REG_FECHA_INICIAL" />
+                <ScalarProperty Name="HIS_EST_REG_FECHA_FINAL" ColumnName="HIS_EST_REG_FECHA_FINAL" />
+                <ScalarProperty Name="HIS_EST_REG_FECHA_ESTIMADA" ColumnName="HIS_EST_REG_FECHA_ESTIMADA" />
+                <ScalarProperty Name="HIS_EST_REG_ACTIVO" ColumnName="HIS_EST_REG_ACTIVO" />
+                <ScalarProperty Name="HIS_EST_REG_DESCRIPCION" ColumnName="HIS_EST_REG_DESCRIPCION" />
+                <ScalarProperty Name="HIS_EST_REG_ESTADO" ColumnName="HIS_EST_REG_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERSONA">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_PERSONA">
+              <MappingFragment StoreEntitySet="TBL_PERSONA">
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="PER_CEDULA" ColumnName="PER_CEDULA" />
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="PER_FECHA_NACIMIENTO" ColumnName="PER_FECHA_NACIMIENTO" />
+                <ScalarProperty Name="PER_ESTADO" ColumnName="PER_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_RESPONSABLE">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_RESPONSABLE">
+              <MappingFragment StoreEntitySet="TBL_RESPONSABLE">
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="TIP_ARE_RES_ID" ColumnName="TIP_ARE_RES_ID" />
+                <ScalarProperty Name="RES_FECHA_INICIAL" ColumnName="RES_FECHA_INICIAL" />
+                <ScalarProperty Name="RES_FECHA_FINAL" ColumnName="RES_FECHA_FINAL" />
+                <ScalarProperty Name="RES_ESTADO" ColumnName="RES_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_AREA_RESPONSABLE">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_TIPO_AREA_RESPONSABLE">
+              <MappingFragment StoreEntitySet="TBL_TIPO_AREA_RESPONSABLE">
+                <ScalarProperty Name="TIP_ARE__RES_ID" ColumnName="TIP_ARE__RES_ID" />
+                <ScalarProperty Name="TIP_ARE_RES_DESCRIPCION" ColumnName="TIP_ARE_RES_DESCRIPCION" />
+                <ScalarProperty Name="TIP_ARE_RES_ESTADO" ColumnName="TIP_ARE_RES_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_ASEO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_TIPO_ASEO">
+              <MappingFragment StoreEntitySet="TBL_TIPO_ASEO">
+                <ScalarProperty Name="TIP_ASE_ID" ColumnName="TIP_ASE_ID" />
+                <ScalarProperty Name="TIP_ASE_DESCRIPCION" ColumnName="TIP_ASE_DESCRIPCION" />
+                <ScalarProperty Name="TIP_ASE_ESTADO" ColumnName="TIP_ASE_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_MOTIVO_REGISTRO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_TIPO_MOTIVO_REGISTRO">
+              <MappingFragment StoreEntitySet="TBL_TIPO_MOTIVO_REGISTRO">
+                <ScalarProperty Name="TIP_MOT_REG_ID" ColumnName="TIP_MOT_REG_ID" />
+                <ScalarProperty Name="TIP_MOT_REG_DESCRIPCION" ColumnName="TIP_MOT_REG_DESCRIPCION" />
+                <ScalarProperty Name="TIP_MOT_REG_ESTADO" ColumnName="TIP_MOT_REG_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="USU_ID" ColumnName="USU_ID" />
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+                <ScalarProperty Name="USU_PASSWORD" ColumnName="USU_PASSWORD" />
+                <ScalarProperty Name="USU_FECHA_INICIAL" ColumnName="USU_FECHA_INICIAL" />
+                <ScalarProperty Name="USU_FECHA_FINAL" ColumnName="USU_FECHA_FINAL" />
+                <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbResidenciaModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbResidenciaModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbResidenciaModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbResidenciaModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbResidenciaModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbResidenciaModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbResidenciaModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbResidenciaModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbResidenciaModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="TBL_BARRIO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_BARRIO">
+              <MappingFragment StoreEntitySet="TBL_BARRIO">
+                <ScalarProperty Name="BAR_NOMBRE" ColumnName="BAR_NOMBRE" />
+                <ScalarProperty Name="MUN_ID" ColumnName="MUN_ID" />
+                <ScalarProperty Name="BAR_ID" ColumnName="BAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DEPARTAMENTO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_DEPARTAMENTO">
+              <MappingFragment StoreEntitySet="TBL_DEPARTAMENTO">
+                <ScalarProperty Name="DEP_NOMBRE" ColumnName="DEP_NOMBRE" />
+                <ScalarProperty Name="DEP_ID" ColumnName="DEP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DIRECCION">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_DIRECCION">
+              <MappingFragment StoreEntitySet="TBL_DIRECCION">
+                <ScalarProperty Name="DIR_DESCRIPCION" ColumnName="DIR_DESCRIPCION" />
+                <ScalarProperty Name="DIR_NO_CASA" ColumnName="DIR_NO_CASA" />
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="BAR_ID" ColumnName="BAR_ID" />
+                <ScalarProperty Name="DIR_ID" ColumnName="DIR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MUNICIPIO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_MUNICIPIO">
+              <MappingFragment StoreEntitySet="TBL_MUNICIPIO">
+                <ScalarProperty Name="MUN_NOMBRE" ColumnName="MUN_NOMBRE" />
+                <ScalarProperty Name="DEP_ID" ColumnName="DEP_ID" />
+                <ScalarProperty Name="MUN_ID" ColumnName="MUN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
