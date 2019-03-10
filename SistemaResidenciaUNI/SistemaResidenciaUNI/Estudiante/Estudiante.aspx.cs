@@ -42,7 +42,7 @@ namespace SistemaResidenciaUNI.Estudiante
             //entidadEstudiante.PER_ID = int.Parse(ddlPersona.SelectedValue);
             entidadEstudiante.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
             entidadEstudiante.EST_CARNET = txtEstCarnet.Text;
-            entidadEstudiante.EST_ESTADO = chkEstEstado.Checked;
+            entidadEstudiante.EST_ESTADO = true;
             return negocioEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
         }
 
@@ -64,14 +64,35 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlNumeroCuarto.DataValueField = "CUA_ID";
             ddlNumeroCuarto.DataBind();
 
+            //LLenar Departamentos
+            NegocioDepartamento negocioDepartamento = new NegocioDepartamento();
+            List<EntidadDepartamento> depLis = negocioDepartamento.ObtenerDepartamento().data as List<EntidadDepartamento>;
+            dllDepNombre.DataSource = depLis.OrderBy(dr => dr.DEP_NOMBRE);
+            dllDepNombre.DataTextField = "DEP_NOMBRE";
+            dllDepNombre.DataValueField = "DEP_ID";
+            dllDepNombre.DataBind();
+
         }
 
         void LimpiarControles()
         {
             EnlazarListas();
             txtEstCarnet.Text = string.Empty;
-            chkEstEstado.Checked = false;
+        }
 
+        void ObtenerMunicipiosPorDepartamentoId(int depID)
+        {
+            //LLenar lista de municipios según Departamento
+            NegocioMunicipio negocioMunicipio = new NegocioMunicipio();
+            ddlMunicipio.DataSource = negocioMunicipio.ObtenerMunicipioPorDepartamentoId(depID).data as List<EntidadMunicipio>;
+            ddlMunicipio.DataTextField = "MUN_NOMBRE";
+            ddlMunicipio.DataValueField = "MUN_ID";
+            ddlMunicipio.DataBind();
+        }
+
+        protected void dllDepNombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ObtenerMunicipiosPorDepartamentoId(int.Parse(dllDepNombre.SelectedValue));
         }
     }
 }

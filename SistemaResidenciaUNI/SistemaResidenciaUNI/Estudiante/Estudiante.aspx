@@ -5,107 +5,166 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Registrar Estudiante</div>
+        <div class="panel-heading">Información Estudiante (Nuevo)</div>
         <div class="panel-body">
-
-            <div class="form-group row">
-                <label for="lblperCedula" class="col-sm-2 col-form-label">Cédula del Estudiante</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese cédula del Estudiante" />
-
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblperPrimerNombre" class="col-sm-2 col-form-label">Primer Nombre del Estudiante</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtPerPrimerNombre" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerNombre"
-                        CssClass="text-danger" ErrorMessage="El campo Primer Nombre del Estudiante es requerido." />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblperSegundoNombre" class="col-sm-2 col-form-label">Segundo Nombre del Estudiante</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtPerSegundoNombre" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoNombre"
-                        CssClass="text-danger" ErrorMessage="El campo Segundo Nombre del Estudiante es requerido." />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblPerPrimerApellido" class="col-sm-2 col-form-label">Primer Apellido del Estudiante</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtPerPrimerApellido" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerApellido"
-                        CssClass="text-danger" ErrorMessage="El campo Primer Apellido del Estudiante es requerido." />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblPerSegundoApellido" class="col-sm-2 col-form-label">Segundo Apellido del Estudiante</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtPerSegundoApellido" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoApellido"
-                        CssClass="text-danger" ErrorMessage="El campo Segundo Apellido del Estudiante es requerido." />
-                </div>
-            </div>
-            <%-- <div class="form-group row">
-                <label for="lblPerFechaNacimiento" class="col-sm-2 col-form-label">Fecha de Nacimiento del Estudiante</label>
-
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control" id="txtPerFechaNacimiento" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
-            </div>--%>
-
-            <div class="form-group">
-                <label for="lblPerFechaNacimiento" class="col-sm-2 col-form-label">Fecha de Nacimiento del Estudiante</label>
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblperFoto" class="col-sm-6 col-form-label">Foto</label>
+                        <div class="col-sm-10">
+                            <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est" style="width: 180px; height: auto;">
+                        </div>
                     </div>
-                    <input type="text" class="form-control" id="txtPerFechaNacimiento" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+
+                    <div class="form-group row">
+                        <label for="lblperCedula" class="col-sm-6 col-form-label">Cédula del Estudiante</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese cédula del Estudiante" />
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lblperPrimerNombre" class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtPerPrimerNombre" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerNombre"
+                                CssClass="text-danger" ErrorMessage="El campo Primer Nombre del Estudiante es requerido." />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lblperSegundoNombre" class="col-sm-6 col-form-label">Segundo Nombre del Estudiante</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtPerSegundoNombre" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoNombre"
+                                CssClass="text-danger" ErrorMessage="El campo Segundo Nombre del Estudiante es requerido." />
+                        </div>
+                    </div>
+
+
                 </div>
-                <!-- /.input group -->
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblPerPrimerApellido" class="col-sm-6 col-form-label">Primer Apellido del Estudiante</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtPerPrimerApellido" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerApellido"
+                                CssClass="text-danger" ErrorMessage="El campo Primer Apellido del Estudiante es requerido." />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lblPerSegundoApellido" class="col-sm-6 col-form-label">Segundo Apellido del Estudiante</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtPerSegundoApellido" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoApellido"
+                                CssClass="text-danger" ErrorMessage="El campo Segundo Apellido del Estudiante es requerido." />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lblPerFechaNacimiento" class="col-sm-6 col-form-label">Fecha de Nacimiento del Estudiante</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtPerFechaNacimiento" runat="server" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <div class="form-group row">
+                        <label for="ddlNumeroCuarto" class="col-sm-6 col-form-label">Número de Cuarto</label>
+                        <div class="col-sm-10">
+                            <asp:DropDownList ID="ddlNumeroCuarto" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtEstCarnet" class="col-sm-6 col-form-label">Número de Carnet</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtEstCarnet" CssClass="form-control" placeholder="Ingrese carnet" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEstCarnet"
+                                CssClass="text-danger" ErrorMessage="El campo Número de Carnet es requerido." />
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <!-- /.form group -->
 
         </div>
-        <div class="form-group row">
-            <label for="ddlNumeroCuarto" class="col-sm-2 col-form-label">Número de Cuarto</label>
-            <div class="col-sm-10">
-                <asp:DropDownList ID="ddlNumeroCuarto" CssClass="form-control" runat="server"></asp:DropDownList>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="txtEstCarnet" class="col-sm-2 col-form-label">Número de Carnet</label>
-            <div class="col-sm-10">
-                <asp:TextBox runat="server" ID="txtEstCarnet" CssClass="form-control" placeholder="Ingrese carnet" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEstCarnet"
-                    CssClass="text-danger" ErrorMessage="El campo Número de Carnet es requerido." />
-            </div>
-        </div>
 
-        <div class="form-group row">
-            <label for="chkEstEstado" class="col-sm-2 col-form-label">Estado del Estudiante</label>
-            <div class="col-sm-10">
-                <asp:CheckBox ID="chkEstEstado" runat="server" />
-            </div>
-        </div>
-        <div class="form-group">
-            <asp:Button runat="server" OnClick="GuardarEstudiante_Click"
-                Text="Guardar" CssClass="btn btn-primary" />
-        </div>
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Listado de Estudiantes</div>
+        <div class="panel-heading">Dirección(Nuevo)</div>
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblDepartamento" class="col-sm-6 col-form-label">(*)Departamento</label>
+                        <div class="col-sm-10">
+                            <asp:DropDownList ID="dllDepNombre" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="dllDepNombre_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblMunicipio" class="col-sm-6 col-form-label">(*)Municipio</label>
+                        <div class="col-sm-10">
+                            <asp:DropDownList ID="ddlMunicipio" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblBarrio" class="col-sm-6 col-form-label">(*)Barrio</label>
+                        <div class="col-sm-10">
+                            <asp:DropDownList ID="ddlBarrio" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label for="lblNumeroCasa" class="col-sm-6 col-from-label">Número Casa </label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtNumCasa" CssClass="form-control" placeholder="Numero de Casa" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label for="lblDireccion" class="col-sm-6 col-from-label">Dirección</label>
+                        <div class="col-sm-10">
+                            <textarea id="txtDireccion" class="form-control" runat="server" placeholder="Descripción..."> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
         </div>
+
     </div>
 
+    <div class="panel panel-primary">
+        <div class="panel-heading">Operaciones</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <asp:Button runat="server" OnClick="GuardarEstudiante_Click"
+                            Text="Guardar" CssClass="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ./wrapper -->
     <script type="text/javascript">
         $(function () {
-            
+
             //Datemask dd/mm/yyyy
             $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
             //Datemask2 mm/dd/yyyy

@@ -10,12 +10,26 @@
         <div class="panel-body">
 
             <div class="form-group row">
+              
+                 <div class="col-lg-6">
                 <label for="txtNumCuarto" class="col-sm-2 col-form-label">Número Cuarto</label>
                 <div class="col-sm-10">
                     <asp:TextBox runat="server" ID="txtNumCuarto"  CssClass="form-control" TextMode="number" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNumCuarto"
                         CssClass="text-danger" ErrorMessage="El campo Número Cuarto es obligatorio." />
                 </div>
+                     </div>
+
+
+                  <div class="col-lg-6">
+                <label for="txtNumCuarto" class="col-sm-2 col-form-label">Número Cuarto</label>
+                <div class="col-sm-10">
+                    <asp:TextBox runat="server" ID="TextBox1"  CssClass="form-control" TextMode="number" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNumCuarto"
+                        CssClass="text-danger" ErrorMessage="El campo Número Cuarto es obligatorio." />
+                </div>
+                     </div>
+
             </div>
             <div class="form-group row">
                 <label for="chkEstadoCuarto" class="col-sm-2 col-form-label">Estado</label>

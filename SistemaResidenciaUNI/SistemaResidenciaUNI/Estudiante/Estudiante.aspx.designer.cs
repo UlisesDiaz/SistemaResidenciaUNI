@@ -58,6 +58,15 @@ namespace SistemaResidenciaUNI.Estudiante {
         protected global::System.Web.UI.WebControls.TextBox txtPerSegundoApellido;
         
         /// <summary>
+        /// Control txtPerFechaNacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPerFechaNacimiento;
+        
+        /// <summary>
         /// Control ddlNumeroCuarto.
         /// </summary>
         /// <remarks>
@@ -76,12 +85,48 @@ namespace SistemaResidenciaUNI.Estudiante {
         protected global::System.Web.UI.WebControls.TextBox txtEstCarnet;
         
         /// <summary>
-        /// Control chkEstEstado.
+        /// Control dllDepNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkEstEstado;
+        protected global::System.Web.UI.WebControls.DropDownList dllDepNombre;
+        
+        /// <summary>
+        /// Control ddlMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMunicipio;
+        
+        /// <summary>
+        /// Control ddlBarrio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
+        
+        /// <summary>
+        /// Control txtNumCasa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumCasa;
+        
+        /// <summary>
+        /// Control txtDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDireccion;
     }
 }

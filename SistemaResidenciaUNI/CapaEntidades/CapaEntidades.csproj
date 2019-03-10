@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadCuarto.cs" />
+    <Compile Include="EntidadDepartamento.cs" />
     <Compile Include="EntidadEstudiante.cs" />
+    <Compile Include="EntidadMunicipio.cs" />
     <Compile Include="EntidadPersona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resultado.cs" />

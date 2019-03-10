@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatoCuarto.cs" />
+    <Compile Include="DatoDepartamento.cs" />
     <Compile Include="DatoEstudiante.cs" />
+    <Compile Include="DatoMunicipio.cs" />
     <Compile Include="DB_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
