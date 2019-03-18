@@ -30,6 +30,15 @@
         <AssociationConnector Association="dbResidenciaModel.FK_TBL_MUNICIPIO_TBL_BARRIO" />
         <AssociationConnector Association="dbResidenciaModel.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" />
         <AssociationConnector Association="dbResidenciaModel.FK_TBL_DIRECCION_TBL_PERSONA" />
+        <EntityTypeShape EntityType="dbResidenciaModel.TBL_CARRERA" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="dbResidenciaModel.TBL_COMPAÑIA" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="dbResidenciaModel.TBL_CORREO" Width="1.5" PointX="3" PointY="16.75" />
+        <EntityTypeShape EntityType="dbResidenciaModel.TBL_ROL_ASEO" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="dbResidenciaModel.TBL_TELEFONO" Width="1.5" PointX="3" PointY="19.375" />
+        <AssociationConnector Association="dbResidenciaModel.FK_TBL_CORREO_TBL_PERSONA" />
+        <AssociationConnector Association="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" />
+        <AssociationConnector Association="dbResidenciaModel.FK_TBL_TELEFONO_TBL_PERSONA" />
+        <AssociationConnector Association="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaNegocio;
 using CapaEntidades;
+using System.IO;
 
 namespace SistemaResidenciaUNI.Estudiante
 {
@@ -14,6 +15,7 @@ namespace SistemaResidenciaUNI.Estudiante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Form.Attributes.Add("enctype", "multipart/form-data");
             if (!Page.IsPostBack)
                 EnlazarListas();
         }
@@ -38,11 +40,26 @@ namespace SistemaResidenciaUNI.Estudiante
         {
 
             NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
+            
+
             EntidadEstudiante entidadEstudiante = new EntidadEstudiante();
-            //entidadEstudiante.PER_ID = int.Parse(ddlPersona.SelectedValue);
+       
+            EntidadPersona entidadPersona = new EntidadPersona();
+
+            entidadPersona.PER_CEDULA = txtPerCedula.Text;
+            entidadPersona.PER_PRIMER_NOMBRE = txtPerPrimerNombre.Text;
+            entidadPersona.PER_SEGUNDO_NOMBRE = txtPerSegundoNombre.Text;
+            entidadPersona.PER_PRIMER_APELLIDO = txtPerPrimerApellido.Text;
+            entidadPersona.PER_SEGUNDO_APELLIDO = txtPerSegundoApellido.Text.Trim();
+            entidadPersona.PER_FECHA_NACIMIENTO = DateTime.Parse(txtPerFechaNacimiento.Value.ToString());
+            entidadPersona.PER_ESTADO = true;
+            entidadPersona.PER_IMAGEN = ObtenerIMagenByteArray(FilUpImagen.PostedFile.InputStream);
+
+            entidadEstudiante.TBL_PERSONA = entidadPersona;
             entidadEstudiante.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
-            entidadEstudiante.EST_CARNET = txtEstCarnet.Text;
+            entidadEstudiante.EST_CARNET = txtEstCarnet.Text.Trim();
             entidadEstudiante.EST_ESTADO = true;
+
             return negocioEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
         }
 
@@ -90,9 +107,35 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlMunicipio.DataBind();
         }
 
+        void ObtenerBarrioPorMunicipioId(int munId)
+        {
+            //LLenar lista de municipios según Departamento
+            NegocioBarrio negocioBarrio = new NegocioBarrio();
+            ddlBarrio.DataSource = negocioBarrio.ObtenerBarrioPorMunicipioId(munId).data as List<EntidadBarrio>;
+            ddlBarrio.DataTextField = "BAR_NOMBRE";
+            ddlBarrio.DataValueField = "BAR_ID";
+            ddlBarrio.DataBind();
+        }
+
         protected void dllDepNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
             ObtenerMunicipiosPorDepartamentoId(int.Parse(dllDepNombre.SelectedValue));
+        }
+
+        byte[] ObtenerIMagenByteArray(Stream stream)
+        {
+            int streamLength = int.Parse(stream.Length.ToString());
+            byte[] fileData = new byte[streamLength];
+
+            stream.Read(fileData, 0, streamLength);
+            stream.Close();
+
+            return fileData;
+        }
+
+        protected void ddlMunicipio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ObtenerBarrioPorMunicipioId((int.Parse(ddlMunicipio.SelectedValue)));
         }
     }
 }

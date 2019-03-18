@@ -16,7 +16,7 @@ namespace CapaEntidades
         public string PER_SEGUNDO_APELLIDO { get; set; }
         public System.DateTime PER_FECHA_NACIMIENTO { get; set; }
         public bool PER_ESTADO { get; set; }
-
+        public byte[] PER_IMAGEN { get; set; }
         public string PER_NOMBRE_COMPLETO { get; set; }
     }
 }

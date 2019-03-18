@@ -18,6 +18,7 @@ namespace CapaDatos
         public TBL_ESTUDIANTE()
         {
             this.TBL_HIS_ESTUDIANTE_REGISTRO = new HashSet<TBL_HIS_ESTUDIANTE_REGISTRO>();
+            this.TBL_ROL_ASEO = new HashSet<TBL_ROL_ASEO>();
         }
     
         public int EST_ID { get; set; }
@@ -30,5 +31,7 @@ namespace CapaDatos
         public virtual TBL_PERSONA TBL_PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_HIS_ESTUDIANTE_REGISTRO> TBL_HIS_ESTUDIANTE_REGISTRO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_ROL_ASEO> TBL_ROL_ASEO { get; set; }
     }
 }

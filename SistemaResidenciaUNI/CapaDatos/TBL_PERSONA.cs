@@ -19,6 +19,8 @@ namespace CapaDatos
         {
             this.TBL_ESTUDIANTE = new HashSet<TBL_ESTUDIANTE>();
             this.TBL_DIRECCION = new HashSet<TBL_DIRECCION>();
+            this.TBL_CORREO = new HashSet<TBL_CORREO>();
+            this.TBL_TELEFONO = new HashSet<TBL_TELEFONO>();
         }
     
         public int PER_ID { get; set; }
@@ -29,10 +31,15 @@ namespace CapaDatos
         public string PER_SEGUNDO_APELLIDO { get; set; }
         public System.DateTime PER_FECHA_NACIMIENTO { get; set; }
         public bool PER_ESTADO { get; set; }
+        public byte[] PER_IMAGEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_ESTUDIANTE> TBL_ESTUDIANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_DIRECCION> TBL_DIRECCION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_CORREO> TBL_CORREO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_TELEFONO> TBL_TELEFONO { get; set; }
     }
 }

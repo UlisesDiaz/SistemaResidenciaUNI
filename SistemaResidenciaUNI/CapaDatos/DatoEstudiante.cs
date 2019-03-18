@@ -8,34 +8,45 @@ namespace CapaDatos
     public class DatoEstudiante
     {
         dbResidenciaEntities dbResidencia = new dbResidenciaEntities();
+        Resultado resultado = new Resultado();
         public Resultado GuardarNuevoEstudiante(EntidadEstudiante EntidadEstudiante)
         {
-            Resultado resultado = new Resultado();
-            TBL_ESTUDIANTE TBL_ESTUDIANTE = new TBL_ESTUDIANTE();
-            try
-            {
-                TBL_ESTUDIANTE.PER_ID = EntidadEstudiante.PER_ID;
-                TBL_ESTUDIANTE.CUA_ID = EntidadEstudiante.CUA_ID;
-                TBL_ESTUDIANTE.EST_CARNET = EntidadEstudiante.EST_CARNET;
-                TBL_ESTUDIANTE.EST_ESTADO = true;
+          
+                DatoCuarto datoCuarto = new DatoCuarto();
+                resultado = new Resultado();
+                TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
+                TBL_ESTUDIANTE TBL_ESTUDIANTE = new TBL_ESTUDIANTE();
+            
+                try
+                {
+                   
+                    GuardarNuevaPersona(EntidadEstudiante.TBL_PERSONA);
 
-                int idPersona = EntidadEstudiante.PER_ID;
+                    TBL_ESTUDIANTE.PER_ID = ObtenerUltimoIdPersona();
+                    TBL_ESTUDIANTE.CUA_ID = datoCuarto.ObtenerUltimoIdCuarto();
+                    TBL_ESTUDIANTE.EST_CARNET = EntidadEstudiante.EST_CARNET;
+                    TBL_ESTUDIANTE.EST_ESTADO = true;
 
-                bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.PER_ID.Equals(idPersona)).Count() > 0;
-                if (existeEstudiante)
-                    throw new Exception("Ya existe un Estudiante con este ID: " + idPersona);
+                    int idPersona = EntidadEstudiante.PER_ID;
 
-                dbResidencia.TBL_ESTUDIANTE.Add(TBL_ESTUDIANTE);
-                dbResidencia.SaveChanges();
-                resultado.esError = false;
-                resultado.mensaje = "Se ha insertado de manera exitosa el registro";
-            }
-            catch (Exception ex)
-            {
-                resultado.esError = true;
-                resultado.mensaje = "Ha ocurrido un error al momento de almacenar el Estidiante: " + ex.Message;
-            }
+                    bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.PER_ID.Equals(idPersona)).Count() > 0;
+                    if (existeEstudiante)
+                        throw new Exception("Ya existe un Estudiante con este ID: " + idPersona);
 
+                    dbResidencia.TBL_ESTUDIANTE.Add(TBL_ESTUDIANTE);
+                    dbResidencia.SaveChanges();
+                    resultado.esError = false;
+                    resultado.mensaje = "Se ha insertado de manera exitosa el registro";
+                  
+                }
+                catch (Exception ex)
+                {
+                    resultado.esError = true;
+                    resultado.mensaje = "Ha ocurrido un error al momento de almacenar el Estidiante: " + ex.Message;
+                  
+                    throw new Exception(resultado.mensaje);
+                }
+           
             return resultado;
         }
         public List<EntidadPersona> ObtenerPersonas()
@@ -66,6 +77,44 @@ namespace CapaDatos
                      else { }
                  });
             return personas;
+        }
+
+        public Resultado GuardarNuevaPersona(EntidadPersona entidadPersona)
+        {
+            resultado = new Resultado();
+            using (var dbContextTransaction = dbResidencia.Database.BeginTransaction())
+            {
+                try
+                {
+                    resultado.esError = false;
+                    TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
+                    TBL_PERSONA.PER_CEDULA = entidadPersona.PER_CEDULA;
+                    TBL_PERSONA.PER_PRIMER_NOMBRE = entidadPersona.PER_PRIMER_NOMBRE;
+                    TBL_PERSONA.PER_SEGUNDO_NOMBRE = entidadPersona.PER_SEGUNDO_NOMBRE;
+                    TBL_PERSONA.PER_PRIMER_APELLIDO = entidadPersona.PER_PRIMER_APELLIDO;
+                    TBL_PERSONA.PER_SEGUNDO_APELLIDO = entidadPersona.PER_SEGUNDO_APELLIDO;
+                    TBL_PERSONA.PER_FECHA_NACIMIENTO = entidadPersona.PER_FECHA_NACIMIENTO;
+                    TBL_PERSONA.PER_ESTADO = entidadPersona.PER_ESTADO;
+                    TBL_PERSONA.PER_IMAGEN = entidadPersona.PER_IMAGEN;
+
+                    dbResidencia.TBL_PERSONA.Add(TBL_PERSONA);
+                    dbResidencia.SaveChanges();
+                    dbContextTransaction.Commit();
+                    resultado.esError = false;
+                }
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                    resultado.esError = true;
+                    resultado.mensaje = ex.Message;
+                }
+            }
+            return resultado;
+        }
+
+        public int ObtenerUltimoIdPersona()
+        {
+            return dbResidencia.TBL_PERSONA.OrderByDescending(dr => dr.PER_ID).Select(dr => dr.PER_ID).First();
         }
     }
 }

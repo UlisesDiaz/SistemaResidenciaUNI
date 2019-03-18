@@ -12,19 +12,16 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_TIPO_ASEO
+    public partial class TBL_ROL_ASEO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBL_TIPO_ASEO()
-        {
-            this.TBL_ROL_ASEO = new HashSet<TBL_ROL_ASEO>();
-        }
-    
+        public int ROL_ASE_ID { get; set; }
         public int TIP_ASE_ID { get; set; }
-        public string TIP_ASE_DESCRIPCION { get; set; }
-        public bool TIP_ASE_ESTADO { get; set; }
+        public int EST_ID { get; set; }
+        public System.DateTime ROL_ASE_FECHA { get; set; }
+        public int ROL_ASE_DIA { get; set; }
+        public bool ROL_ASE_ESTADO { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBL_ROL_ASEO> TBL_ROL_ASEO { get; set; }
+        public virtual TBL_ESTUDIANTE TBL_ESTUDIANTE { get; set; }
+        public virtual TBL_TIPO_ASEO TBL_TIPO_ASEO { get; set; }
     }
 }

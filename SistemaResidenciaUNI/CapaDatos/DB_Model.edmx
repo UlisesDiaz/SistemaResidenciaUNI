@@ -23,6 +23,28 @@
           <Property Name="MUN_ID" Type="int" Nullable="false" />
           <Property Name="BAR_NOMBRE" Type="nchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="TBL_CARRERA">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAR_DESCRIPCION" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_COMPAÑIA">
+          <Key>
+            <PropertyRef Name="COM_ID" />
+          </Key>
+          <Property Name="COM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COM_DESCRIPCION" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CORREO">
+          <Key>
+            <PropertyRef Name="COR_ID" />
+          </Key>
+          <Property Name="COR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PER_ID" Type="int" Nullable="false" />
+          <Property Name="COR_DEFINICION" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="TBL_CUARTO">
           <Key>
             <PropertyRef Name="CUA_ID" />
@@ -92,6 +114,7 @@
           <Property Name="PER_PRIMER_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PER_SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PER_FECHA_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="PER_IMAGEN" Type="image" />
           <Property Name="PER_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_RESPONSABLE">
@@ -103,6 +126,27 @@
           <Property Name="RES_FECHA_INICIAL" Type="date" Nullable="false" />
           <Property Name="RES_FECHA_FINAL" Type="date" />
           <Property Name="RES_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROL_ASEO">
+          <Key>
+            <PropertyRef Name="ROL_ASE_ID" />
+          </Key>
+          <Property Name="ROL_ASE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_ASE_ID" Type="int" Nullable="false" />
+          <Property Name="EST_ID" Type="int" Nullable="false" />
+          <Property Name="ROL_ASE_FECHA" Type="date" Nullable="false" />
+          <Property Name="ROL_ASE_DIA" Type="int" Nullable="false" />
+          <Property Name="ROL_ASE_ESTADO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TELEFONO">
+          <Key>
+            <PropertyRef Name="TEL_ID" />
+          </Key>
+          <Property Name="TEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COM_ID" Type="int" Nullable="false" />
+          <Property Name="PER_ID" Type="int" />
+          <Property Name="TEL_NUMERO" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="TEL_PERSONAL" Type="bit" />
         </EntityType>
         <EntityType Name="TBL_TIPO_AREA_RESPONSABLE">
           <Key>
@@ -140,6 +184,18 @@
           <Property Name="USU_FECHA_FINAL" Type="date" />
           <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_TBL_CORREO_TBL_PERSONA">
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="1" />
+          <End Role="TBL_CORREO" Type="Self.TBL_CORREO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_CORREO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
           <End Role="TBL_DEPARTAMENTO" Type="Self.TBL_DEPARTAMENTO" Multiplicity="1" />
           <End Role="TBL_MUNICIPIO" Type="Self.TBL_MUNICIPIO" Multiplicity="*" />
@@ -260,6 +316,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TBL_ROL_ASEO_TBL_ESTUDIANTE">
+          <End Role="TBL_ESTUDIANTE" Type="Self.TBL_ESTUDIANTE" Multiplicity="1" />
+          <End Role="TBL_ROL_ASEO" Type="Self.TBL_ROL_ASEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="TBL_ROL_ASEO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ROL_ASEO_TBL_TIPO_ASEO">
+          <End Role="TBL_TIPO_ASEO" Type="Self.TBL_TIPO_ASEO" Multiplicity="1" />
+          <End Role="TBL_ROL_ASEO" Type="Self.TBL_ROL_ASEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_ASEO">
+              <PropertyRef Name="TIP_ASE_ID" />
+            </Principal>
+            <Dependent Role="TBL_ROL_ASEO">
+              <PropertyRef Name="TIP_ASE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_TELEFONO_TBL_PERSONA">
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="0..1" />
+          <End Role="TBL_TELEFONO" Type="Self.TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TBL_USUARIO_TBL_RESPONSABLE">
           <End Role="TBL_RESPONSABLE" Type="Self.TBL_RESPONSABLE" Multiplicity="1" />
           <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
@@ -306,6 +398,9 @@
         <EntityContainer Name="dbResidenciaModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_BARRIO" EntityType="Self.TBL_BARRIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CARRERA" EntityType="Self.TBL_CARRERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_COMPAÑIA" EntityType="Self.TBL_COMPAÑIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CORREO" EntityType="Self.TBL_CORREO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_CUARTO" EntityType="Self.TBL_CUARTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_DIRECCION" EntityType="Self.TBL_DIRECCION" Schema="dbo" store:Type="Tables" />
@@ -314,10 +409,16 @@
           <EntitySet Name="TBL_MUNICIPIO" EntityType="Self.TBL_MUNICIPIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PERSONA" EntityType="Self.TBL_PERSONA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_RESPONSABLE" EntityType="Self.TBL_RESPONSABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ROL_ASEO" EntityType="Self.TBL_ROL_ASEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TELEFONO" EntityType="Self.TBL_TELEFONO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_AREA_RESPONSABLE" EntityType="Self.TBL_TIPO_AREA_RESPONSABLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_ASEO" EntityType="Self.TBL_TIPO_ASEO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_CORREO_TBL_PERSONA" Association="Self.FK_TBL_CORREO_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_CORREO" EntitySet="TBL_CORREO" />
+          </AssociationSet>
           <AssociationSet Name="FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" Association="Self.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO">
             <End Role="TBL_DEPARTAMENTO" EntitySet="TBL_DEPARTAMENTO" />
             <End Role="TBL_MUNICIPIO" EntitySet="TBL_MUNICIPIO" />
@@ -357,6 +458,18 @@
           <AssociationSet Name="FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" Association="Self.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE">
             <End Role="TBL_TIPO_AREA_RESPONSABLE" EntitySet="TBL_TIPO_AREA_RESPONSABLE" />
             <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" Association="Self.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE">
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+            <End Role="TBL_ROL_ASEO" EntitySet="TBL_ROL_ASEO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" Association="Self.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO">
+            <End Role="TBL_TIPO_ASEO" EntitySet="TBL_TIPO_ASEO" />
+            <End Role="TBL_ROL_ASEO" EntitySet="TBL_ROL_ASEO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_TELEFONO_TBL_PERSONA" Association="Self.FK_TBL_TELEFONO_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_USUARIO_TBL_RESPONSABLE" Association="Self.FK_TBL_USUARIO_TBL_RESPONSABLE">
             <End Role="TBL_RESPONSABLE" EntitySet="TBL_RESPONSABLE" />
@@ -398,6 +511,7 @@
           <NavigationProperty Name="TBL_CUARTO" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_CUARTO" FromRole="TBL_ESTUDIANTE" ToRole="TBL_CUARTO" />
           <NavigationProperty Name="TBL_PERSONA" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA" FromRole="TBL_ESTUDIANTE" ToRole="TBL_PERSONA" />
           <NavigationProperty Name="TBL_HIS_ESTUDIANTE_REGISTRO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_ESTUDIANTE" FromRole="TBL_ESTUDIANTE" ToRole="TBL_HIS_ESTUDIANTE_REGISTRO" />
+          <NavigationProperty Name="TBL_ROL_ASEO" Relationship="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" FromRole="TBL_ESTUDIANTE" ToRole="TBL_ROL_ASEO" />
         </EntityType>
         <EntityType Name="TBL_HIS_ESTUDIANTE_REGISTRO">
           <Key>
@@ -431,6 +545,9 @@
           <Property Name="PER_ESTADO" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TBL_ESTUDIANTE" Relationship="Self.FK_TBL_ESTUDIANTE_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_ESTUDIANTE" />
           <NavigationProperty Name="TBL_DIRECCION" Relationship="dbResidenciaModel.FK_TBL_DIRECCION_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_DIRECCION" />
+          <Property Name="PER_IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="TBL_CORREO" Relationship="dbResidenciaModel.FK_TBL_CORREO_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_CORREO" />
+          <NavigationProperty Name="TBL_TELEFONO" Relationship="dbResidenciaModel.FK_TBL_TELEFONO_TBL_PERSONA" FromRole="TBL_PERSONA" ToRole="TBL_TELEFONO" />
         </EntityType>
         <EntityType Name="TBL_RESPONSABLE">
           <Key>
@@ -461,6 +578,7 @@
           <Property Name="TIP_ASE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TIP_ASE_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TIP_ASE_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_ROL_ASEO" Relationship="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" FromRole="TBL_TIPO_ASEO" ToRole="TBL_ROL_ASEO" />
         </EntityType>
         <EntityType Name="TBL_TIPO_MOTIVO_REGISTRO">
           <Key>
@@ -657,6 +775,27 @@
             <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
             <End Role="TBL_DIRECCION" EntitySet="TBL_DIRECCION" />
           </AssociationSet>
+          <EntitySet Name="TBL_CARRERA" EntityType="dbResidenciaModel.TBL_CARRERA" />
+          <EntitySet Name="TBL_COMPAÑIA" EntityType="dbResidenciaModel.TBL_COMPAÑIA" />
+          <EntitySet Name="TBL_CORREO" EntityType="dbResidenciaModel.TBL_CORREO" />
+          <EntitySet Name="TBL_ROL_ASEO" EntityType="dbResidenciaModel.TBL_ROL_ASEO" />
+          <EntitySet Name="TBL_TELEFONO" EntityType="dbResidenciaModel.TBL_TELEFONO" />
+          <AssociationSet Name="FK_TBL_CORREO_TBL_PERSONA" Association="dbResidenciaModel.FK_TBL_CORREO_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_CORREO" EntitySet="TBL_CORREO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" Association="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE">
+            <End Role="TBL_ESTUDIANTE" EntitySet="TBL_ESTUDIANTE" />
+            <End Role="TBL_ROL_ASEO" EntitySet="TBL_ROL_ASEO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_TELEFONO_TBL_PERSONA" Association="dbResidenciaModel.FK_TBL_TELEFONO_TBL_PERSONA">
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" Association="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO">
+            <End Role="TBL_TIPO_ASEO" EntitySet="TBL_TIPO_ASEO" />
+            <End Role="TBL_ROL_ASEO" EntitySet="TBL_ROL_ASEO" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -757,6 +896,101 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TBL_CARRERA">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAR_DESCRIPCION" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_COMPAÑIA">
+          <Key>
+            <PropertyRef Name="COM_ID" />
+          </Key>
+          <Property Name="COM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COM_DESCRIPCION" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_CORREO">
+          <Key>
+            <PropertyRef Name="COR_ID" />
+          </Key>
+          <Property Name="COR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PER_ID" Type="Int32" Nullable="false" />
+          <Property Name="COR_DEFINICION" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TBL_PERSONA" Relationship="dbResidenciaModel.FK_TBL_CORREO_TBL_PERSONA" FromRole="TBL_CORREO" ToRole="TBL_PERSONA" />
+        </EntityType>
+        <EntityType Name="TBL_ROL_ASEO">
+          <Key>
+            <PropertyRef Name="ROL_ASE_ID" />
+          </Key>
+          <Property Name="ROL_ASE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_ASE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EST_ID" Type="Int32" Nullable="false" />
+          <Property Name="ROL_ASE_FECHA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ROL_ASE_DIA" Type="Int32" Nullable="false" />
+          <Property Name="ROL_ASE_ESTADO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBL_ESTUDIANTE" Relationship="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" FromRole="TBL_ROL_ASEO" ToRole="TBL_ESTUDIANTE" />
+          <NavigationProperty Name="TBL_TIPO_ASEO" Relationship="dbResidenciaModel.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" FromRole="TBL_ROL_ASEO" ToRole="TBL_TIPO_ASEO" />
+        </EntityType>
+        <EntityType Name="TBL_TELEFONO">
+          <Key>
+            <PropertyRef Name="TEL_ID" />
+          </Key>
+          <Property Name="TEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COM_ID" Type="Int32" Nullable="false" />
+          <Property Name="PER_ID" Type="Int32" />
+          <Property Name="TEL_NUMERO" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="TEL_PERSONAL" Type="Boolean" />
+          <NavigationProperty Name="TBL_PERSONA" Relationship="dbResidenciaModel.FK_TBL_TELEFONO_TBL_PERSONA" FromRole="TBL_TELEFONO" ToRole="TBL_PERSONA" />
+        </EntityType>
+        <Association Name="FK_TBL_CORREO_TBL_PERSONA">
+          <End Type="dbResidenciaModel.TBL_PERSONA" Role="TBL_PERSONA" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_CORREO" Role="TBL_CORREO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_CORREO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ROL_ASEO_TBL_ESTUDIANTE">
+          <End Type="dbResidenciaModel.TBL_ESTUDIANTE" Role="TBL_ESTUDIANTE" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_ROL_ASEO" Role="TBL_ROL_ASEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="TBL_ROL_ASEO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_TELEFONO_TBL_PERSONA">
+          <End Type="dbResidenciaModel.TBL_PERSONA" Role="TBL_PERSONA" Multiplicity="0..1" />
+          <End Type="dbResidenciaModel.TBL_TELEFONO" Role="TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERSONA">
+              <PropertyRef Name="PER_ID" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="PER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_ROL_ASEO_TBL_TIPO_ASEO">
+          <End Type="dbResidenciaModel.TBL_TIPO_ASEO" Role="TBL_TIPO_ASEO" Multiplicity="1" />
+          <End Type="dbResidenciaModel.TBL_ROL_ASEO" Role="TBL_ROL_ASEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_ASEO">
+              <PropertyRef Name="TIP_ASE_ID" />
+            </Principal>
+            <Dependent Role="TBL_ROL_ASEO">
+              <PropertyRef Name="TIP_ASE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -813,6 +1047,7 @@
           <EntitySetMapping Name="TBL_PERSONA">
             <EntityTypeMapping TypeName="dbResidenciaModel.TBL_PERSONA">
               <MappingFragment StoreEntitySet="TBL_PERSONA">
+                <ScalarProperty Name="PER_IMAGEN" ColumnName="PER_IMAGEN" />
                 <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
                 <ScalarProperty Name="PER_CEDULA" ColumnName="PER_CEDULA" />
                 <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
@@ -933,6 +1168,54 @@
                 <ScalarProperty Name="MUN_NOMBRE" ColumnName="MUN_NOMBRE" />
                 <ScalarProperty Name="DEP_ID" ColumnName="DEP_ID" />
                 <ScalarProperty Name="MUN_ID" ColumnName="MUN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CARRERA">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_CARRERA">
+              <MappingFragment StoreEntitySet="TBL_CARRERA">
+                <ScalarProperty Name="CAR_DESCRIPCION" ColumnName="CAR_DESCRIPCION" />
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_COMPAÑIA">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_COMPAÑIA">
+              <MappingFragment StoreEntitySet="TBL_COMPAÑIA">
+                <ScalarProperty Name="COM_DESCRIPCION" ColumnName="COM_DESCRIPCION" />
+                <ScalarProperty Name="COM_ID" ColumnName="COM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CORREO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_CORREO">
+              <MappingFragment StoreEntitySet="TBL_CORREO">
+                <ScalarProperty Name="COR_DEFINICION" ColumnName="COR_DEFINICION" />
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="COR_ID" ColumnName="COR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROL_ASEO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_ROL_ASEO">
+              <MappingFragment StoreEntitySet="TBL_ROL_ASEO">
+                <ScalarProperty Name="ROL_ASE_ESTADO" ColumnName="ROL_ASE_ESTADO" />
+                <ScalarProperty Name="ROL_ASE_DIA" ColumnName="ROL_ASE_DIA" />
+                <ScalarProperty Name="ROL_ASE_FECHA" ColumnName="ROL_ASE_FECHA" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="TIP_ASE_ID" ColumnName="TIP_ASE_ID" />
+                <ScalarProperty Name="ROL_ASE_ID" ColumnName="ROL_ASE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TELEFONO">
+            <EntityTypeMapping TypeName="dbResidenciaModel.TBL_TELEFONO">
+              <MappingFragment StoreEntitySet="TBL_TELEFONO">
+                <ScalarProperty Name="TEL_PERSONAL" ColumnName="TEL_PERSONAL" />
+                <ScalarProperty Name="TEL_NUMERO" ColumnName="TEL_NUMERO" />
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="COM_ID" ColumnName="COM_ID" />
+                <ScalarProperty Name="TEL_ID" ColumnName="TEL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

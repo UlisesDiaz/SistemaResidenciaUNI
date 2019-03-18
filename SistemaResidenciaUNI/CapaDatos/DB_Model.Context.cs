@@ -41,6 +41,11 @@ namespace CapaDatos
         public virtual DbSet<TBL_DEPARTAMENTO> TBL_DEPARTAMENTO { get; set; }
         public virtual DbSet<TBL_DIRECCION> TBL_DIRECCION { get; set; }
         public virtual DbSet<TBL_MUNICIPIO> TBL_MUNICIPIO { get; set; }
+        public virtual DbSet<TBL_CARRERA> TBL_CARRERA { get; set; }
+        public virtual DbSet<TBL_COMPAÑIA> TBL_COMPAÑIA { get; set; }
+        public virtual DbSet<TBL_CORREO> TBL_CORREO { get; set; }
+        public virtual DbSet<TBL_ROL_ASEO> TBL_ROL_ASEO { get; set; }
+        public virtual DbSet<TBL_TELEFONO> TBL_TELEFONO { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

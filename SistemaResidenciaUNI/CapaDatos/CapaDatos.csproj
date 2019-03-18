@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatoBarrio.cs" />
     <Compile Include="DatoCuarto.cs" />
     <Compile Include="DatoDepartamento.cs" />
     <Compile Include="DatoEstudiante.cs" />
@@ -83,6 +84,15 @@
     <Compile Include="TBL_BARRIO.cs">
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TBL_CARRERA.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_COMPAÑIA.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_CORREO.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TBL_CUARTO.cs">
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
@@ -105,6 +115,12 @@
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_RESPONSABLE.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ROL_ASEO.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_TELEFONO.cs">
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_TIPO_AREA_RESPONSABLE.cs">

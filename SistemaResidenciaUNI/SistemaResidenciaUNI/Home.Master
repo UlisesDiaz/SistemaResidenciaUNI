@@ -238,7 +238,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="../Estudiante/Estudiante.aspx"><i class="fa fa-circle-o"></i>Estudiantes</a></li>
                                 <li><a href="../Cuarto/AgregarCuarto.aspx"><i class="fa fa-circle-o"></i>Cuartos</a></li>
-                                <li><a href="../Estudiante/Estudiante.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo</a></li>
+                               <li><a href="../Rol Aseo/Rol Aseo.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo</a></li>
                             </ul>
                         </li>
 

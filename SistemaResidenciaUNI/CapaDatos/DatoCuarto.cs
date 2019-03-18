@@ -43,10 +43,15 @@ namespace CapaDatos
                 cadaCuarto.CUA_ID = fila.CUA_ID;
                 cadaCuarto.CUA_NUMERO = fila.CUA_NUMERO;
                 cadaCuarto.CUA_ESTADO = fila.CUA_ESTADO;
-                
+
                 cuartoLista.Add(cadaCuarto);
             });
             return cuartoLista;
+        }
+
+        public int ObtenerUltimoIdCuarto()
+        {
+            return dbResidencia.TBL_CUARTO.OrderByDescending(dr => dr.CUA_ID).Select(dr => dr.CUA_ID).First();
         }
     }
 }

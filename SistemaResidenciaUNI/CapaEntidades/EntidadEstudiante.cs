@@ -8,6 +8,7 @@ namespace CapaEntidades
         public int CUA_ID { get; set; }
         public string EST_CARNET { get; set; }
         public bool EST_ESTADO { get; set; }
-
+        public virtual EntidadCuarto TBL_CUARTO { get; set; }
+        public virtual EntidadPersona TBL_PERSONA { get; set; }
     }
 }
