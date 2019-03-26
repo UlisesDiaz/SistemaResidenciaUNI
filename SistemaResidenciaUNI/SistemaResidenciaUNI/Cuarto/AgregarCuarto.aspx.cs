@@ -33,7 +33,7 @@ namespace SistemaResidenciaUNI.Cuarto
             NegocioCuarto negocioCuarto = new NegocioCuarto();
             EntidadCuarto entidadCuarto = new EntidadCuarto();
             entidadCuarto.CUA_NUMERO = int.Parse(txtNumCuarto.Text);
-            entidadCuarto.CUA_ESTADO = chkEstadoCuarto.Checked;
+            entidadCuarto.CUA_ESTADO = true;
 
             return negocioCuarto.GuardarNuevoCuarto(entidadCuarto);
         }

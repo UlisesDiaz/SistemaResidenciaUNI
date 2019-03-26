@@ -8,43 +8,39 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Registrar Cuarto</div>
         <div class="panel-body">
-
-            <div class="form-group row">
-              
-                 <div class="col-lg-6">
-                <label for="txtNumCuarto" class="col-sm-2 col-form-label">Número Cuarto</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="txtNumCuarto"  CssClass="form-control" TextMode="number" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNumCuarto"
-                        CssClass="text-danger" ErrorMessage="El campo Número Cuarto es obligatorio." />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="lblNumCuarto" class="col-sm-2 col-form-label">Número Cuarto</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" ID="txtNumCuarto" CssClass="form-control" TextMode="number" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNumCuarto"
+                                CssClass="text-danger" ErrorMessage="El campo Número Cuarto es obligatorio." />
+                        </div>
+                    </div>
                 </div>
-                     </div>
-
-
-                  <div class="col-lg-6">
-                <label for="txtNumCuarto" class="col-sm-2 col-form-label">Número Cuarto</label>
-                <div class="col-sm-10">
-                    <asp:TextBox runat="server" ID="TextBox1"  CssClass="form-control" TextMode="number" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNumCuarto"
-                        CssClass="text-danger" ErrorMessage="El campo Número Cuarto es obligatorio." />
+                <div class="col-lg-6">
                 </div>
-                     </div>
 
-            </div>
-            <div class="form-group row">
-                <label for="chkEstadoCuarto" class="col-sm-2 col-form-label">Estado</label>
-                <div class="col-sm-10">
-                    <asp:CheckBox ID="chkEstadoCuarto" runat="server" />
-                </div>
-            </div>
-            <div class="form-group">
-                <asp:Button runat="server" OnClick="GuardarCuarto_Click"
-                    Text="Guardar" CssClass="btn btn-primary" />
             </div>
         </div>
-
     </div>
-       <div class="panel panel-primary">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Operaciones</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <asp:Button runat="server" OnClick="GuardarCuarto_Click"
+                            Text="Guardar" CssClass="btn btn-primary" ID="btnGuardadEstudiante" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
         <div class="panel-heading">Listado de Cuartos</div>
         <div class="panel-body">
         </div>
