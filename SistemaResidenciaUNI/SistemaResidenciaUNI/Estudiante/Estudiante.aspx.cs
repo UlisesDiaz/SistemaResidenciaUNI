@@ -15,35 +15,56 @@ namespace SistemaResidenciaUNI.Estudiante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Form.Attributes.Add("enctype", "multipart/form-data");
-            if (!Page.IsPostBack)
-                EnlazarListas();
+            try
+            {
+                Page.Form.Attributes.Add("enctype", "multipart/form-data");
+                if (!Page.IsPostBack)
+                {
+                    EnlazarListas();
+                }
+            }
+            catch (Exception ex)
+            {
+                string script = string.Format("alert('{0}');", ex.Message);
+                ClientScript.RegisterClientScriptBlock(typeof(Page), "PageLoadError", script, true);
+            }
+
         }
 
         protected void GuardarEstudiante_Click(object sender, EventArgs e)
         {
-            Resultado resultado = GuardarEstudiante();
-            if (resultado.esError)
+            try
             {
-                string script = string.Format("alert('{0}');", resultado.mensaje);
+                Resultado resultado = GuardarEstudiante();
+                if (resultado.esError)
+                {
+                    throw new Exception(resultado.mensaje);
+                }
+                else
+                {
+                    LimpiarControles();
+                    string script = string.Format("alert('{0}');", resultado.mensaje);
+                    ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                string script = string.Format("alert('{0}');", ex.Message);
                 ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
             }
-            else
-            {
-                LimpiarControles();
-                string script = string.Format("alert('{0}');", resultado.mensaje);
-                ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);
-            }
+
         }
 
         Resultado GuardarEstudiante()
         {
 
             NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
-            
+
 
             EntidadEstudiante entidadEstudiante = new EntidadEstudiante();
-       
+
             EntidadPersona entidadPersona = new EntidadPersona();
 
             entidadPersona.PER_CEDULA = txtPerCedula.Text;

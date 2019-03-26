@@ -36,3 +36,25 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+/*clase para el loadingImage en el form principal*/
+div.loading{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0, 7);
+    z-index:32;
+    
+}
+
+loading img
+{
+    display:block;
+    margin-left:550px;
+    margin-top:300px;
+    vertical-align:middle;
+    top:450px;
+    left:450px;
+}

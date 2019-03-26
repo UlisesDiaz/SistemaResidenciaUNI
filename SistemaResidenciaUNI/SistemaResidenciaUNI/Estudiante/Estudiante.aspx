@@ -4,9 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:ScriptManager runat="server" ID="ScriptManager1" />
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
             <div class="panel panel-primary">
                 <div class="panel-heading">Información Estudiante (Nuevo Residente )</div>
                 <div class="panel-body">
@@ -166,12 +163,6 @@
                     </div>
                 </div>
             </div>
-
-        </ContentTemplate>
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnGuardadEstudiante" />
-        </Triggers>
-    </asp:UpdatePanel>
 
     <!-- ./wrapper -->
     <script type="text/javascript">
