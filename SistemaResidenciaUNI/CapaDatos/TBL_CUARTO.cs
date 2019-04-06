@@ -17,7 +17,7 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_CUARTO()
         {
-            this.TBL_ESTUDIANTE = new HashSet<TBL_ESTUDIANTE>();
+            this.TBL_HIS_ESTUDIANTE_CUARTO = new HashSet<TBL_HIS_ESTUDIANTE_CUARTO>();
         }
     
         public int CUA_ID { get; set; }
@@ -25,6 +25,6 @@ namespace CapaDatos
         public bool CUA_ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBL_ESTUDIANTE> TBL_ESTUDIANTE { get; set; }
+        public virtual ICollection<TBL_HIS_ESTUDIANTE_CUARTO> TBL_HIS_ESTUDIANTE_CUARTO { get; set; }
     }
 }

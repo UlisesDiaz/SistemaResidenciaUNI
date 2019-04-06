@@ -22,14 +22,14 @@ namespace CapaDatos
                    
                     GuardarNuevaPersona(EntidadEstudiante.TBL_PERSONA);
 
-                    TBL_ESTUDIANTE.PER_ID = ObtenerUltimoIdPersona();
-                    TBL_ESTUDIANTE.CUA_ID = datoCuarto.ObtenerUltimoIdCuarto();
+                    TBL_ESTUDIANTE.EST_ID = ObtenerUltimoIdPersona();
+                   // TBL_ESTUDIANTE.CUA_ID = datoCuarto.ObtenerUltimoIdCuarto();
                     TBL_ESTUDIANTE.EST_CARNET = EntidadEstudiante.EST_CARNET;
                     TBL_ESTUDIANTE.EST_ESTADO = true;
 
                     int idPersona = EntidadEstudiante.PER_ID;
 
-                    bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.PER_ID.Equals(idPersona)).Count() > 0;
+                    bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.EST_ID.Equals(idPersona)).Count() > 0;
                     if (existeEstudiante)
                         throw new Exception("Ya existe un Estudiante con este ID: " + idPersona);
 
@@ -42,7 +42,7 @@ namespace CapaDatos
                 catch (Exception ex)
                 {
                     resultado.esError = true;
-                    resultado.mensaje = "Ha ocurrido un error al momento de almacenar el Estidiante: " + ex.Message;
+                    resultado.mensaje = "Ha ocurrido un error al momento de almacenar el Estudiante: " + ex.Message;
                   
                     throw new Exception(resultado.mensaje);
                 }
@@ -54,7 +54,7 @@ namespace CapaDatos
             List<EntidadPersona> personas = new List<EntidadPersona>();
 
             List<int> idEstudiantesRegistrados = new List<int>();
-            idEstudiantesRegistrados = dbResidencia.TBL_ESTUDIANTE.ToList().Select(dr => dr.PER_ID).ToList<int>();
+            idEstudiantesRegistrados = dbResidencia.TBL_ESTUDIANTE.ToList().Select(dr => dr.EST_ID).ToList<int>();
             //se extrae lista ordenada ascendente y personas que estén activas
             dbResidencia.TBL_PERSONA.OrderBy(fila => fila.PER_PRIMER_NOMBRE).Where(fila => fila.PER_ESTADO == true).ToList().ForEach(fila =>
                  {
@@ -62,7 +62,7 @@ namespace CapaDatos
                      if (!idEstudiantesRegistrados.Contains(fila.PER_ID))
                      {
                          cadaPersona.PER_ID = fila.PER_ID;
-                         cadaPersona.PER_CEDULA = fila.PER_CEDULA;
+                         cadaPersona.PER_CEDULA = fila.PER_IDENTIFICACION;
                          cadaPersona.PER_PRIMER_NOMBRE = fila.PER_PRIMER_NOMBRE;
                          cadaPersona.PER_SEGUNDO_NOMBRE = fila.PER_SEGUNDO_NOMBRE;
                          cadaPersona.PER_PRIMER_APELLIDO = fila.PER_PRIMER_APELLIDO;
@@ -88,7 +88,7 @@ namespace CapaDatos
                 {
                     resultado.esError = false;
                     TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
-                    TBL_PERSONA.PER_CEDULA = entidadPersona.PER_CEDULA;
+                    TBL_PERSONA.PER_IDENTIFICACION = entidadPersona.PER_CEDULA;
                     TBL_PERSONA.PER_PRIMER_NOMBRE = entidadPersona.PER_PRIMER_NOMBRE;
                     TBL_PERSONA.PER_SEGUNDO_NOMBRE = entidadPersona.PER_SEGUNDO_NOMBRE;
                     TBL_PERSONA.PER_PRIMER_APELLIDO = entidadPersona.PER_PRIMER_APELLIDO;

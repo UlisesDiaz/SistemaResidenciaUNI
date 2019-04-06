@@ -16,10 +16,12 @@ namespace CapaDatos
     {
         public int TEL_ID { get; set; }
         public int COM_ID { get; set; }
-        public Nullable<int> PER_ID { get; set; }
+        public int PER_ID { get; set; }
         public string TEL_NUMERO { get; set; }
-        public Nullable<bool> TEL_PERSONAL { get; set; }
+        public bool TEL_PERSONAL { get; set; }
+        public bool TEL_ESTADO { get; set; }
     
+        public virtual TBL_COMPAÑIA TBL_COMPAÑIA { get; set; }
         public virtual TBL_PERSONA TBL_PERSONA { get; set; }
     }
 }

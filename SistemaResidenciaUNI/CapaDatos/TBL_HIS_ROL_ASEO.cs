@@ -12,16 +12,17 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_DIRECCION
+    public partial class TBL_HIS_ROL_ASEO
     {
-        public int DIR_ID { get; set; }
-        public int BAR_ID { get; set; }
-        public Nullable<int> PER_ID { get; set; }
-        public string DIR_NO_CASA { get; set; }
-        public string DIR_DESCRIPCION { get; set; }
-        public bool DIR_ESTADO { get; set; }
+        public int HIS_ROL_ASE_ID { get; set; }
+        public int ROL_ASE_ID { get; set; }
+        public int USU_ID { get; set; }
+        public bool HIS_ROL_ASE_CUMPLE { get; set; }
+        public System.DateTime HIS_ROL_ASE_FECHA { get; set; }
+        public string HIS_ROL_ASE_DESCRIPCION { get; set; }
+        public bool HIS_ROL_ASE_ESTADO { get; set; }
     
-        public virtual TBL_BARRIO TBL_BARRIO { get; set; }
-        public virtual TBL_PERSONA TBL_PERSONA { get; set; }
+        public virtual TBL_ROL_ASEO TBL_ROL_ASEO { get; set; }
+        public virtual TBL_USUARIO TBL_USUARIO { get; set; }
     }
 }

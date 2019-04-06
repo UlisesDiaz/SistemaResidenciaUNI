@@ -12,16 +12,18 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_DIRECCION
+    public partial class TBL_PER_RELACION
     {
-        public int DIR_ID { get; set; }
-        public int BAR_ID { get; set; }
-        public Nullable<int> PER_ID { get; set; }
-        public string DIR_NO_CASA { get; set; }
-        public string DIR_DESCRIPCION { get; set; }
-        public bool DIR_ESTADO { get; set; }
+        public int PER_REL_ID { get; set; }
+        public int TIP_PER_REL_ID { get; set; }
+        public int PER_ORIGEN { get; set; }
+        public int PER_DESTINO { get; set; }
+        public System.DateTime PER_REL_FECHA_INICIAL { get; set; }
+        public Nullable<System.DateTime> PER_REL_FECHA_FINAL { get; set; }
+        public bool PER_REL_ESTADO { get; set; }
     
-        public virtual TBL_BARRIO TBL_BARRIO { get; set; }
         public virtual TBL_PERSONA TBL_PERSONA { get; set; }
+        public virtual TBL_PERSONA TBL_PERSONA1 { get; set; }
+        public virtual TBL_TIP_PER_RELACION TBL_TIP_PER_RELACION { get; set; }
     }
 }

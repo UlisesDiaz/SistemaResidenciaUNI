@@ -17,6 +17,7 @@ namespace CapaDatos
         public int COR_ID { get; set; }
         public int PER_ID { get; set; }
         public string COR_DEFINICION { get; set; }
+        public bool COR_ESTADO { get; set; }
     
         public virtual TBL_PERSONA TBL_PERSONA { get; set; }
     }

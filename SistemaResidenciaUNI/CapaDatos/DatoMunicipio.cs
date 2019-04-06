@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CapaEntidades;
-using System.Data.Sql;
 
 namespace CapaDatos
 {
@@ -12,7 +9,7 @@ namespace CapaDatos
     {
 
         dbResidenciaEntities dbResidencia = new dbResidenciaEntities();
-
+        
         public Resultado ObtenerMunicipioPorDepartamentoId(int depId)
         {
             Resultado resultado = new Resultado();

@@ -14,14 +14,32 @@ namespace CapaDatos
     
     public partial class TBL_USUARIO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_USUARIO()
+        {
+            this.TBL_HIS_ESTUDIANTE_CUARTO = new HashSet<TBL_HIS_ESTUDIANTE_CUARTO>();
+            this.TBL_HIS_ESTUDIANTE_REGISTRO = new HashSet<TBL_HIS_ESTUDIANTE_REGISTRO>();
+            this.TBL_HIS_ROL_ASEO = new HashSet<TBL_HIS_ROL_ASEO>();
+            this.TBL_ROL_ASEO = new HashSet<TBL_ROL_ASEO>();
+        }
+    
         public int USU_ID { get; set; }
         public int PER_ID { get; set; }
         public string USU_LOGIN { get; set; }
         public string USU_PASSWORD { get; set; }
+        public System.DateTime USU_ULT_INGRESO { get; set; }
         public System.DateTime USU_FECHA_INICIAL { get; set; }
         public Nullable<System.DateTime> USU_FECHA_FINAL { get; set; }
         public bool USU_ESTADO { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_HIS_ESTUDIANTE_CUARTO> TBL_HIS_ESTUDIANTE_CUARTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_HIS_ESTUDIANTE_REGISTRO> TBL_HIS_ESTUDIANTE_REGISTRO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_HIS_ROL_ASEO> TBL_HIS_ROL_ASEO { get; set; }
         public virtual TBL_RESPONSABLE TBL_RESPONSABLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_ROL_ASEO> TBL_ROL_ASEO { get; set; }
     }
 }

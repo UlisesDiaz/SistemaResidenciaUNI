@@ -16,7 +16,7 @@ namespace CapaDatos
     {
         public int HIS_EST_REG_ID { get; set; }
         public Nullable<int> EST_ID { get; set; }
-        public Nullable<int> RES_ID { get; set; }
+        public Nullable<int> USU_ID { get; set; }
         public int TIP_MOT_REG_ID { get; set; }
         public System.DateTime HIS_EST_REG_FECHA_INICIAL { get; set; }
         public System.DateTime HIS_EST_REG_FECHA_FINAL { get; set; }
@@ -25,8 +25,7 @@ namespace CapaDatos
         public string HIS_EST_REG_DESCRIPCION { get; set; }
         public bool HIS_EST_REG_ESTADO { get; set; }
     
-        public virtual TBL_ESTUDIANTE TBL_ESTUDIANTE { get; set; }
-        public virtual TBL_RESPONSABLE TBL_RESPONSABLE { get; set; }
         public virtual TBL_TIPO_MOTIVO_REGISTRO TBL_TIPO_MOTIVO_REGISTRO { get; set; }
+        public virtual TBL_USUARIO TBL_USUARIO { get; set; }
     }
 }

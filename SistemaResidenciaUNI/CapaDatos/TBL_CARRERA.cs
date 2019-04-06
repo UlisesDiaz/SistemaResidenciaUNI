@@ -14,7 +14,19 @@ namespace CapaDatos
     
     public partial class TBL_CARRERA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_CARRERA()
+        {
+            this.TBL_ESTUDIANTE = new HashSet<TBL_ESTUDIANTE>();
+        }
+    
         public int CAR_ID { get; set; }
+        public int REC_ID { get; set; }
         public string CAR_DESCRIPCION { get; set; }
+        public bool CAR_ESTADO { get; set; }
+    
+        public virtual TBL_RECINTO TBL_RECINTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_ESTUDIANTE> TBL_ESTUDIANTE { get; set; }
     }
 }

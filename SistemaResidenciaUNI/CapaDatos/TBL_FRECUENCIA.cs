@@ -12,18 +12,19 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_COMPAÑIA
+    public partial class TBL_FRECUENCIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBL_COMPAÑIA()
+        public TBL_FRECUENCIA()
         {
-            this.TBL_TELEFONO = new HashSet<TBL_TELEFONO>();
+            this.TBL_ROL_ASEO = new HashSet<TBL_ROL_ASEO>();
         }
     
-        public int COM_ID { get; set; }
-        public string COM_DESCRIPCION { get; set; }
+        public int FRE_ID { get; set; }
+        public string FRE_DESCRIPCION { get; set; }
+        public bool FRE_ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBL_TELEFONO> TBL_TELEFONO { get; set; }
+        public virtual ICollection<TBL_ROL_ASEO> TBL_ROL_ASEO { get; set; }
     }
 }

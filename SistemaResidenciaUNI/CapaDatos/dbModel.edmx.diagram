@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71c51f713ca84841b1251c6b505c4fca" Name="Diagram1">
+        <EntityTypeShape EntityType="dbResidenciaEntities.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_BARRIO" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_CARRERA" Width="1.5" PointX="6" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_COMPAÑIA" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_CORREO" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_CUARTO" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_DEPARTAMENTO" Width="1.5" PointX="1.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_DIRECCION" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_ESTUDIANTE" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_FRECUENCIA" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_GENERO" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_HIS_ESTUDIANTE_CUARTO" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_HIS_ESTUDIANTE_REGISTRO" Width="1.5" PointX="10.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_HIS_ROL_ASEO" Width="1.5" PointX="15.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_MUNICIPIO" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_PER_RELACION" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_PERSONA" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_RECINTO" Width="1.5" PointX="3.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_RESPONSABLE" Width="1.5" PointX="6" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_ROL_ASEO" Width="1.5" PointX="13.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TELEFONO" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TIP_PER_RELACION" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TIPO_AREA_RESPONSABLE" Width="1.5" PointX="3.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TIPO_ASEO" Width="1.5" PointX="11.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TIPO_IDENTIFICACION" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_TIPO_MOTIVO_REGISTRO" Width="1.5" PointX="8.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbResidenciaEntities.TBL_USUARIO" Width="1.5" PointX="8.25" PointY="22.875" IsExpanded="true" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_DIRECCION_TBL_BARRIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_MUNICIPIO_TBL_BARRIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_CARRERA_TBL_RECINTO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ESTUDIANTE_TBL_CARRERA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_TELEFONO_TBL_COMPAÑIA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_CORREO_TBL_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ESTUDIANTE_CUARTO_TBL_CUARTO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_DEPARTAMENTO_TBL_MUNICIPIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_DIRECCION_TBL_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ESTUDIANTE_TBL_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ESTUDIANTE_CUARTO_TBL_ESTUDIANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ROL_ASEO_TBL_ESTUDIANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ROL_ASEO_TBL_FRECUENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_PERSONA_TBL_GENERO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ESTUDIANTE_CUARTO_TBL_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_TIPO_MOTIVO_REGISTRO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ESTUDIANTE_REGISTRO_TBL_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ROL_ASEO_TBL_ROL_ASEO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_HIS_ROL_ASEO_TBL_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_PER_RELACION_TBL_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_PER_RELACION_TBL_PERSONA1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_PER_RELACION_TBL_TIP_PER_RELACION" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_PERSONA_TBL_TIPO_IDENTIFICACION" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_TELEFONO_TBL_PERSONA1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_RESPONSABLE_TBL_TIPO_AREA_RESPONSABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_USUARIO_TBL_RESPONSABLE1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbResidenciaEntities.FK_TBL_ROL_ASEO_TBL_USUARIO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

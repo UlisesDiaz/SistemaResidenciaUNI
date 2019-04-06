@@ -1,9 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Estudiante.aspx.cs" Inherits="SistemaResidenciaUNI.Estudiante.Estudiante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server" ID="ScriptManager1" EnablePartialRendering="true" AsyncPostBackTimeout="600" />
+    <asp:UpdateProgress runat="server">
+        <ProgressTemplate>
+            <div class="loading" style="width: 100%">
+                <img src="../dist/img/loading.gif" alt="Cargando..." />
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
             <div class="panel panel-primary">
                 <div class="panel-heading">Información Estudiante (Nuevo Residente )</div>
                 <div class="panel-body">
@@ -164,7 +175,9 @@
                 </div>
             </div>
 
-    <!-- ./wrapper -->
+            <!-- ./wrapper -->
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <script type="text/javascript">
         $(function () {
 
@@ -220,14 +233,14 @@
             });
 
             //Colorpicker
-            $(".my-colorpicker1").colorpicker();
-            //color picker with addon
-            $(".my-colorpicker2").colorpicker();
+            //$(".my-colorpicker1").colorpicker();
+            ////color picker with addon
+            //$(".my-colorpicker2").colorpicker();
 
             //Timepicker
-            $(".timepicker").timepicker({
-                showInputs: false
-            });
+            //$(".timepicker").timepicker({
+            //    showInputs: false
+            //});
         });
     </script>
 </asp:Content>
