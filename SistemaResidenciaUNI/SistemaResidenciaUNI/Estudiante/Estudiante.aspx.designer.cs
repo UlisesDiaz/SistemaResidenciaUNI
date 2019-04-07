@@ -40,6 +40,33 @@ namespace SistemaResidenciaUNI.Estudiante {
         protected global::System.Web.UI.WebControls.FileUpload FilUpImagen;
         
         /// <summary>
+        /// Control ddlTipId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipId;
+        
+        /// <summary>
+        /// Control ddCarId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddCarId;
+        
+        /// <summary>
+        /// Control ddlGenId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlGenId;
+        
+        /// <summary>
         /// Control txtPerCedula.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,24 @@ namespace SistemaResidenciaUNI.Estudiante {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEstCarnet;
+        
+        /// <summary>
+        /// Control txtTelNumero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelNumero;
+        
+        /// <summary>
+        /// Control TextCorDefinicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCorDefinicion;
         
         /// <summary>
         /// Control dllDepNombre.

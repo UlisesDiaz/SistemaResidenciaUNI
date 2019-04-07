@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Estudiante.aspx.cs" Inherits="SistemaResidenciaUNI.Estudiante.Estudiante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -18,6 +17,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Información Estudiante (Nuevo Residente )</div>
                 <div class="panel-body">
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -29,13 +29,52 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblperCedula" class="col-sm-6 col-form-label">Cédula del Estudiante</label>
+                                <label for="lblTipId" class="col-sm-6 col-form-label">Tipo de Identificación</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlTipId" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblCarrera" class="col-sm-6 col-form-label">(*)Carrera</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddCarId" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblGenId" class="col-sm-6 col-form-label">Género</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlGenId" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblperCedula" class="col-sm-6 col-form-label">Identificación</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese cédula del Estudiante" />
 
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblperPrimerNombre" class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
                                 <div class="col-sm-10">
@@ -44,6 +83,8 @@
                                         CssClass="text-danger" ErrorMessage="El campo Primer Nombre del Estudiante es requerido." />
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblperSegundoNombre" class="col-sm-6 col-form-label">Segundo Nombre del Estudiante</label>
                                 <div class="col-sm-10">
@@ -52,9 +93,11 @@
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Nombre del Estudiante es requerido." />
                                 </div>
                             </div>
-
-
                         </div>
+
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblPerPrimerApellido" class="col-sm-6 col-form-label">Primer Apellido</label>
@@ -64,6 +107,9 @@
                                         CssClass="text-danger" ErrorMessage="El campo Primer Apellido del Estudiante es requerido." />
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+
                             <div class="form-group row">
                                 <label for="lblPerSegundoApellido" class="col-sm-6 col-form-label">Segundo Apellido</label>
                                 <div class="col-sm-10">
@@ -72,6 +118,10 @@
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Apellido del Estudiante es requerido." />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblPerFechaNacimiento" class="col-sm-6 col-form-label">Fecha de Nacimiento del Estudiante</label>
                                 <div class="col-sm-10">
@@ -79,13 +129,18 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="ddlNumeroCuarto" class="col-sm-6 col-form-label">Número de Cuarto</label>
                                 <div class="col-sm-10">
                                     <asp:DropDownList ID="ddlNumeroCuarto" CssClass="form-control" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="txtEstCarnet" class="col-sm-6 col-form-label">Número de Carnet</label>
                                 <div class="col-sm-10">
@@ -94,13 +149,46 @@
                                         CssClass="text-danger" ErrorMessage="El campo Número de Carnet es requerido." />
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+
+
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Informacìon de Contacto</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblTelNumero" class="col-sm-6 col-form-label">Número Telefónico</label>
+                                <div class="col-sm-10">
+                                    
+                                     <asp:TextBox runat="server" ID="txtTelNumero" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblCorDefinicion" class="col-sm-6 col-form-label">Correo</label>
+                                <div class="col-sm-10">
+                                     <asp:TextBox runat="server" ID="TextCorDefinicion" CssClass="form-control" TextMode="Email" placeholder="Correo Electrónico" />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
 
+
             </div>
+
+
 
             <div class="panel panel-primary">
                 <div class="panel-heading">Dirección(Nuevo)</div>
