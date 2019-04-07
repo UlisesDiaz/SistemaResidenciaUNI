@@ -22,7 +22,7 @@
     <link href="../../plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
     <!-- Morris chart -->
     <link href="../../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
+    <%--  jvectormap --%>
     <link href="../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <!-- Date Picker -->
     <link href="../../plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
@@ -174,7 +174,10 @@
                             <ul class="treeview-menu">
                                 <li><a href="../Estudiante/Estudiante.aspx"><i class="fa fa-circle-o"></i>Estudiantes</a></li>
                                 <li><a href="../Cuarto/AgregarCuarto.aspx"><i class="fa fa-circle-o"></i>Cuartos</a></li>
-                                <li><a href="../Rol Aseo/Rol Aseo.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo</a></li>
+
+                                <li><a href="../TipoDeAseo.aspx"><i class="fa fa-circle-o"></i>Tipo De Aseo </a></li>
+                                <li><a href="../Rol Aseo/RolDeAseo.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo </a></li>
+
                             </ul>
                         </li>
 
