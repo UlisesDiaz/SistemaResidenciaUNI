@@ -21,7 +21,7 @@
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblTipAseDescripcion" class="col-sm-6 col-form-label">Tipo de aseo</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10">         
                                     <asp:TextBox runat="server" ID="txtTipAseDescripcion" CssClass="form-control" placeholder="Tipo de aseo" />
                                 </div>
                             </div>

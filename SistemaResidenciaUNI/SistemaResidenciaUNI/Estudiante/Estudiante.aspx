@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <label for="lblperCedula" class="col-sm-6 col-form-label">Identificación</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese cédula del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese Identificación  del Estudiante" />
 
                                 </div>
                             </div>
@@ -168,8 +168,8 @@
                             <div class="form-group row">
                                 <label for="lblTelNumero" class="col-sm-6 col-form-label">Número Telefónico</label>
                                 <div class="col-sm-10">
-                                    
-                                     <asp:TextBox runat="server" ID="txtTelNumero" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
+
+                                    <asp:TextBox runat="server" ID="txtTelNumero" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
                                 </div>
                             </div>
                         </div>
@@ -177,7 +177,16 @@
                             <div class="form-group row">
                                 <label for="lblCorDefinicion" class="col-sm-6 col-form-label">Correo</label>
                                 <div class="col-sm-10">
-                                     <asp:TextBox runat="server" ID="TextCorDefinicion" CssClass="form-control" TextMode="Email" placeholder="Correo Electrónico" />
+                                    <asp:TextBox runat="server" ID="TextCorDefinicion" CssClass="form-control" TextMode="Email" placeholder="Correo Electrónico" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblcompDescripcion" class="col-sm-6 col-form-label">Compañía Descripción</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlcompDescripcion" CssClass="form-control" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
