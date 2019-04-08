@@ -29,5 +29,13 @@ namespace CapaNegocio
         {
             return datoEstudiante.ObtenerPersonas();
         }
+
+
+        public object ObtenerListaEstudiantes()
+
+        {
+            return datoEstudiante.ObtenerListaEstudiantes();
+        }
+        
     }
 }

@@ -119,6 +119,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -130,6 +131,7 @@
                                 <!-- /.input group -->
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="ddlNumeroCuarto" class="col-sm-6 col-form-label">Número de Cuarto</label>
@@ -139,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -255,7 +258,26 @@
                 </div>
 
             </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Listado de Estudiantes</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <asp:GridView ID="gvListaEstudiante" runat="server" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
+                            <Columns>
+                                <asp:BoundField DataField="EST_CARNET" HeaderText="Carnet Estudiante" SortExpression="EST_CARNET" />
+                                <asp:BoundField DataField="PER_IDENTIFICACION" HeaderText="Identificación" SortExpression="PER_IDENTIFICACION" />
+                                <asp:BoundField DataField="NOMBRE_COMPLETO" HeaderText="Nombre Estudiante" SortExpression="NOMBRE_COMPLETO" />
+                                <asp:BoundField DataField="GEN_DESCRIPCION" HeaderText="Género" SortExpression="GEN_DESCRIPCION" />
+                                <asp:BoundField DataField="EST_FECHA_INICIAL" HeaderText="Fecha de Inicio" SortExpression="EST_FECHA_INICIAL" />
+                                <asp:BoundField DataField="COR_DEFINICION" HeaderText="Correo Estudiante" SortExpression="COR_DEFINICION" />
+                                <asp:BoundField DataField="DIR_DESCRIPCION" HeaderText="Dirección Estudiante" SortExpression="PER_PRIMER_NOMBRE" />
 
+                            </Columns>
+                        </asp:GridView>
+
+                    </div>
+                </div>
+            </div>
             <div class="panel panel-primary">
                 <div class="panel-heading">Operaciones</div>
                 <div class="panel-body">

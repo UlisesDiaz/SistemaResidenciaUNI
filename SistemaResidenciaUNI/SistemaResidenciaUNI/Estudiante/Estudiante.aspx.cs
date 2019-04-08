@@ -13,6 +13,7 @@ namespace SistemaResidenciaUNI.Estudiante
 {
     public partial class Estudiante : System.Web.UI.Page
     {
+        NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -28,7 +29,7 @@ namespace SistemaResidenciaUNI.Estudiante
                 string script = string.Format("alert('{0}');", ex.Message);
                 ClientScript.RegisterClientScriptBlock(typeof(Page), "PageLoadError", script, true);
             }
-
+            ListarEstudiantes();
         }
 
         protected void GuardarEstudiante_Click(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace SistemaResidenciaUNI.Estudiante
         void EnlazarListas()
         {
             //llenar ddl de personas
-            NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
+           
 
             //ddlPersona.DataSource = negocioEstudiante.ObtenerPersonas();
             //ddlPersona.DataTextField = "PER_NOMBRE_COMPLETO";
@@ -157,6 +158,12 @@ namespace SistemaResidenciaUNI.Estudiante
         protected void ddlMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
             ObtenerBarrioPorMunicipioId((int.Parse(ddlMunicipio.SelectedValue)));
+        }
+
+        void ListarEstudiantes()
+        {
+            gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
+            gvListaEstudiante.DataBind();
         }
     }
 }
