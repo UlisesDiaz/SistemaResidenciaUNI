@@ -17,7 +17,7 @@ namespace CapaNegocio
             {
                 resul = datoEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
             }
-            catch 
+            catch
             {
                 throw new Exception(resul.mensaje);
             }
@@ -36,6 +36,21 @@ namespace CapaNegocio
         {
             return datoEstudiante.ObtenerListaEstudiantes();
         }
-        
+
+        public object ObtenerListaGenero()
+        {
+            return datoEstudiante.ObtenerListaGenero();
+        }
+        public object ObtenerListaTipoIdentificacion()
+        { return datoEstudiante.ObtenerListaTipoIdentificacion(); }
+        public object ObtenerListaCarrera()
+        {
+            return datoEstudiante.ObtenerListaCarrera();
+        }
+        public object ObtenerListaCompañiaTelefonica()
+        {
+            return datoEstudiante.ObtenerListaCompañiaTelefonica();
+        }
+
     }
 }

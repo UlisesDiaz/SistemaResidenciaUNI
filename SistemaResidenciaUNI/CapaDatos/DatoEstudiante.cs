@@ -115,23 +115,99 @@ namespace CapaDatos
         public object ObtenerListaEstudiantes()
 
         {
-            var estudiantes = dbResidencia.TBL_ESTUDIANTE.Select(dr => new
+            object estudiantes = null;
+            try
             {
-                dr.EST_CARNET,
-                NOMBRE_COMPLETO = dr.TBL_PERSONA.PER_PRIMER_NOMBRE + " " + dr.TBL_PERSONA.PER_SEGUNDO_NOMBRE + " " + dr.TBL_PERSONA.PER_PRIMER_APELLIDO + " " + dr.TBL_PERSONA.PER_SEGUNDO_APELLIDO,
-                DIR_DESCRIPCION = dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION == null ? "N/D" : dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION,
-                dr.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION,
-                dr.TBL_PERSONA.PER_IDENTIFICACION,
-                COR_DEFINICION = dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION == null ? "N/D" : dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION,
-                dr.EST_FECHA_INICIAL,
-                dr.EST_FECHA_FINAL,
-                dr.TBL_CARRERA.CAR_DESCRIPCION
-            }).ToList();
+                estudiantes = dbResidencia.TBL_ESTUDIANTE.Select(dr => new
+                {
+                    dr.EST_CARNET,
+                    NOMBRE_COMPLETO = dr.TBL_PERSONA.PER_PRIMER_NOMBRE + " " + dr.TBL_PERSONA.PER_SEGUNDO_NOMBRE + " " + dr.TBL_PERSONA.PER_PRIMER_APELLIDO + " " + dr.TBL_PERSONA.PER_SEGUNDO_APELLIDO,
+                    DIR_DESCRIPCION = dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION == null ? "N/D" : dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION,
+                    dr.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION,
+                    dr.TBL_PERSONA.PER_IDENTIFICACION,
+                    COR_DEFINICION = dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION == null ? "N/D" : dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION,
+                    dr.EST_FECHA_INICIAL,
+                    dr.EST_FECHA_FINAL,
+                    dr.TBL_CARRERA.CAR_DESCRIPCION
+                }).ToList();
+            }
+            catch
+            {
+
+
+            }
+
             return estudiantes;
         }
         public int ObtenerUltimoIdPersona()
         {
             return dbResidencia.TBL_PERSONA.OrderByDescending(dr => dr.PER_ID).Select(dr => dr.PER_ID).First();
+        }
+
+        public object ObtenerListaGenero()
+        {
+            object genero = null;
+            try
+            {
+                genero = dbResidencia.TBL_GENERO.Select(dr => new
+                {
+                    dr.GEN_ID,
+                    dr.GEN_DESCRIPCION
+                }).ToList();
+            }
+            catch (Exception)
+            {
+            }
+            return genero;
+        }
+        public object ObtenerListaTipoIdentificacion()
+        {
+            object tipoIdentificacion = null;
+            try
+            {
+                tipoIdentificacion = dbResidencia.TBL_TIPO_IDENTIFICACION.Select(dr => new
+                {
+                    dr.TIP_IDE_ID,
+                    dr.TIP_IDE_DESCRIPCION
+                }).ToList();
+            }
+            catch (Exception)
+            {
+            }
+            return tipoIdentificacion;
+        }
+
+        public object ObtenerListaCarrera()
+        {
+            object carrera = null;
+            try
+            {
+                carrera = dbResidencia.TBL_CARRERA.Select(dr => new
+                {
+                    dr.CAR_ID,
+                    dr.CAR_DESCRIPCION
+                }).ToList();
+            }
+            catch (Exception)
+            {
+            }
+            return carrera;
+        }
+        public object ObtenerListaCompañiaTelefonica()
+        {
+            object compañiaTelefonica = null;
+            try
+            {
+                compañiaTelefonica = dbResidencia.TBL_COMPAÑIA.Select(dr => new
+                {
+                    dr.COM_ID,
+                    dr.COM_DESCRIPCION
+                }).ToList();
+            }
+            catch (Exception)
+            {
+            }
+            return compañiaTelefonica;
         }
     }
 }

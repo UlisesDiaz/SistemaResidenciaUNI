@@ -88,7 +88,7 @@ namespace SistemaResidenciaUNI.Estudiante
         void EnlazarListas()
         {
             //llenar ddl de personas
-           
+
 
             //ddlPersona.DataSource = negocioEstudiante.ObtenerPersonas();
             //ddlPersona.DataTextField = "PER_NOMBRE_COMPLETO";
@@ -111,6 +111,29 @@ namespace SistemaResidenciaUNI.Estudiante
             dllDepNombre.DataValueField = "DEP_ID";
             dllDepNombre.DataBind();
 
+            //Lista de Generos
+            ddlGenId.DataSource = negocioEstudiante.ObtenerListaGenero();
+            ddlGenId.DataTextField = "GEN_DESCRIPCION";
+            ddlGenId.DataValueField = "GEN_ID";
+            ddlGenId.DataBind();
+
+            //Lista Tipo de Identificación
+            ddlTipId.DataSource = negocioEstudiante.ObtenerListaTipoIdentificacion();
+            ddlTipId.DataTextField = "TIP_IDE_DESCRIPCION";
+            ddlTipId.DataValueField = "TIP_IDE_ID";
+            ddlTipId.DataBind();
+
+            //Lista Carreras
+            ddCarId.DataSource = negocioEstudiante.ObtenerListaCarrera();
+            ddCarId.DataTextField = "CAR_DESCRIPCION";
+            ddCarId.DataValueField = "CAR_ID";
+            ddCarId.DataBind();
+
+            //Lista de compañias telefónicas
+            ddlcompDescripcion.DataSource = negocioEstudiante.ObtenerListaCompañiaTelefonica();
+            ddlcompDescripcion.DataTextField = "COM_DESCRIPCION";
+            ddlcompDescripcion.DataValueField = "COM_ID";
+            ddlcompDescripcion.DataBind();
         }
 
         void LimpiarControles()
