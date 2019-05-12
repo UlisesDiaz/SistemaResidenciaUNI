@@ -179,6 +179,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Cuarto\AgregarCuarto.aspx" />
+    <Content Include="Cuarto\CambioCuarto.aspx" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\skins\skin-black.css" />
@@ -1078,6 +1079,13 @@
     </Compile>
     <Compile Include="Cuarto\AgregarCuarto.aspx.designer.cs">
       <DependentUpon>AgregarCuarto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cuarto\CambioCuarto.aspx.cs">
+      <DependentUpon>CambioCuarto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cuarto\CambioCuarto.aspx.designer.cs">
+      <DependentUpon>CambioCuarto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Estudiante\Estudiante.aspx.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>

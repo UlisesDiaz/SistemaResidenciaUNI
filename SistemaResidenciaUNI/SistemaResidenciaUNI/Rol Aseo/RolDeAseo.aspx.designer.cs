@@ -13,30 +13,48 @@ namespace SistemaResidenciaUNI.Rol_Aseo {
     public partial class RolDeAseo {
         
         /// <summary>
-        /// Control txtEsCarnet.
+        /// Control txtEsCarnetrolaseo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEsCarnet;
+        protected global::System.Web.UI.WebControls.TextBox txtEsCarnetrolaseo;
         
         /// <summary>
-        /// Control btnBuscarEstudiante.
+        /// Control ddlRolaseo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarEstudiante;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRolaseo;
         
         /// <summary>
-        /// Control ddlTipId.
+        /// Control txtfechaseo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipId;
+        protected global::System.Web.UI.WebControls.TextBox txtfechaseo;
+        
+        /// <summary>
+        /// Control txtdiaaseo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdiaaseo;
+        
+        /// <summary>
+        /// Control btnestudianterolaseo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnestudianterolaseo;
     }
 }

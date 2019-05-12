@@ -4,61 +4,132 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="panel-primary">
+    <style>
 
-        <div class="panel-heading">Roles de Aseo (Estudiantes Residnentes)</div>
+            .defecto {
 
-        <div class="panel panel-body">
+            background:#367FA9;
+        }
 
+    </style>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <label for="lblBuscarCarnet" class="col-sm-6 col-form-label">Busque por Carnet</label>
-                        <div class="col-sm-10">
+        <div class="panel panel-primary"> 
 
-                            <asp:TextBox runat="server" ID="txtEsCarnet" CssClass="form-control" placeholder="Ingrese el Carnet del Estudiante" />
+          <div class="panel-heading text-bold text-center defecto mb-5">Asignacion de Rol Aseo</div>
 
-                        </div>
-                    </div>
+         <div class="panel-body mt-4">
 
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <div class="col-sm-10">
+             <div class="row ">
 
+                 <div class="col-md-6">
 
-                            <asp:Button runat="server" Text="Buscar" CssClass="btn btn-primary" ID="btnBuscarEstudiante" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                     <div class="form-group row justify-content-center">
 
+                         <label for="lblcarnetrolaseo" class="col-sm-6 col-form-label text-bold">Carnet del Estudiante</label>
 
-    </div>
-    <div class="panel panel-primary">
+                         <div class="col-sm-10">
 
-        <div class="panel panel-heading">Generar (Roles de Aseo) </div>
-        <div class="panel panel-body">
+                             <asp:TextBox runat="server" ID="txtEsCarnetrolaseo" CssClass="form-control" placeholder="Carnet del Estudiante" />
 
-            <div class="row">
-            </div>
-            <div class="col-md-6">
+                         </div><%--findivtxtrolaseo--%>
 
-                <div class="form-group row">
-                    
-                   <label for="lblTipAseo" class="col-sm-6 col-form-label">Tipo Aseo</label>
-                        
-                <asp:DropDownList ID="ddlTipId" CssClass="form-control" runat="server"></asp:DropDownList>                     
-                  </div>
-                </div>
+                     </div><%--finformgroup--%>
 
-            </div>
-
-        </div>
+                 </div><%--fincolasigna--%>
 
 
-  
+                        <div class="col-md-6">
 
-</asp:Content>
+                     <div class="form-group row">
+
+                         <label for="lbltiporolaseo" class="col-sm-6 col-form-label text-bold ml-3">Tipo de Aseo</label>
+
+                         <div class="col-sm-10">
+
+                             <asp:DropDownList ID="ddlRolaseo" CssClass="form-control" runat="server"></asp:DropDownList> 
+
+                         </div><%--findivtxtrolaseo2--%>
+
+                     </div><%--finformgroup2--%>
+
+                 </div><%--fincolasigna2--%>
+
+
+             </div><%--finfilasignacion--%>
+
+
+             <%--segundafilafecharolaseo--%>
+
+
+             <div class="row justify-content-center mt-4">
+
+                 <div class="col-md-6">
+
+                     <div class="form-group row justify-content-center">
+
+                         <label for="lblfecharolaseo" class="col-sm-6 col-form-label text-bold">Fecha de Aseo</label>
+
+                         <div class="col-sm-10">
+
+                             <asp:TextBox runat="server" ID="txtfechaseo" CssClass="form-control" placeholder="Ingrese Fecha Aseo" />
+
+                         </div><%--findivtxtrolaseo--%>
+
+                     </div><%--finformgroup--%>
+
+                 </div><%--fincolasigna--%>
+
+
+                        <div class="col-md-6">
+
+                     <div class="form-group row">
+
+                         <label for="lbldiaaseo" class="col-sm-6 col-form-label text-bold ml-3">Dia de Aseo</label>
+
+                         <div class="col-sm-10">
+
+                             <asp:TextBox runat="server" ID="txtdiaaseo" CssClass="form-control" placeholder="Ingrese Dia de aseo" />
+
+                         </div><%--findivtxtrolaseo2--%>
+
+                     </div><%--finformgroup2--%>
+
+                 </div><%--fincolasigna2--%>
+
+
+             </div><%--finfilasignacion--%>
+
+             <div class="row  mt-5">
+
+                 <div class="col-md-6">
+
+                     <div class="form-group row justify-content-center">
+
+                         
+
+                             <div class="col-md-1"> 
+
+                             </div>
+                         <div class="col-md-2">
+                             <asp:Button runat="server" Text="ASIGNAR" CssClass="btn btn-primary" ID="btnestudianterolaseo" />
+                         </div>
+                                      
+
+                     </div><%--formgroupboton--%>
+
+                 </div><%--colbotonrolaseo--%>
+
+
+             </div> <%--filabotonrolaseo--%>
+
+
+            
+
+         </div><%--finpanelbody--%>
+     
+     
+     </div> <%--finpanelprimary--%>
+
+    
+
+  </asp:Content>

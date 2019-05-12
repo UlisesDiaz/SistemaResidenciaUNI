@@ -56,6 +56,7 @@
     <Compile Include="DatoDepartamento.cs" />
     <Compile Include="DatoEstudiante.cs" />
     <Compile Include="DatoMunicipio.cs" />
+    <Compile Include="DatoTipoAseo.cs" />
     <Compile Include="dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
