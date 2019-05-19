@@ -160,20 +160,7 @@
                     </div>
 
 
-             <%--       Recinto Universitario--%>
-
-
-                      <div class="col-md-6">
-                            <div class="form-group row">
-                                <label for="lblrecintoDescripcion" class="col-sm-6 col-form-label">Descripción Recinto</label>
-                                <div class="col-sm-10">
-                                    <asp:DropDownList ID="ddResintoDescrip" CssClass="form-control" runat="server"></asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    
+            
 
                 </div>
             </div>
@@ -212,16 +199,6 @@
                             </div>
                         </div>
 
-
-
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                                <label for="lblcompania" class="col-sm-6 col-form-label">Compañía Descripción 2</label>
-                                <div class="col-sm-10">
-                                    <asp:DropDownList ID="ddlCompania2" CssClass="form-control" runat="server"></asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
 
 
                     </div>

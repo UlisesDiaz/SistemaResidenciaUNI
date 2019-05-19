@@ -135,18 +135,11 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataValueField = "COM_ID";
             ddlcompDescripcion.DataBind();
 
-            //  Lista Telefonica2
-            ddlCompania2.DataSource = negocioEstudiante.ObtenerCompania2();
-            ddlCompania2.DataTextField = "COM_DESCRIPCION";
-            ddlCompania2.DataValueField = "COM_ID";
-            ddlCompania2.DataBind();
+   
 
             //Obtener Recinto Estudiante
 
-            ddResintoDescrip.DataSource =negocioEstudiante.ObtenerRecintoEstudiante();
-            ddResintoDescrip.DataTextField = "REC_DESCRIPCION";
-            ddResintoDescrip.DataValueField = "REC_ID";
-            ddResintoDescrip.DataBind();
+      
 
         }
 
@@ -168,7 +161,7 @@ namespace SistemaResidenciaUNI.Estudiante
 
         void ObtenerBarrioPorMunicipioId(int munId)
         {
-            //LLenar lista de Barrios según su Municipio
+            //LLenar lista de municipios según Departamento
             NegocioBarrio negocioBarrio = new NegocioBarrio();
             ddlBarrio.DataSource = negocioBarrio.ObtenerBarrioPorMunicipioId(munId).data as List<EntidadBarrio>;
             ddlBarrio.DataTextField = "BAR_NOMBRE";
@@ -203,7 +196,10 @@ namespace SistemaResidenciaUNI.Estudiante
             gvListaEstudiante.DataBind();
         }
 
-      
+        void  d(int numCuarto)
+        {
+             
+        }
 
     }
 }

@@ -139,15 +139,6 @@ namespace SistemaResidenciaUNI.Estudiante {
         protected global::System.Web.UI.WebControls.TextBox txtEstCarnet;
         
         /// <summary>
-        /// Control ddResintoDescrip.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddResintoDescrip;
-        
-        /// <summary>
         /// Control txtTelNumero.
         /// </summary>
         /// <remarks>
@@ -173,15 +164,6 @@ namespace SistemaResidenciaUNI.Estudiante {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlcompDescripcion;
-        
-        /// <summary>
-        /// Control ddlCompania2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompania2;
         
         /// <summary>
         /// Control dllDepNombre.
