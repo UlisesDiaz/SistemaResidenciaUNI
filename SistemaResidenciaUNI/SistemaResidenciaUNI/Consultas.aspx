@@ -4,6 +4,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <%--PostBack--%>
+        <asp:ScriptManager runat="server" ID="ScriptManager1" EnablePartialRendering="true" AsyncPostBackTimeout="600" />
+    <asp:UpdateProgress runat="server">
+        <ProgressTemplate>
+            <div class="loading" style="width: 100%">
+                <img src="../dist/img/loading.gif" alt="Cargando..." />
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
 
     <div class="panel panel-primary">
         <div class="panel-heading">Asignaciones por Cuarto </div>
@@ -16,7 +25,7 @@
                             <label for="lblBusqueda">Buscar Por Cuarto </label>
                         </div>
                         <div class="col-md-3">
-                          <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server"></asp:DropDownList>
+                          <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddListaCuartos_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                         <div class="col-md-6">
                             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" />

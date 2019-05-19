@@ -256,5 +256,17 @@ namespace CapaDatos
 
             return recinto;
         }
+
+        public List<EntidadPersona> ObtnerEstudiantePorIdSpCuarto(int NumCuarto)
+        {
+            return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
+            {
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                PER_ID = dr.PER_ID
+            }).ToList();
+
+        }
     }
 }

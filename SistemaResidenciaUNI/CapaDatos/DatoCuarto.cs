@@ -57,13 +57,18 @@ namespace CapaDatos
 
 
 
-        //Procedimiento Mostrar Cuartos
-      //public List<EntidadCuarto> ObtnerCuartoPorSp()
-      //  {
+        //    Procedimiento Mostrar Cuartos
+        public List<EntidadCuarto> ObtnerCuartoPorSp()
+        {
+            return dbResidencia.spMostrarCuartosDisponibles().Select(dr => new EntidadCuarto
+            {
+                CUA_ID = dr.CUA_ID,
+                CUA_NUMERO = dr.CUA_NUMERO,
+                CUA_ESTADO = dr.CUA_ESTADO
+            }).ToList();
+        }
 
-      //      return dbResidencia.
-      //  }
-        
+       
 
     }
 }

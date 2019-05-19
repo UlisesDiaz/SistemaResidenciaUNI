@@ -28,9 +28,14 @@ namespace CapaNegocio
 
             return resul;
         }
+
         public List<EntidadCuarto> ObtenerCuartos()
         {
             return datoCuarto.ObtenerCuartos();
+        }
+        public List<EntidadCuarto> ObtnerCuartoPorSp()
+        {
+            return datoCuarto.ObtnerCuartoPorSp();
         }
     }
 }

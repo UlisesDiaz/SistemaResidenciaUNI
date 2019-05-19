@@ -185,5 +185,14 @@ namespace CapaDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TotalPersonas_Result>("TotalPersonas");
         }
+    
+        public virtual ObjectResult<spBuscarEstudiantePorCuarto_Result> spBuscarEstudiantePorCuarto(Nullable<int> numeroCuarto)
+        {
+            var numeroCuartoParameter = numeroCuarto.HasValue ?
+                new ObjectParameter("NumeroCuarto", numeroCuarto) :
+                new ObjectParameter("NumeroCuarto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBuscarEstudiantePorCuarto_Result>("spBuscarEstudiantePorCuarto", numeroCuartoParameter);
+        }
     }
 }

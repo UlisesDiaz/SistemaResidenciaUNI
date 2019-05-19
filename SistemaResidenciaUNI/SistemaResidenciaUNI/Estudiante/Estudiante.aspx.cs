@@ -168,7 +168,7 @@ namespace SistemaResidenciaUNI.Estudiante
 
         void ObtenerBarrioPorMunicipioId(int munId)
         {
-            //LLenar lista de municipios según Departamento
+            //LLenar lista de Barrios según su Municipio
             NegocioBarrio negocioBarrio = new NegocioBarrio();
             ddlBarrio.DataSource = negocioBarrio.ObtenerBarrioPorMunicipioId(munId).data as List<EntidadBarrio>;
             ddlBarrio.DataTextField = "BAR_NOMBRE";
@@ -202,5 +202,8 @@ namespace SistemaResidenciaUNI.Estudiante
             gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
             gvListaEstudiante.DataBind();
         }
+
+      
+
     }
 }

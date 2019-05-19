@@ -63,5 +63,10 @@ namespace CapaNegocio
 
         }
 
+        public List<EntidadPersona> ObtnerEstudiantePorCuarto(int Num)
+        {
+            return datoEstudiante.ObtnerEstudiantePorIdSpCuarto(Num);
+        }
+
     }
 }

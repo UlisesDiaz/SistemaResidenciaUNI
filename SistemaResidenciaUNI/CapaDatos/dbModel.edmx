@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -642,7 +642,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="spBuscarCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -788,8 +788,7 @@
             <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1593,7 +1592,7 @@
             <End Role="TBL_ROL_ASEO" EntitySet="TBL_ROL_ASEO" />
           </AssociationSet>
           <FunctionImport Name="BUCARPERSONA" ReturnType="Collection(String)">
-            <Parameter Name="numducumento" Mode="In" Type="String" />
+          <Parameter Name="numducumento" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1630,6 +1629,9 @@
           </FunctionImport>
           <FunctionImport Name="spMostrarCuartosDisponibles" ReturnType="Collection(dbModel.spMostrarCuartosDisponibles_Result)" />
           <FunctionImport Name="TotalPersonas" ReturnType="Collection(dbModel.TotalPersonas_Result)" />
+          <FunctionImport Name="spBuscarEstudiantePorCuarto" ReturnType="Collection(dbModel.spBuscarEstudiantePorCuarto_Result)">
+          <Parameter Name="NumeroCuarto" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1655,6 +1657,11 @@
         <ComplexType Name="TotalPersonas_Result">
           <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="TotalPersonas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spBuscarEstudiantePorCuarto_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1981,15 +1988,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="spBuscarCuarto" FunctionName="dbModel.Store.spBuscarCuarto">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.spBuscarCuarto_Result">
-                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
-                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
-                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spMostrarCuartosDisponibles" FunctionName="dbModel.Store.spMostrarCuartosDisponibles">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.spMostrarCuartosDisponibles_Result">
@@ -2004,6 +2002,15 @@
               <ComplexTypeMapping TypeName="dbModel.TotalPersonas_Result">
                 <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
                 <ScalarProperty Name="TotalPersonas" ColumnName="TotalPersonas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBuscarEstudiantePorCuarto" FunctionName="dbModel.Store.spBuscarEstudiantePorCuarto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spBuscarEstudiantePorCuarto_Result">
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
