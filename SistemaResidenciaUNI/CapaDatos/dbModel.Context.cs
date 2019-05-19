@@ -55,6 +55,15 @@ namespace CapaDatos
         public virtual DbSet<TBL_TIPO_MOTIVO_REGISTRO> TBL_TIPO_MOTIVO_REGISTRO { get; set; }
         public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
     
+        public virtual ObjectResult<string> BUCARPERSONA(string numducumento)
+        {
+            var numducumentoParameter = numducumento != null ?
+                new ObjectParameter("numducumento", numducumento) :
+                new ObjectParameter("numducumento", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("BUCARPERSONA", numducumentoParameter);
+        }
+    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
@@ -156,6 +165,25 @@ namespace CapaDatos
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<spBuscarCuarto_Result> spBuscarCuarto(Nullable<int> numeroCuarto)
+        {
+            var numeroCuartoParameter = numeroCuarto.HasValue ?
+                new ObjectParameter("NumeroCuarto", numeroCuarto) :
+                new ObjectParameter("NumeroCuarto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBuscarCuarto_Result>("spBuscarCuarto", numeroCuartoParameter);
+        }
+    
+        public virtual ObjectResult<spMostrarCuartosDisponibles_Result> spMostrarCuartosDisponibles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spMostrarCuartosDisponibles_Result>("spMostrarCuartosDisponibles");
+        }
+    
+        public virtual ObjectResult<TotalPersonas_Result> TotalPersonas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TotalPersonas_Result>("TotalPersonas");
         }
     }
 }

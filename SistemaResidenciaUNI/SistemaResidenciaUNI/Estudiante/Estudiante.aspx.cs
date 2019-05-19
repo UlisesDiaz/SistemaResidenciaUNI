@@ -134,6 +134,20 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataTextField = "COM_DESCRIPCION";
             ddlcompDescripcion.DataValueField = "COM_ID";
             ddlcompDescripcion.DataBind();
+
+            //  Lista Telefonica2
+            ddlCompania2.DataSource = negocioEstudiante.ObtenerCompania2();
+            ddlCompania2.DataTextField = "COM_DESCRIPCION";
+            ddlCompania2.DataValueField = "COM_ID";
+            ddlCompania2.DataBind();
+
+            //Obtener Recinto Estudiante
+
+            ddResintoDescrip.DataSource =negocioEstudiante.ObtenerRecintoEstudiante();
+            ddResintoDescrip.DataTextField = "REC_DESCRIPCION";
+            ddResintoDescrip.DataValueField = "REC_ID";
+            ddResintoDescrip.DataBind();
+
         }
 
         void LimpiarControles()

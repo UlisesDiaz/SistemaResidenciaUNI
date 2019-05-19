@@ -12,10 +12,9 @@ namespace SistemaResidenciaUNI
 {
     public partial class TipoDeAseo : System.Web.UI.Page
     {
-        NegocioTipoAseo negociotipoaseo = new NegocioTipoAseo();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listartipodeaseo();
+
         }
 
         protected void btnGuardadTipoAseo_Click(object sender, EventArgs e)
@@ -64,15 +63,6 @@ namespace SistemaResidenciaUNI
             
            txtTipAseDescripcion.Text = string.Empty;
         }
-
-        void listartipodeaseo()
-        {
-
-            gvListaTipoAseo.DataSource = negociotipoaseo.ObtenerTipoAseo();
-            gvListaTipoAseo.DataBind();
-                
-        }
-
 
     }
 }

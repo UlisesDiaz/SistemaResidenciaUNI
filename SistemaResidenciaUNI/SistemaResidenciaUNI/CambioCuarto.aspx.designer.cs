@@ -10,42 +10,33 @@
 namespace SistemaResidenciaUNI {
     
     
-    public partial class TipoDeAseo {
+    public partial class CambioCuarto {
         
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control txtCarnetId.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.TextBox txtCarnetId;
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control btnGuardadEstudiante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Button btnGuardadEstudiante;
         
         /// <summary>
-        /// Control txtTipAseDescripcion.
+        /// Control txtNumCuarto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipAseDescripcion;
-        
-        /// <summary>
-        /// Control btnGuardadTipoAseo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardadTipoAseo;
+        protected global::System.Web.UI.WebControls.TextBox txtNumCuarto;
     }
 }

@@ -17,16 +17,15 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="panel panel-primary">
-                <div class="panel-heading">Registro Tipo de Aseo</div>
+                <div class="panel-heading">Ingrese Numero de Carnet del Estudiante para ver sus Roles</div>
                 <div class="panel-body">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblTipAseDescripcion" class="col-sm-6 col-form-label">Tipo de aseo</label>
-                                <div class="col-sm-8">         
-                                    <asp:TextBox runat="server" ID="txtTipAseDescripcion" CssClass="form-control" placeholder="Tipo de aseo" />
-
+                                <label for="lblTipAseDescripcion" class="col-sm-6 col-form-label">Ingrese Numero de Carnet</label>
+                                <div class="col-sm-10">         
+                                    <asp:TextBox runat="server" ID="txtTipAseDescripcion" CssClass="form-control" placeholder="Digite Numero de Carnet" />
                                 </div>
                                 
                             </div>
@@ -98,6 +97,11 @@
                     </div>
                 </div>
             </div>
+
+
+
+           <%-- nuevo panel--%>
+
 
         </ContentTemplate>
     </asp:UpdatePanel>

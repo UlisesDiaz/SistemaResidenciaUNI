@@ -209,5 +209,52 @@ namespace CapaDatos
             }
             return compañiaTelefonica;
         }
+
+        public object ObtenListaCompania2()
+        {
+
+            object compania = null;
+
+            try
+            {
+                compania = dbResidencia.TBL_COMPAÑIA.Select(dr => new
+                {
+
+                    dr.COM_ID,
+                    dr.COM_DESCRIPCION
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("No se ha podido enlazar con TBL_COMPAÑIA", ex);
+
+            }
+
+            return compania;
+        }
+
+
+        public object ObterRecintoEstudiante()
+        {
+            object recinto = null;
+
+            try
+            {
+                recinto = dbResidencia.TBL_RECINTO.Select(dr => new
+                {
+                    dr.REC_ID,
+                    dr.REC_DESCRIPCION
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No fue Posible Enlazar a TBL_RECINTO", ex);
+            }
+
+            return recinto;
+        }
     }
 }

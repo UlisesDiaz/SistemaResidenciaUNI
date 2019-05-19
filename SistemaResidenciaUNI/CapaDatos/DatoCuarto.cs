@@ -11,6 +11,7 @@ namespace CapaDatos
         {
             Resultado resultado = new Resultado();
             TBL_CUARTO TBL_CUARTO = new TBL_CUARTO();
+
             try
             {
                 int numCuarto = EntidadCuarto.CUA_NUMERO;
@@ -53,5 +54,16 @@ namespace CapaDatos
         {
             return dbResidencia.TBL_CUARTO.OrderByDescending(dr => dr.CUA_ID).Select(dr => dr.CUA_ID).First();
         }
+
+
+
+        //Procedimiento Mostrar Cuartos
+      //public List<EntidadCuarto> ObtnerCuartoPorSp()
+      //  {
+
+      //      return dbResidencia.
+      //  }
+        
+
     }
 }

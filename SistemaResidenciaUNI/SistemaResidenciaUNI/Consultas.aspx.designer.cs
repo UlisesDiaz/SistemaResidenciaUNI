@@ -10,42 +10,51 @@
 namespace SistemaResidenciaUNI {
     
     
-    public partial class TipoDeAseo {
+    public partial class Consultas {
         
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control ddListaCuartos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.DropDownList ddListaCuartos;
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
-        /// Control txtTipAseDescripcion.
+        /// Control ddlNombres.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipAseDescripcion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNombres;
         
         /// <summary>
-        /// Control btnGuardadTipoAseo.
+        /// Control txtBuscarCarnet.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardadTipoAseo;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarCarnet;
+        
+        /// <summary>
+        /// Control btnBuscarCarnet.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarCarnet;
     }
 }

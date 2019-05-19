@@ -26,10 +26,10 @@ namespace CapaDatos
         public int EST_ID { get; set; }
         public int USU_ID { get; set; }
         public System.DateTime ROL_ASE_FECHA_INICIAL { get; set; }
-        public System.DateTime ROL_ASE_FECHA_FINAL { get; set; }
-        public System.TimeSpan ROL_ASE_HORA { get; set; }
-        public System.DateTime ROL_ASE_FECHA_DESHABILITADO { get; set; }
-        public int ROL_ASE_DIA { get; set; }
+        public Nullable<System.DateTime> ROL_ASE_FECHA_FINAL { get; set; }
+        public Nullable<System.TimeSpan> ROL_ASE_HORA { get; set; }
+        public Nullable<System.DateTime> ROL_ASE_FECHA_DESHABILITADO { get; set; }
+        public Nullable<int> ROL_ASE_DIA { get; set; }
         public bool ROL_ASE_ESTADO { get; set; }
     
         public virtual TBL_ESTUDIANTE TBL_ESTUDIANTE { get; set; }

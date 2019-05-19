@@ -10,6 +10,7 @@ namespace CapaDatos
    public class DatoBarrio
     {
         dbResidenciaEntities dbResidencia = new dbResidenciaEntities();
+
         public Resultado ObtenerBarrioPorMunicipioId(int munId)
         {
             Resultado resultado = new Resultado();
@@ -18,7 +19,9 @@ namespace CapaDatos
             {
                 List<EntidadBarrio> barrioList = new List<EntidadBarrio>();
 
+
                 dbResidencia.TBL_BARRIO.Where(dr => dr.MUN_ID == munId).ToList().ForEach(dr =>
+                
                 {
                     EntidadBarrio barrio = new EntidadBarrio();
 

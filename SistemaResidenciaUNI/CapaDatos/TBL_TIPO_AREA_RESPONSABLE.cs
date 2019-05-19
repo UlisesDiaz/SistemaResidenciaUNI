@@ -21,7 +21,7 @@ namespace CapaDatos
         }
     
         public int TIP_ARE__RES_ID { get; set; }
-        public byte[] TIP_ARE_RES_DESCRIPCION { get; set; }
+        public string TIP_ARE_RES_DESCRIPCION { get; set; }
         public Nullable<bool> TIP_ARE_RES_ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

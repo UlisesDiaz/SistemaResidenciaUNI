@@ -52,5 +52,16 @@ namespace CapaNegocio
             return datoEstudiante.ObtenerListaCompañiaTelefonica();
         }
 
+        public object ObtenerCompania2()
+        {
+            return datoEstudiante.ObtenListaCompania2();
+        }
+
+        public object ObtenerRecintoEstudiante()
+        {
+            return datoEstudiante.ObterRecintoEstudiante();
+
+        }
+
     }
 }

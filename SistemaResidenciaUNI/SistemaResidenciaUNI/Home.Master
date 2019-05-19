@@ -177,6 +177,8 @@
 
                                 <li><a href="../TipoDeAseo.aspx"><i class="fa fa-circle-o"></i>Tipo De Aseo </a></li>
                                 <li><a href="../Rol Aseo/RolDeAseo.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo </a></li>
+                                 <li><a href="../CambioCuarto.aspx"><i class="fa fa-circle-o"></i>Cambio de Cuarto </a></li>
+                                  <li><a href="../Consultas.aspx"><i class="fa fa-circle-o"></i>Visualizar Asignaciones </a></li>
 
                             </ul>
                         </li>

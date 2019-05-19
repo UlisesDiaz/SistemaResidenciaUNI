@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Estudiante.aspx.cs" Inherits="SistemaResidenciaUNI.Estudiante.Estudiante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -84,6 +85,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblperSegundoNombre" class="col-sm-6 col-form-label">Segundo Nombre del Estudiante</label>
@@ -134,7 +136,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="ddlNumeroCuarto" class="col-sm-6 col-form-label">Número de Cuarto</label>
+                                <label for="ddlNumeroCuarto" class="col-sm-6 col-form-label">Lista de Cuarto Disponibles</label>
                                 <div class="col-sm-10">
                                     <asp:DropDownList ID="ddlNumeroCuarto" CssClass="form-control" runat="server"></asp:DropDownList>
                                 </div>
@@ -156,6 +158,22 @@
                         <div class="col-md-6">
                         </div>
                     </div>
+
+
+             <%--       Recinto Universitario--%>
+
+
+                      <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblrecintoDescripcion" class="col-sm-6 col-form-label">Descripción Recinto</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddResintoDescrip" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    
 
                 </div>
             </div>
@@ -193,6 +211,19 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="lblcompania" class="col-sm-6 col-form-label">Compañía Descripción 2</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlCompania2" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
                 </div>
@@ -262,7 +293,7 @@
                 <div class="panel-heading">Listado de Estudiantes</div>
                 <div class="panel-body">
                     <div class="row">
-                        <asp:GridView ID="gvListaEstudiante" runat="server" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
+                        <asp:GridView ID="gvListaEstudiante"  runat="server" Width="95%" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
                             <Columns>
                                 <asp:BoundField DataField="EST_CARNET" HeaderText="Carnet Estudiante" SortExpression="EST_CARNET" />
                                 <asp:BoundField DataField="PER_IDENTIFICACION" HeaderText="Identificación" SortExpression="PER_IDENTIFICACION" />
@@ -362,4 +393,9 @@
             //});
         });
     </script>
+    <style type="text/css">
+        #gvListaEstudiante {
+            margin-left: 5px!important;
+        }
+    </style>
 </asp:Content>
