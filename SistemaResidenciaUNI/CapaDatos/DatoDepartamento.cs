@@ -41,7 +41,7 @@ namespace CapaDatos
         {
             Resultado resultado = new Resultado();
 
-            try
+          try
             {
                 List<EntidadDepartamento> departamentoList = new List<EntidadDepartamento>();
 

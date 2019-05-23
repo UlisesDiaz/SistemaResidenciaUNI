@@ -68,7 +68,7 @@
                                 <label for="lblperCedula" class="col-sm-6 col-form-label">Identificación</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese Identificación  del Estudiante" />
-
+                                    <asp:RequiredFieldValidator ControlToValidate="txtPerCedula" runat="server" CssClass="text-danger" ErrorMessage="El Campo Identificación deve ser llenado "></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +178,7 @@
                                 <div class="col-sm-10">
 
                                     <asp:TextBox runat="server" ID="txtTelNumero" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
+                                    
                                 </div>
                             </div>
                         </div>

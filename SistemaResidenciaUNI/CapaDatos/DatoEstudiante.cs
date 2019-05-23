@@ -97,7 +97,7 @@ namespace CapaDatos
                     TBL_PERSONA.PER_FECHA_NACIMIENTO = entidadPersona.PER_FECHA_NACIMIENTO;
                     TBL_PERSONA.PER_ESTADO = entidadPersona.PER_ESTADO;
                     TBL_PERSONA.PER_IMAGEN = entidadPersona.PER_IMAGEN;
-
+                   
                     dbResidencia.TBL_PERSONA.Add(TBL_PERSONA);
                     dbResidencia.SaveChanges();
                     dbContextTransaction.Commit();
@@ -210,11 +210,6 @@ namespace CapaDatos
             return compañiaTelefonica;
         }
 
-       
-
-
-        
-
         public List<EntidadPersona> ObtnerEstudiantePorIdSpCuarto(int NumCuarto)
         {
             return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
@@ -224,7 +219,6 @@ namespace CapaDatos
                 PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
                 PER_ID = dr.PER_ID
             }).ToList();
-
         }
     }
 }

@@ -27,9 +27,7 @@
                         <div class="col-md-3">
                           <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddListaCuartos_SelectedIndexChanged"></asp:DropDownList>
                         </div>
-                        <div class="col-md-6">
-                            <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" />
-                        </div>
+                   
                     </div>
                 </div>
 
@@ -42,22 +40,6 @@
 
                         </div>
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                            <label for="lblBusqueda">Buscar Por Carnet </label>
-                        </div>
-                        <div class="col-md-3">
-                            <asp:TextBox ID="txtBuscarCarnet" runat="server" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:Button ID="btnBuscarCarnet" runat="server" CssClass="btn btn-primary" Text="Buscar" />
-                        </div>
                     </div>
                 </div>
             </div>
