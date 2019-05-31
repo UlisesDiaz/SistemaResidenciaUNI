@@ -97,7 +97,7 @@ namespace CapaDatos
                     TBL_PERSONA.PER_FECHA_NACIMIENTO = entidadPersona.PER_FECHA_NACIMIENTO;
                     TBL_PERSONA.PER_ESTADO = entidadPersona.PER_ESTADO;
                     TBL_PERSONA.PER_IMAGEN = entidadPersona.PER_IMAGEN;
-                   
+
                     dbResidencia.TBL_PERSONA.Add(TBL_PERSONA);
                     dbResidencia.SaveChanges();
                     dbContextTransaction.Commit();
@@ -131,10 +131,9 @@ namespace CapaDatos
                     dr.TBL_CARRERA.CAR_DESCRIPCION
                 }).ToList();
             }
-            catch
+            catch (Exception ex)
             {
-
-
+                throw new Exception(ex.Message);
             }
 
             return estudiantes;

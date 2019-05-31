@@ -33,9 +33,9 @@ namespace CapaNegocio
         {
             return datoCuarto.ObtenerCuartos();
         }
-        public List<EntidadCuarto> ObtnerCuartoPorSp()
-        {
-            return datoCuarto.ObtnerCuartoPorSp();
-        }
+        //public List<EntidadCuarto> ObtnerCuartoPorSp()
+        //{
+        //    return datoCuarto.ObtnerCuartoPorSp();
+        //}
     }
 }

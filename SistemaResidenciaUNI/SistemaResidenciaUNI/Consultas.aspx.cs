@@ -12,17 +12,17 @@ namespace SistemaResidenciaUNI
         NegocioCuarto negCuarto = new NegocioCuarto();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            ObtenerCuartosPorSp();
+            //if(!IsPostBack)
+            //ObtenerCuartosPorSp();
         }
 
-        void ObtenerCuartosPorSp()
-        {
-            ddListaCuartos.DataSource = negCuarto.ObtnerCuartoPorSp();
-            ddListaCuartos.DataTextField = "CUA_NUMERO";
-            ddListaCuartos.DataValueField = "CUA_ID";
-            ddListaCuartos.DataBind();
-        }
+        //void ObtenerCuartosPorSp()
+        //{
+        //    ddListaCuartos.DataSource = negCuarto.ObtnerCuartoPorSp();
+        //    ddListaCuartos.DataTextField = "CUA_NUMERO";
+        //    ddListaCuartos.DataValueField = "CUA_ID";
+        //    ddListaCuartos.DataBind();
+        //}
 
         void ObtenerEstudiantePorNumCuarto(int NumCuarto)
         {
