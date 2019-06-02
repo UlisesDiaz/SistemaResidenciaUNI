@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="panel panel-primary">
+    <div class="panel panelprimary">
         <div class="panel-heading text-bold">Cambio de Cuarto(Estudiante)</div>
         <div class="panel-body mt-3">
 

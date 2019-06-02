@@ -30,6 +30,7 @@
     <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/CustomClass.css" rel="stylesheet" />
     <%--    <link href="../../fontawesome/css/all.css" rel="stylesheet" />--%>
 
     <%--Nuevas ref--%>
@@ -179,6 +180,8 @@
                                 <li><a href="../Rol Aseo/RolDeAseo.aspx"><i class="fa fa-circle-o"></i>Rol de Aseo </a></li>
                                  <li><a href="../CambioCuarto.aspx"><i class="fa fa-circle-o"></i>Cambio de Cuarto </a></li>
                                   <li><a href="../Consultas.aspx"><i class="fa fa-circle-o"></i>Visualizar Asignaciones </a></li>
+
+                                <li><a href="../InfoEstudiante.aspx"><i class="fa fa-circle-o"></i>Info Estuadiante</a></li>
 
                             </ul>
                         </li>
