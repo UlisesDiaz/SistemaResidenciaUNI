@@ -21,7 +21,9 @@
                             <asp:TextBox ID="txtNumCarnet" runat="server" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
                         </div>
                         <div class="col-md-6">
-
+                            <div class="col-md-3">
+                                <asp:Button ID="btnBuscarCarnet" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscarCarnet_Click" />
+                            </div>
                         </div>
 
                     </div>
@@ -51,7 +53,7 @@
 
                 </div>
                 <div class="col-md-5">
-                    <asp:Label ID="lblNombres" runat="server" Text=" Joaquin Gamaliel Ordonez Diaz"></asp:Label>
+                    <asp:Label ID="lblNombres" runat="server" Text=""></asp:Label>
                 </div>
 
                 <div class="col-md-4">
@@ -67,7 +69,7 @@
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblApellidos" runat="server" Text="Ordonez Diaz"></asp:Label>
+                    <asp:Label ID="lblApellidos" runat="server"></asp:Label>
                 </div>
 
 
@@ -82,7 +84,7 @@
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblFechaNacimiento" runat="server" Text="27/05/1998"></asp:Label>
+                    <asp:Label ID="lblFechaNacimiento" runat="server" ></asp:Label>
                 </div>
 
 
@@ -93,12 +95,12 @@
                 <div>
                 </div>
                 <div class="col-md-3 labelWidth">
-                    <asp:Label runat="server" CssClass="text text-bold" Text=" Genero:"></asp:Label>
+                    <asp:Label runat="server" CssClass="text text-bold" Text="Genero:"></asp:Label>
                 </div>
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblGenero" runat="server" Text="M"></asp:Label>
+                    <asp:Label ID="lblGenero" runat="server" ></asp:Label>
                 </div>
 
 
@@ -108,12 +110,12 @@
                 <div>
                 </div>
                 <div class="col-md-3 labelWidth">
-                    <asp:Label runat="server" CssClass="text text-bold" Text=" Estado Civil:"></asp:Label>
+                    <asp:Label runat="server" CssClass="text text-bold" Text="Estado Civil:"></asp:Label>
                 </div>
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblEstadoCivil" runat="server" Text="Soltero"></asp:Label>
+                    <asp:Label ID="lblEstadoCivil" runat="server"></asp:Label>
                 </div>
 
 
@@ -128,7 +130,7 @@
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblDirecion" runat="server" Text="Masatepe Camino a San Jose Entrada San Luis"></asp:Label>
+                    <asp:Label ID="lblDirecion" runat="server" Text=""></asp:Label>
                 </div>
 
 
@@ -144,7 +146,7 @@
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblTelefono1" runat="server" Text="76789973"></asp:Label>
+                    <asp:Label ID="lblTelefono1" runat="server" Text=""></asp:Label>
                 </div>
 
 
@@ -159,7 +161,7 @@
 
                 <div class="col-md-5">
 
-                    <asp:Label ID="lblCorreo" runat="server" Text="Jgamalieldiaz@hotmail.com"></asp:Label>
+                    <asp:Label ID="lblCorreo" runat="server" Text=""></asp:Label>
                 </div>
 
             </div>
@@ -186,7 +188,7 @@
                         <asp:Label ID="Label1" runat="server" CssClass="text text-bold" Text="Carrera:"></asp:Label>
                     </div>
                     <div class="col-md-6">
-                          <asp:Label ID="lblNombreCarrera" runat="server" Text="Ingenieria En Computacion"></asp:Label>
+                          <asp:Label ID="lblNombreCarrera" runat="server" Text=""></asp:Label>
                     </div>
 
                 </div>

@@ -135,9 +135,12 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataValueField = "COM_ID";
             ddlcompDescripcion.DataBind();
 
-   
 
-            //Obtener Recinto Estudiante
+
+
+          
+            
+            
 
       
 

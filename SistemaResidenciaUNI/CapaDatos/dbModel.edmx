@@ -645,6 +645,9 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spInfoEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="numCarnet" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="TotalPersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="dbModelStoreContainer">
@@ -1632,6 +1635,9 @@
           <FunctionImport Name="spBuscarEstudiantePorCuarto" ReturnType="Collection(dbModel.spBuscarEstudiantePorCuarto_Result)">
           <Parameter Name="NumeroCuarto" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spInfoEstudiante" ReturnType="Collection(dbModel.spInfoEstudiante_Result)">
+          <Parameter Name="numCarnet" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1662,6 +1668,24 @@
           <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spInfoEstudiante_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="PER_FECHA_NACIMIENTO" Nullable="false" />
+          <Property Type="String" Name="GEN_DESCRIPCION" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DIR_DESCRIPCION" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BAR_NOMBRE" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="MUN_NOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DEP_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COR_DEFINICION" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TEL_NUMERO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COM_DESCRIPCION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CAR_DESCRIPCION" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="REC_DESCRIPCION" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2011,6 +2035,28 @@
                 <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
                 <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
                 <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInfoEstudiante" FunctionName="dbModel.Store.spInfoEstudiante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spInfoEstudiante_Result">
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="PER_FECHA_NACIMIENTO" ColumnName="PER_FECHA_NACIMIENTO" />
+                <ScalarProperty Name="GEN_DESCRIPCION" ColumnName="GEN_DESCRIPCION" />
+                <ScalarProperty Name="DIR_DESCRIPCION" ColumnName="DIR_DESCRIPCION" />
+                <ScalarProperty Name="BAR_NOMBRE" ColumnName="BAR_NOMBRE" />
+                <ScalarProperty Name="MUN_NOMBRE" ColumnName="MUN_NOMBRE" />
+                <ScalarProperty Name="DEP_NOMBRE" ColumnName="DEP_NOMBRE" />
+                <ScalarProperty Name="COR_DEFINICION" ColumnName="COR_DEFINICION" />
+                <ScalarProperty Name="TEL_NUMERO" ColumnName="TEL_NUMERO" />
+                <ScalarProperty Name="COM_DESCRIPCION" ColumnName="COM_DESCRIPCION" />
+                <ScalarProperty Name="CAR_DESCRIPCION" ColumnName="CAR_DESCRIPCION" />
+                <ScalarProperty Name="REC_DESCRIPCION" ColumnName="REC_DESCRIPCION" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

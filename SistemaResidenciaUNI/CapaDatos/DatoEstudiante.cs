@@ -69,8 +69,6 @@ namespace CapaDatos
                          cadaPersona.PER_PRIMER_APELLIDO = fila.PER_PRIMER_APELLIDO;
                          cadaPersona.PER_SEGUNDO_APELLIDO = fila.PER_SEGUNDO_APELLIDO;
                          cadaPersona.PER_FECHA_NACIMIENTO = fila.PER_FECHA_NACIMIENTO;
-                         cadaPersona.PER_NOMBRE_COMPLETO = fila.PER_PRIMER_NOMBRE + " " + fila.PER_SEGUNDO_NOMBRE +
-                         " " + fila.PER_PRIMER_APELLIDO + " " + fila.PER_SEGUNDO_APELLIDO;
                          cadaPersona.PER_ESTADO = fila.PER_ESTADO;
 
                          personas.Add(cadaPersona);
@@ -218,6 +216,41 @@ namespace CapaDatos
                 PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
                 PER_ID = dr.PER_ID
             }).ToList();
+        }
+
+
+        public EntidadPersona InfoEstudiantePorCarnet(string carnet)
+        {
+            try
+            {
+                return dbResidencia.spInfoEstudiante(carnet).Select(dr => new EntidadPersona
+                {
+                    PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                    PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                    PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                    PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
+                    PER_FECHA_NACIMIENTO = dr.PER_FECHA_NACIMIENTO,
+                    PER_GENERO = dr.GEN_DESCRIPCION,
+                    PER_DIECCION = dr.DIR_DESCRIPCION,
+                    PER_BARRIO = dr.BAR_NOMBRE,
+                    PER_MUNICIPIO = dr.MUN_NOMBRE,
+                    PER_DEPARTAMENTO = dr.DEP_NOMBRE,
+                    PER_CELULAR = dr.TEL_NUMERO,
+                    PER_CELULAR_COMPANIA = dr.COM_DESCRIPCION,
+                    PER_CORREO = dr.COR_DEFINICION,
+                    PER_CARRERA = dr.CAR_DESCRIPCION,
+                    PER_RECINTO = dr.REC_DESCRIPCION
+
+                }).FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+          
         }
     }
 }

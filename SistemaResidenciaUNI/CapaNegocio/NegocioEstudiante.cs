@@ -51,14 +51,17 @@ namespace CapaNegocio
         {
             return datoEstudiante.ObtenerListaCompañiaTelefonica();
         }
-
-      
-     
-
+        
         public List<EntidadPersona> ObtnerEstudiantePorCuarto(int Num)
         {
             return datoEstudiante.ObtnerEstudiantePorIdSpCuarto(Num);
         }
 
+        public EntidadPersona InfoEstudiantePorCarnet(string Ncarnet)
+        {
+
+            return datoEstudiante.InfoEstudiantePorCarnet(Ncarnet);
+
+        }
     }
 }

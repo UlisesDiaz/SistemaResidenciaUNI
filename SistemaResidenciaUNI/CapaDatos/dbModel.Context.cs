@@ -194,5 +194,14 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBuscarEstudiantePorCuarto_Result>("spBuscarEstudiantePorCuarto", numeroCuartoParameter);
         }
+    
+        public virtual ObjectResult<spInfoEstudiante_Result> spInfoEstudiante(string numCarnet)
+        {
+            var numCarnetParameter = numCarnet != null ?
+                new ObjectParameter("numCarnet", numCarnet) :
+                new ObjectParameter("numCarnet", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInfoEstudiante_Result>("spInfoEstudiante", numCarnetParameter);
+        }
     }
 }
