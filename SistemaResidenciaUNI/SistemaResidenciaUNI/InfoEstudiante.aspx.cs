@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaNegocio;
 using CapaEntidades;
+
 namespace SistemaResidenciaUNI
 {
     public partial class InfoEstudiante : System.Web.UI.Page
@@ -28,12 +29,14 @@ namespace SistemaResidenciaUNI
                 {
                     lblNombres.Text = entPer.PER_NOM_APE_COMPLETO == null ? string.Empty : entPer.PER_NOM_APE_COMPLETO.ToUpper();
                     lblApellidos.Text = entPer.PER_APELLI_COMPLETO.ToUpper();
-                    lblFechaNacimiento.Text = entPer.PER_FECHA_NACIMIENTO.ToString("dd/MM/yyyy");
+                    lblFechaNacimiento.Text =  string.Format("{0}/{1}/{2}", entPer.PER_FECHA_NACIMIENTO.Day, entPer.PER_FECHA_NACIMIENTO.Month, entPer.PER_FECHA_NACIMIENTO.Year);
                     lblGenero.Text = entPer.PER_GENERO.ToUpper();
                     lblEstadoCivil.Text = string.Empty;
                     lblDirecion.Text = entPer.PER_DIECCION == null ? string.Empty : entPer.PER_DIECCION.ToUpper();
                     lblTelefono1.Text = entPer.PER_CELULAR == null ? string.Empty : entPer.PER_CELULAR;
                     lblCorreo.Text = entPer.PER_CORREO == null ? string.Empty : entPer.PER_CORREO;
+                    lblCompania.Text =entPer.PER_CELULAR_COMPANIA;
+                    lblNombreCarrera.Text =entPer.PER_CARRERA;
                 }
                 else
                 {
@@ -61,6 +64,7 @@ namespace SistemaResidenciaUNI
             lblDirecion.Text = string.Empty;
             lblTelefono1.Text = string.Empty;
             lblCorreo.Text = string.Empty;
+            lblTelefono1.Text = string.Empty;
         }
         protected void btnBuscarCarnet_Click(object sender, EventArgs e)
         {

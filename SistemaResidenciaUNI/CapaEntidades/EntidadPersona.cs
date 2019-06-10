@@ -29,7 +29,7 @@ namespace CapaEntidades
         public byte[] PER_IMAGEN { get; set; }
         public string PER_NOM_APE_COMPLETO
         {
-            get { return this.PER_PRIMER_NOMBRE + " " + this.PER_SEGUNDO_NOMBRE + " " + this.PER_SEGUNDO_APELLIDO; }
+            get { return this.PER_PRIMER_NOMBRE + " " + this.PER_SEGUNDO_NOMBRE; }
         }
         public string PER_NOMBRE_COMPLETO
         {

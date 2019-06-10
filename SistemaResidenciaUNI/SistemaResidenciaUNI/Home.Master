@@ -30,7 +30,7 @@
     <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-    <link href="Content/CustomClass.css" rel="stylesheet" />
+    <link href="../../Content/CustomClass.css" rel="stylesheet" />
     <%--    <link href="../../fontawesome/css/all.css" rel="stylesheet" />--%>
 
     <%--Nuevas ref--%>
@@ -41,7 +41,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+ 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -273,5 +273,47 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js" type="text/javascript"></script>
     <script src="../../plugins/morris/morris.js"></script>
+      <script type="text/javascript">   
+        $(document).ready(function () {
+
+            function OnChangeUpload(o) {
+                debugger;
+                $('#' + o.id + '').next().find('input').val($('#' + o.id + '').val());
+            }
+
+            //Datemask dd/mm/yyyy
+            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
+            //Money Euro
+            $("[data-mask]").inputmask();
+
+            //Date range picker
+            $('#reservation').daterangepicker();
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                    {
+                        ranges: {
+                            'Today': [moment(), moment()],
+                            'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                            'Last 7 Days': [moment().subtract('days', 6), moment()],
+                            'Last 30 Days': [moment().subtract('days', 29), moment()],
+                            'This Month': [moment().startOf('month'), moment().endOf('month')],
+                            'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+                        },
+                        startDate: moment().subtract('days', 29),
+                        endDate: moment()
+                    },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+            );
+
+           
+        });
+    </script>
 </body>
+    
 </html>
