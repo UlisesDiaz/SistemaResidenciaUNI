@@ -188,6 +188,7 @@
                                 <label for="lblCorDefinicion" class="col-sm-6 col-form-label">Correo</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox runat="server" ID="TextCorDefinicion" CssClass="form-control" TextMode="Email" placeholder="Correo Electrónico" />
+                                    <asp:RequiredFieldValidator ErrorMessage="Ingrese Email" CssClass="text-danger" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="TextCorDefinicion" runat="server" />
                                 </div>
                             </div>
                         </div>
