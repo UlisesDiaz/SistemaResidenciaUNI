@@ -35,6 +35,7 @@ namespace CapaDatos
         public System.DateTime PER_FECHA_NACIMIENTO { get; set; }
         public byte[] PER_IMAGEN { get; set; }
         public bool PER_ESTADO { get; set; }
+        public int EST_CIV_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_CORREO> TBL_CORREO { get; set; }

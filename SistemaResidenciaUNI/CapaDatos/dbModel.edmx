@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TBL_BARRIO">
           <Key>
             <PropertyRef Name="BAR_ID" />
@@ -45,7 +35,7 @@
           </Key>
           <Property Name="COR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PER_ID" Type="int" Nullable="false" />
-          <Property Name="COR_DEFINICION" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="COR_DEFINICION" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="COR_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_CUARTO">
@@ -175,6 +165,7 @@
           <Property Name="PER_FECHA_NACIMIENTO" Type="date" Nullable="false" />
           <Property Name="PER_IMAGEN" Type="image" />
           <Property Name="PER_ESTADO" Type="bit" Nullable="false" />
+          <Property Name="EST_CIV_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_RECINTO">
           <Key>
@@ -611,47 +602,15 @@
         <Function Name="BUCARPERSONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="numducumento" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
         <Function Name="spInfoEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="numCarnet" Type="varchar" Mode="In" />
+          <Parameter Name="NumCarnet" Type="varchar" Mode="In" />
         </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="TotalPersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="dbModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_BARRIO" EntityType="Self.TBL_BARRIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_CARRERA" EntityType="Self.TBL_CARRERA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_COMPAÑIA" EntityType="Self.TBL_COMPAÑIA" Schema="dbo" store:Type="Tables" />
@@ -795,16 +754,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TBL_BARRIO">
           <Key>
             <PropertyRef Name="BAR_ID" />
@@ -840,7 +789,7 @@
           </Key>
           <Property Name="COR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PER_ID" Type="Int32" Nullable="false" />
-          <Property Name="COR_DEFINICION" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="COR_DEFINICION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="COR_ESTADO" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TBL_PERSONA" Relationship="Self.FK_TBL_CORREO_TBL_PERSONA" FromRole="TBL_CORREO" ToRole="TBL_PERSONA" />
         </EntityType>
@@ -1001,6 +950,7 @@
           <NavigationProperty Name="TBL_PER_RELACION1" Relationship="Self.FK_TBL_PER_RELACION_TBL_PERSONA1" FromRole="TBL_PERSONA" ToRole="TBL_PER_RELACION" />
           <NavigationProperty Name="TBL_TIPO_IDENTIFICACION" Relationship="Self.FK_TBL_PERSONA_TBL_TIPO_IDENTIFICACION" FromRole="TBL_PERSONA" ToRole="TBL_TIPO_IDENTIFICACION" />
           <NavigationProperty Name="TBL_TELEFONO" Relationship="Self.FK_TBL_TELEFONO_TBL_PERSONA1" FromRole="TBL_PERSONA" ToRole="TBL_TELEFONO" />
+          <Property Name="EST_CIV_ID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_RECINTO">
           <Key>
@@ -1455,7 +1405,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="dbResidenciaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBL_BARRIO" EntityType="Self.TBL_BARRIO" />
           <EntitySet Name="TBL_CARRERA" EntityType="Self.TBL_CARRERA" />
           <EntitySet Name="TBL_COMPAÑIA" EntityType="Self.TBL_COMPAÑIA" />
@@ -1636,7 +1585,7 @@
           <Parameter Name="NumeroCuarto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spInfoEstudiante" ReturnType="Collection(dbModel.spInfoEstudiante_Result)">
-          <Parameter Name="numCarnet" Mode="In" Type="String" />
+          <Parameter Name="NumCarnet" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1693,17 +1642,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbResidenciaEntities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="dbModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TBL_BARRIO">
             <EntityTypeMapping TypeName="dbModel.TBL_BARRIO">
               <MappingFragment StoreEntitySet="TBL_BARRIO">
@@ -1867,6 +1805,7 @@
           <EntitySetMapping Name="TBL_PERSONA">
             <EntityTypeMapping TypeName="dbModel.TBL_PERSONA">
               <MappingFragment StoreEntitySet="TBL_PERSONA">
+                <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
                 <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
                 <ScalarProperty Name="PER_IDENTIFICACION" ColumnName="PER_IDENTIFICACION" />
                 <ScalarProperty Name="TIP_IDE_ID" ColumnName="TIP_IDE_ID" />
@@ -1988,30 +1927,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="BUCARPERSONA" FunctionName="dbModel.Store.BUCARPERSONA" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="spMostrarCuartosDisponibles" FunctionName="dbModel.Store.spMostrarCuartosDisponibles">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.spMostrarCuartosDisponibles_Result">

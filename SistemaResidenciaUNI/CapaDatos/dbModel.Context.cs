@@ -27,7 +27,6 @@ namespace CapaDatos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TBL_BARRIO> TBL_BARRIO { get; set; }
         public virtual DbSet<TBL_CARRERA> TBL_CARRERA { get; set; }
         public virtual DbSet<TBL_COMPAÑIA> TBL_COMPAÑIA { get; set; }
@@ -198,8 +197,8 @@ namespace CapaDatos
         public virtual ObjectResult<spInfoEstudiante_Result> spInfoEstudiante(string numCarnet)
         {
             var numCarnetParameter = numCarnet != null ?
-                new ObjectParameter("numCarnet", numCarnet) :
-                new ObjectParameter("numCarnet", typeof(string));
+                new ObjectParameter("NumCarnet", numCarnet) :
+                new ObjectParameter("NumCarnet", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInfoEstudiante_Result>("spInfoEstudiante", numCarnetParameter);
         }

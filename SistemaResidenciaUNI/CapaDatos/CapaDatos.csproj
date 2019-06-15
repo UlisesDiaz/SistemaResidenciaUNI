@@ -96,9 +96,6 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TBL_BARRIO.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
