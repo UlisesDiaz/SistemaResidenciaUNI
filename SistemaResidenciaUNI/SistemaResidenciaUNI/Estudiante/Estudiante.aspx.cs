@@ -134,16 +134,7 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataTextField = "COM_DESCRIPCION";
             ddlcompDescripcion.DataValueField = "COM_ID";
             ddlcompDescripcion.DataBind();
-
-
-
-
-          
-            
-            
-
-      
-
+       
         }
 
         void LimpiarControles()

@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <%--PostBack--%>
-        <asp:ScriptManager runat="server" ID="ScriptManager1" EnablePartialRendering="true" AsyncPostBackTimeout="600" />
+    <asp:ScriptManager runat="server" ID="ScriptManager1" EnablePartialRendering="true" AsyncPostBackTimeout="600" />
     <asp:UpdateProgress runat="server">
         <ProgressTemplate>
             <div class="loading" style="width: 100%">
@@ -25,9 +25,9 @@
                             <label for="lblBusqueda">Buscar Por Cuarto </label>
                         </div>
                         <div class="col-md-3">
-                          <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddListaCuartos_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddListaCuartos_SelectedIndexChanged"></asp:DropDownList>
                         </div>
-                   
+
                     </div>
                 </div>
 
@@ -46,14 +46,41 @@
 
         </div>
 
-       
+
     </div>
-     <div class="panel panel-primary">
-            <div class="panel panel-heading">Lista de Roles de Aseo para el Cuarto ( )</div>
-         <div class="panel-body">
-
-         </div>
-
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">Lista de Roles de Aseo para el Cuarto ( )</div>
+        <div class="panel-body">
+            <div class="row" id="calendarioweb"></div>
         </div>
+    </div>
+  
+ 
+    <script type="text/javascript">
+        jQuery_382(document).ready(function () {
+
+            jQuery_382('#calendarioweb').fullCalendar({
+                header: {
+                    left: 'today,prev,next',
+                    center: 'title',
+                    right: 'month, basicWeek, basicDay, agendaWeek, agendaDay'
+                },
+                dayClick: function (date, jsEvent, view) {
+                    alert('Fecha seleccionada ' + date.format());
+                }
+                ,
+                events: [{
+                    title: 'Aseo sala central',
+                    start: '2019-06-15'
+                }, {
+                    title: 'Aseo sala lateral',
+                    start: '2019-06-15'
+                }]
+            })
+        });
+
+    </script>
+
+
 
 </asp:Content>

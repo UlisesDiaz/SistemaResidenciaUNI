@@ -156,9 +156,16 @@
   <ItemGroup>
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\fullcalendar.min.css" />
+    <Content Include="bootstrap\css\fullcalendar.print.css" />
+    <Content Include="bootstrap\css\fullcalendar.print.min.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\es.js" />
+    <Content Include="bootstrap\js\fullcalendar.min.js" />
+    <Content Include="bootstrap\js\jquery.min.js" />
+    <Content Include="bootstrap\js\moment.min.js" />
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="CambioCuarto.aspx" />
     <Content Include="Consultas.aspx" />

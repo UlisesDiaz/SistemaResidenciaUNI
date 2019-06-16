@@ -313,4 +313,21 @@
             margin-left: 5px!important;
         }
     </style>
+        <script type="text/javascript">   
+        $(document).ready(function () {
+
+            function OnChangeUpload(o) {
+                debugger;
+                $('#' + o.id + '').next().find('input').val($('#' + o.id + '').val());
+            }
+
+            //Datemask dd/mm/yyyy
+            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
+            //Money Euro
+            $("[data-mask]").inputmask();
+
+        });
+    </script>
 </asp:Content>
