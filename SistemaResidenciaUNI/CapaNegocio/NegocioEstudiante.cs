@@ -57,7 +57,7 @@ namespace CapaNegocio
             return datoEstudiante.ObtnerEstudiantePorIdSpCuarto(Num);
         }
 
-        public EntidadPersona InfoEstudiantePorCarnet(string Ncarnet)
+        public EntidadInfoEstudianteSP InfoEstudiantePorCarnet(string Ncarnet)
         {
 
             return datoEstudiante.InfoEstudiantePorCarnet(Ncarnet);

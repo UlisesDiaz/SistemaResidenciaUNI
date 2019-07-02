@@ -175,13 +175,13 @@ namespace SistemaResidenciaUNI.Estudiante {
         protected global::System.Web.UI.WebControls.DropDownList ddlcompDescripcion;
         
         /// <summary>
-        /// Control dllDepNombre.
+        /// Control ddlDepNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dllDepNombre;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDepNombre;
         
         /// <summary>
         /// Control ddlMunicipio.

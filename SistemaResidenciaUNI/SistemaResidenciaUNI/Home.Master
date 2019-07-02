@@ -192,7 +192,7 @@
                                  <li><a href="../CambioCuarto.aspx"><i class="fa fa-circle-o"></i>Cambio de Cuarto </a></li>
                                   <li><a href="../Consultas.aspx"><i class="fa fa-circle-o"></i>Visualizar Asignaciones </a></li>
 
-                                <li><a href="../InfoEstudiante.aspx"><i class="fa fa-circle-o"></i>Info Estuadiante</a></li>
+                                <li><a href="../InfoEstudiante.aspx"><i class="fa fa-circle-o"></i>Info Estudiante</a></li>
 
                             </ul>
                         </li>

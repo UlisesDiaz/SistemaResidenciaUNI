@@ -16,27 +16,27 @@ namespace SistemaResidenciaUNI
         {
 
         }
-
-
         void MostrarEstudiante()
         {
             try
             {
                 if (txtNumCarnet.Text.Trim().Equals(string.Empty))
                     throw new Exception(Util.Exception.carnetVacio);
-                EntidadPersona entPer = (new NegocioEstudiante()).InfoEstudiantePorCarnet(txtNumCarnet.Text);
+                EntidadInfoEstudianteSP entPer = (new NegocioEstudiante()).InfoEstudiantePorCarnet(txtNumCarnet.Text);
+                
                 if (entPer != null)
                 {
                     lblNombres.Text = entPer.PER_NOM_APE_COMPLETO == null ? string.Empty : entPer.PER_NOM_APE_COMPLETO.ToUpper();
                     lblApellidos.Text = entPer.PER_APELLI_COMPLETO.ToUpper();
                     lblFechaNacimiento.Text = string.Format("{0}/{1}/{2}", entPer.PER_FECHA_NACIMIENTO.Day, entPer.PER_FECHA_NACIMIENTO.Month, entPer.PER_FECHA_NACIMIENTO.Year);
-                    lblGenero.Text = entPer.PER_GENERO.ToUpper();
+                    lblGenero.Text = entPer.GEN_DESCRIPCION.ToUpper();
                     lblEstadoCivil.Text = string.Empty;
-                    lblDirecion.Text = entPer.PER_DIECCION == null ? string.Empty : entPer.PER_DIECCION.ToUpper();
-                    lblTelefono1.Text = entPer.PER_CELULAR == null ? string.Empty : entPer.PER_CELULAR;
-                    lblCorreo.Text = entPer.PER_CORREO == null ? string.Empty : entPer.PER_CORREO;
-                    lblCompania.Text = entPer.PER_CELULAR_COMPANIA;
-                    lblNombreCarrera.Text = entPer.PER_CARRERA;
+                    lblDirecion.Text = entPer.DIR_DESCRIPCION == null ? string.Empty : entPer.DIR_DESCRIPCION.ToUpper();
+                    lblTelefono1.Text = entPer.TEL_NUMERO == null ? string.Empty : entPer.TEL_NUMERO;
+                    lblCorreo.Text = entPer.COR_DEFINICION == null ? string.Empty : entPer.COR_DEFINICION;
+                    lblCompania.Text = entPer.COM_DESCRIPCION;
+                    lblNombreCarrera.Text = entPer.CAR_DESCRIPCION;
+
                 }
                 else
                 {

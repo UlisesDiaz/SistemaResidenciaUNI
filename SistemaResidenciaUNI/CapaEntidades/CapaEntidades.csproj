@@ -41,12 +41,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadBarrio.cs" />
+    <Compile Include="EntidadCarrera.cs" />
+    <Compile Include="EntidadCompañia.cs" />
+    <Compile Include="EntidadCorreo.cs" />
     <Compile Include="EntidadCuarto.cs" />
     <Compile Include="EntidadDepartamento.cs" />
+    <Compile Include="EntidadDireccion.cs" />
     <Compile Include="EntidadEstudiante.cs" />
+    <Compile Include="EntidadFrecuencia.cs" />
+    <Compile Include="EntidadGenero.cs" />
+    <Compile Include="EntidadHisEstudianteCuarto.cs" />
+    <Compile Include="EntidadHisEstudianteRegistro.cs" />
+    <Compile Include="EntidadHisRolAseo.cs" />
+    <Compile Include="EntidadInfoEstudianteSP.cs" />
     <Compile Include="EntidadMunicipio.cs" />
+    <Compile Include="EntidadPerRelation.cs" />
     <Compile Include="EntidadPersona.cs" />
+    <Compile Include="EntidadRecinto.cs" />
+    <Compile Include="EntidadResponsable.cs" />
+    <Compile Include="EntidadRolAseo.cs" />
+    <Compile Include="EntidadTelefono.cs" />
+    <Compile Include="EntidadTipoAreaResponsable.cs" />
     <Compile Include="EntidadTipoAseo.cs" />
+    <Compile Include="EntidadTipoIdentificacion.cs" />
+    <Compile Include="EntidadTipoMotivoRegistro.cs" />
+    <Compile Include="EntidadTipPerRelation.cs" />
+    <Compile Include="EntidadUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resultado.cs" />
     <Compile Include="Util.cs" />

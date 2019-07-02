@@ -52,8 +52,9 @@ namespace SistemaResidenciaUNI.Estudiante
             catch (Exception ex)
             {
 
-                string script = string.Format("alert('{0}');", ex.Message);
-                ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+               string script = string.Format("alert('{0}');", ex.Message);
+               ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+              
             }
 
         }
@@ -106,10 +107,10 @@ namespace SistemaResidenciaUNI.Estudiante
             //LLenar Departamentos
             NegocioDepartamento negocioDepartamento = new NegocioDepartamento();
             List<EntidadDepartamento> depLis = negocioDepartamento.ObtenerDepartamento().data as List<EntidadDepartamento>;
-            dllDepNombre.DataSource = depLis.OrderBy(dr => dr.DEP_NOMBRE);
-            dllDepNombre.DataTextField = "DEP_NOMBRE";
-            dllDepNombre.DataValueField = "DEP_ID";
-            dllDepNombre.DataBind();
+            ddlDepNombre.DataSource = depLis.OrderBy(dr => dr.DEP_NOMBRE);
+            ddlDepNombre.DataTextField = "DEP_NOMBRE";
+            ddlDepNombre.DataValueField = "DEP_ID";
+            ddlDepNombre.DataBind();
 
             //Lista de Generos
             ddlGenId.DataSource = negocioEstudiante.ObtenerListaGenero();
@@ -165,7 +166,7 @@ namespace SistemaResidenciaUNI.Estudiante
 
         protected void dllDepNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ObtenerMunicipiosPorDepartamentoId(int.Parse(dllDepNombre.SelectedValue));
+            ObtenerMunicipiosPorDepartamentoId(int.Parse(ddlDepNombre.SelectedValue));
         }
 
         byte[] ObtenerIMagenByteArray(Stream stream)

@@ -66,21 +66,62 @@
                     right: 'month, basicWeek, basicDay, agendaWeek, agendaDay'
                 },
                 dayClick: function (date, jsEvent, view) {
-                    alert('Fecha seleccionada ' + date.format());
+
+                    alert('Usted a seleccionado ' + date.format());
+                    
+                  
+                    $('#modalDatos').modal();
+                  
                 }
                 ,
                 events: [{
+
+                    
                     title: 'Aseo sala central',
+                    descripcion: 'Se deve barrer y lampacear el Area de la Sala Central',
                     start: '2019-06-15'
                 }, {
                     title: 'Aseo sala lateral',
                     start: '2019-06-15'
-                }]
+                }],
+                eventClick: function (CalEvent, jsEvent, view) {
+                    $('#tituloEvento').html(CalEvent.title);
+                    $('#decripcionEvento').html(CalEvent.descripcion);
+                    $('#modalDatos').modal();
+                   
+                }
             })
         });
 
     </script>
 
 
+    <!-- Ventana modal para Guardar Nuevos eventos de aseo en Residencia -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="tituloEvento"> </h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div id="decripcionEvento"></div>
+      </div>
+      <div class="modal-footer">
+         <%-- <button type="button" class="btn btn-success" >Agregar</button>
+          <button type="button" class="btn btn-secondary">Modificar</button>
+          <button type="button" class="btn btn-danger">Borrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>--%>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </asp:Content>

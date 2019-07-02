@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="InfoEstudiante.aspx.cs" Inherits="SistemaResidenciaUNI.InfoEstudiante" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -28,7 +27,6 @@
                         </div>
                 </div>
             </div>
-
         </div>
 
     </div>

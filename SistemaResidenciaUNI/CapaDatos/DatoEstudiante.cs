@@ -23,19 +23,35 @@ namespace CapaDatos
 
                 GuardarNuevaPersona(EntidadEstudiante.TBL_PERSONA);
 
-                TBL_ESTUDIANTE.EST_ID = ObtenerUltimoIdPersona();
-                // TBL_ESTUDIANTE.CUA_ID = datoCuarto.ObtenerUltimoIdCuarto();
+                int PER_ID = ObtenerUltimoIdPersona();
+
+
+                TBL_HIS_ESTUDIANTE_CUARTO hisEstCua = new TBL_HIS_ESTUDIANTE_CUARTO();
+
+                hisEstCua.CUA_ID = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.CUA_ID).FirstOrDefault();
+                hisEstCua.EST_ID = PER_ID;
+                hisEstCua.HIS_EST_CUA_DESRIPCION = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.HIS_EST_CUA_DESRIPCION).FirstOrDefault();
+                hisEstCua.HIS_EST_CUA_ESTADO = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.HIS_EST_CUA_ESTADO).FirstOrDefault();
+                hisEstCua.USU_ID = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.USU_ID).FirstOrDefault();
+
+                List<TBL_HIS_ESTUDIANTE_CUARTO> listHisEstC = new List<TBL_HIS_ESTUDIANTE_CUARTO>();
+                listHisEstC.Add(hisEstCua);
+
+                TBL_ESTUDIANTE.EST_ID = PER_ID;
+                //TBL_ESTUDIANTE. = datoCuarto.ObtenerUltimoIdCuarto();
                 TBL_ESTUDIANTE.EST_CARNET = EntidadEstudiante.EST_CARNET;
+                TBL_ESTUDIANTE.CAR_ID = EntidadEstudiante.CAR_ID;
+                TBL_ESTUDIANTE.EST_FECHA_FINAL = EntidadEstudiante.EST_FECHA_FINAL;
                 TBL_ESTUDIANTE.EST_ESTADO = true;
-
-                int idPersona = EntidadEstudiante.PER_ID;
-
-                bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.EST_ID.Equals(idPersona)).Count() > 0;
+                TBL_ESTUDIANTE.TBL_HIS_ESTUDIANTE_CUARTO = listHisEstC;
+                bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.EST_ID.Equals(PER_ID)).Count() > 0;
                 if (existeEstudiante)
-                    throw new Exception("Ya existe un Estudiante con este ID: " + idPersona);
+                    throw new Exception("Ya existe un Estudiante con este ID: " + PER_ID);
 
                 dbResidencia.TBL_ESTUDIANTE.Add(TBL_ESTUDIANTE);
                 dbResidencia.SaveChanges();
+
+
                 resultado.esError = false;
                 resultado.mensaje = "Se ha insertado de manera exitosa el registro";
 
@@ -63,14 +79,13 @@ namespace CapaDatos
                      if (!idEstudiantesRegistrados.Contains(fila.PER_ID))
                      {
                          cadaPersona.PER_ID = fila.PER_ID;
-                         cadaPersona.PER_CEDULA = fila.PER_IDENTIFICACION;
+                         cadaPersona.PER_IDENTIFICACION = fila.PER_IDENTIFICACION;
                          cadaPersona.PER_PRIMER_NOMBRE = fila.PER_PRIMER_NOMBRE;
                          cadaPersona.PER_SEGUNDO_NOMBRE = fila.PER_SEGUNDO_NOMBRE;
                          cadaPersona.PER_PRIMER_APELLIDO = fila.PER_PRIMER_APELLIDO;
                          cadaPersona.PER_SEGUNDO_APELLIDO = fila.PER_SEGUNDO_APELLIDO;
                          cadaPersona.PER_FECHA_NACIMIENTO = fila.PER_FECHA_NACIMIENTO;
                          cadaPersona.PER_ESTADO = fila.PER_ESTADO;
-
                          personas.Add(cadaPersona);
                      }
                      else { }
@@ -87,15 +102,38 @@ namespace CapaDatos
                 {
                     resultado.esError = false;
                     TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
-                    TBL_PERSONA.PER_IDENTIFICACION = entidadPersona.PER_CEDULA;
+
+                    TBL_PERSONA.PER_IDENTIFICACION = entidadPersona.PER_IDENTIFICACION;
+                    TBL_PERSONA.TIP_IDE_ID = entidadPersona.TIP_IDE_ID;
+                    TBL_PERSONA.GEN_ID = entidadPersona.GEN_ID;
                     TBL_PERSONA.PER_PRIMER_NOMBRE = entidadPersona.PER_PRIMER_NOMBRE;
                     TBL_PERSONA.PER_SEGUNDO_NOMBRE = entidadPersona.PER_SEGUNDO_NOMBRE;
                     TBL_PERSONA.PER_PRIMER_APELLIDO = entidadPersona.PER_PRIMER_APELLIDO;
                     TBL_PERSONA.PER_SEGUNDO_APELLIDO = entidadPersona.PER_SEGUNDO_APELLIDO;
                     TBL_PERSONA.PER_FECHA_NACIMIENTO = entidadPersona.PER_FECHA_NACIMIENTO;
+                    TBL_PERSONA.EST_CIV_ID = entidadPersona.EST_CIV_ID;
+
                     TBL_PERSONA.PER_ESTADO = entidadPersona.PER_ESTADO;
                     TBL_PERSONA.PER_IMAGEN = entidadPersona.PER_IMAGEN;
+                    List<TBL_CORREO> LISc = new List<TBL_CORREO>();
+                    entidadPersona.TBL_CORREO.ToList().ForEach(dr =>
+                    {
+                        LISc.Add(new TBL_CORREO { COR_DEFINICION = dr.COR_DEFINICION, COR_ESTADO = dr.COR_ESTADO, PER_ID = dr.PER_ID });
+                    });
+                    List<TBL_TELEFONO> lisTel = new List<TBL_TELEFONO>();
+                    entidadPersona.TBL_TELEFONO.ToList().ForEach(dr =>
+                    {
+                        lisTel.Add(new TBL_TELEFONO { COM_ID = dr.COM_ID, PER_ID = dr.PER_ID, TEL_NUMERO = dr.TEL_NUMERO, TEL_PERSONAL = dr.TEL_PERSONAL, TEL_ESTADO = dr.TEL_ESTADO });
+                    });
+                    List<TBL_DIRECCION> listaDirec = new List<TBL_DIRECCION>();
+                    entidadPersona.TBL_DIRECCION.ToList().ForEach(dr =>
+                    {
+                        listaDirec.Add(new TBL_DIRECCION { DIR_ID = dr.DIR_ID, BAR_ID = dr.BAR_ID, DIR_DESCRIPCION = dr.DIR_DESCRIPCION, DIR_ESTADO = true, DIR_NO_CASA = dr.DIR_NO_CASA, PER_ID = dr.PER_ID });
+                    });
 
+                    TBL_PERSONA.TBL_TELEFONO = lisTel;
+                    TBL_PERSONA.TBL_CORREO = LISc;
+                    TBL_PERSONA.TBL_DIRECCION = listaDirec;
                     dbResidencia.TBL_PERSONA.Add(TBL_PERSONA);
                     dbResidencia.SaveChanges();
                     dbContextTransaction.Commit();
@@ -207,43 +245,46 @@ namespace CapaDatos
             return compañiaTelefonica;
         }
 
-        public List<EntidadPersona> ObtnerEstudiantePorIdSpCuarto( int NumCuarto)
+        public List<EntidadPersona> ObtnerEstudiantePorIdSpCuarto(int NumCuarto)
         {
-         
-                return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
-                
-                {
-                    PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
-                    PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
-                    PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
-                    PER_ID = dr.PER_ID
-                }).ToList();
-          
-            
+
+            return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
+
+            {
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                PER_ID = dr.PER_ID
+            }).ToList();
+
+
         }
 
 
-        public EntidadPersona InfoEstudiantePorCarnet(string carnet)
+        public EntidadInfoEstudianteSP InfoEstudiantePorCarnet(string carnet)
         {
             try
             {
-                return dbResidencia.spInfoEstudiante(carnet).Select(dr => new EntidadPersona
+
+
+                return dbResidencia.spInfoEstudiante(carnet).Select(dr => new EntidadInfoEstudianteSP
                 {
                     PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
                     PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
                     PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
                     PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
                     PER_FECHA_NACIMIENTO = dr.PER_FECHA_NACIMIENTO,
-                    PER_GENERO = dr.GEN_DESCRIPCION,
-                    PER_DIECCION = dr.DIR_DESCRIPCION,
-                    PER_BARRIO = dr.BAR_NOMBRE,
-                    PER_MUNICIPIO = dr.MUN_NOMBRE,
-                    PER_DEPARTAMENTO = dr.DEP_NOMBRE,
-                    PER_CELULAR = dr.TEL_NUMERO,
-                    PER_CELULAR_COMPANIA = dr.COM_DESCRIPCION,
-                    PER_CORREO = dr.COR_DEFINICION,
-                    PER_CARRERA = dr.CAR_DESCRIPCION,
-                    PER_RECINTO = dr.REC_DESCRIPCION
+
+                    GEN_DESCRIPCION = dr.GEN_DESCRIPCION,
+                    DIR_DESCRIPCION = dr.DIR_DESCRIPCION,
+                    BAR_NOMBRE = dr.BAR_NOMBRE,
+                    MUN_NOMBRE = dr.MUN_NOMBRE,
+                    DEP_NOMBRE = dr.DEP_NOMBRE,
+                    TEL_NUMERO = dr.TEL_NUMERO,
+                    COM_DESCRIPCION = dr.COM_DESCRIPCION,
+                    COR_DEFINICION = dr.COR_DEFINICION,
+                    CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
+                    REC_DESCRIPCION = dr.REC_DESCRIPCION
 
                 }).FirstOrDefault();
 
@@ -254,7 +295,7 @@ namespace CapaDatos
                 throw ex;
             }
 
-          
+
         }
     }
 }

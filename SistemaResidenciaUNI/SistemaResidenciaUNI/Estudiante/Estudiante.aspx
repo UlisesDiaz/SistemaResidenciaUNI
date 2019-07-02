@@ -221,7 +221,7 @@
                             <div class="form-group row">
                                 <label for="lblDepartamento" class="col-sm-6 col-form-label">(*)Departamento</label>
                                 <div class="col-sm-10">
-                                    <asp:DropDownList ID="dllDepNombre" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="dllDepNombre_SelectedIndexChanged"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlDepNombre" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="dllDepNombre_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>

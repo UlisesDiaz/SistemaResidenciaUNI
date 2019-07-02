@@ -24,6 +24,9 @@ namespace CapaDatos
             this.TBL_TELEFONO = new HashSet<TBL_TELEFONO>();
         }
     
+
+
+
         public int PER_ID { get; set; }
         public string PER_IDENTIFICACION { get; set; }
         public int TIP_IDE_ID { get; set; }
