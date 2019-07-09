@@ -18,22 +18,10 @@ namespace CapaEntidades
         public int TIP_IDE_ID { get; set; }
         public int GEN_ID { get; set; }
         public string PER_PRIMER_NOMBRE { get; set; }
-        public string PER_CEDULA { get; set; }
         public string PER_SEGUNDO_NOMBRE { get; set; }
         public string PER_PRIMER_APELLIDO { get; set; }
         public string PER_SEGUNDO_APELLIDO { get; set; }
-        public string PER_GENERO { get; set; }
-        public string PER_DIECCION { get; set; }
-        public string PER_CELULAR { get; set; }
-        public string PER_CELULAR_COMPANIA { get; set; }
-        public string PER_CORREO { get; set; }
-        public string PER_CARRERA { get; set; }
-        public string PER_RECINTO { get; set; }
-        public string PER_BARRIO { get; set; }
-        public string PER_MUNICIPIO { get; set; }
-        public string PER_DEPARTAMENTO { get; set; }
         public System.DateTime PER_FECHA_NACIMIENTO { get; set; }
-
         public byte[] PER_IMAGEN { get; set; }
         public bool PER_ESTADO { get; set; }
         public int EST_CIV_ID { get; set; }

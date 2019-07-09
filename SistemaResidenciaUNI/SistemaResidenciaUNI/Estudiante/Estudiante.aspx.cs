@@ -66,22 +66,36 @@ namespace SistemaResidenciaUNI.Estudiante
 
 
             EntidadEstudiante entidadEstudiante = new EntidadEstudiante();
-
+            //info sobre persona
             EntidadPersona entidadPersona = new EntidadPersona();
 
-            entidadPersona.PER_CEDULA = txtPerCedula.Text;
+            entidadPersona.PER_IDENTIFICACION = txtPerCedula.Text;
+            entidadPersona.TIP_IDE_ID = entidadPersona.TIP_IDE_ID;
+            entidadPersona.GEN_ID = int.Parse(ddlGenId.SelectedValue);
             entidadPersona.PER_PRIMER_NOMBRE = txtPerPrimerNombre.Text;
             entidadPersona.PER_SEGUNDO_NOMBRE = txtPerSegundoNombre.Text;
             entidadPersona.PER_PRIMER_APELLIDO = txtPerPrimerApellido.Text;
             entidadPersona.PER_SEGUNDO_APELLIDO = txtPerSegundoApellido.Text.Trim();
             entidadPersona.PER_FECHA_NACIMIENTO = DateTime.Parse(txtPerFechaNacimiento.Value.ToString());
             entidadPersona.PER_ESTADO = true;
-            entidadPersona.PER_IMAGEN = ObtenerIMagenByteArray(FilUpImagen.PostedFile.InputStream);
-
-            entidadEstudiante.TBL_PERSONA = entidadPersona;
+            entidadPersona.EST_CIV_ID = 1; //???No veo el control para capturar el estado civil
+            
+            entidadEstudiante.TBL_PERSONA = entidadPersona; //pasando info sobre persona en estudiante (persona q es estudiante)
+            //info sobre estudiante
             entidadEstudiante.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
+            entidadEstudiante.CAR_ID = int.Parse(ddCarId.SelectedValue);
             entidadEstudiante.EST_CARNET = txtEstCarnet.Text.Trim();
+            entidadEstudiante.EST_FECHA_INICIAL = DateTime.Now;
             entidadEstudiante.EST_ESTADO = true;
+            //info básica de contacto correo, direccion, tele etc
+            EntidadCorreo entCorreo = new EntidadCorreo(); //aquì solo se pide un correo, pero la estructura  puede ser una lista uno a muchos
+            entCorreo.COR_DEFINICION = string.Empty; // ni idea donde està ese control q pide el correo al usuario por eso lo mando vacio
+            entCorreo.COR_ESTADO = true;
+
+            List<EntidadCorreo> lisEntCorreo = new List<EntidadCorreo>();
+            lisEntCorreo.Add(entCorreo);
+            //relacionando info sobre correo
+            entidadPersona.TBL_CORREO = lisEntCorreo;
 
             return negocioEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
         }
