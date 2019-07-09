@@ -82,11 +82,25 @@ namespace SistemaResidenciaUNI.Estudiante
             
             entidadEstudiante.TBL_PERSONA = entidadPersona; //pasando info sobre persona en estudiante (persona q es estudiante)
             //info sobre estudiante
+            //cuarto
+            EntidadHisEstudianteCuarto entiHisEstCuarto = new EntidadHisEstudianteCuarto();
+            entiHisEstCuarto.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
+            entiHisEstCuarto.HIS_EST_CUA_DESRIPCION = string.Empty;
+            entiHisEstCuarto.HIS_EST_CUA_FECHA_INICIAL = DateTime.Now;
+            entiHisEstCuarto.USU_ID = 1; //revisar q ese id exista en tbl_usuario
+            entiHisEstCuarto.HIS_EST_CUA_ESTADO = true;
+
+            List<EntidadHisEstudianteCuarto> listHisEstCuarto = new List<EntidadHisEstudianteCuarto>();
+            listHisEstCuarto.Add(entiHisEstCuarto);
+            //asociando cuarto
+            entidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO = listHisEstCuarto;
+
             entidadEstudiante.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
             entidadEstudiante.CAR_ID = int.Parse(ddCarId.SelectedValue);
             entidadEstudiante.EST_CARNET = txtEstCarnet.Text.Trim();
             entidadEstudiante.EST_FECHA_INICIAL = DateTime.Now;
             entidadEstudiante.EST_ESTADO = true;
+
             //info básica de contacto correo, direccion, tele etc
             EntidadCorreo entCorreo = new EntidadCorreo(); //aquì solo se pide un correo, pero la estructura  puede ser una lista uno a muchos
             entCorreo.COR_DEFINICION = string.Empty; // ni idea donde està ese control q pide el correo al usuario por eso lo mando vacio
