@@ -96,6 +96,29 @@ namespace SistemaResidenciaUNI.Estudiante
             lisEntCorreo.Add(entCorreo);
             //relacionando info sobre correo
             entidadPersona.TBL_CORREO = lisEntCorreo;
+            //info sobre telefono
+            EntidadTelefono entTelefono = new EntidadTelefono();
+            entTelefono.COM_ID = int.Parse(ddlcompDescripcion.SelectedValue);
+            entTelefono.TEL_NUMERO = txtTelNumero.Text;
+            entTelefono.TEL_PERSONAL = true;
+            entTelefono.TEL_ESTADO = true;
+
+            List<EntidadTelefono> listEntTelefono = new List<EntidadTelefono>();
+            listEntTelefono.Add(entTelefono);
+
+            //relacionando lista de telefonos a la persona estudiante
+            entidadPersona.TBL_TELEFONO = listEntTelefono;
+            //info sobre dirección
+            EntidadDireccion entDireccion = new EntidadDireccion();
+            entDireccion.BAR_ID = int.Parse(ddlBarrio.SelectedValue);
+            entDireccion.DIR_DESCRIPCION = txtDireccion.InnerText;
+            entDireccion.DIR_NO_CASA = txtNumCasa.Text;
+            entDireccion.DIR_ESTADO = true;
+
+            List<EntidadDireccion> lisEntDireccion = new List<EntidadDireccion>();
+            lisEntDireccion.Add(entDireccion);
+
+            entidadPersona.TBL_DIRECCION = lisEntDireccion;
 
             return negocioEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
         }
