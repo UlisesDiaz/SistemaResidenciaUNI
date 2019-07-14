@@ -57,7 +57,7 @@ namespace SistemaResidenciaUNI.Estudiante
               
             }
 
-        }
+         }
 
         Resultado GuardarEstudiante()
         {
