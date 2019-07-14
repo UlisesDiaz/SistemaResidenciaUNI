@@ -70,7 +70,7 @@ namespace SistemaResidenciaUNI.Estudiante
             EntidadPersona entidadPersona = new EntidadPersona();
 
             entidadPersona.PER_IDENTIFICACION = txtPerCedula.Text;
-            entidadPersona.TIP_IDE_ID = entidadPersona.TIP_IDE_ID;
+            entidadPersona.TIP_IDE_ID = int.Parse(ddlTipId.SelectedValue);
             entidadPersona.GEN_ID = int.Parse(ddlGenId.SelectedValue);
             entidadPersona.PER_PRIMER_NOMBRE = txtPerPrimerNombre.Text;
             entidadPersona.PER_SEGUNDO_NOMBRE = txtPerSegundoNombre.Text;
@@ -87,7 +87,7 @@ namespace SistemaResidenciaUNI.Estudiante
             entiHisEstCuarto.CUA_ID = int.Parse(ddlNumeroCuarto.SelectedValue);
             entiHisEstCuarto.HIS_EST_CUA_DESRIPCION = string.Empty;
             entiHisEstCuarto.HIS_EST_CUA_FECHA_INICIAL = DateTime.Now;
-            entiHisEstCuarto.USU_ID = 1; //revisar q ese id exista en tbl_usuario
+            entiHisEstCuarto.USU_ID = 2; //revisar q ese id exista en tbl_usuario
             entiHisEstCuarto.HIS_EST_CUA_ESTADO = true;
 
             List<EntidadHisEstudianteCuarto> listHisEstCuarto = new List<EntidadHisEstudianteCuarto>();
