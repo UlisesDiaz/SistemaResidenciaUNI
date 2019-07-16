@@ -60,6 +60,8 @@
         <AssociationConnector Association="dbModel.FK_TBL_USUARIO_TBL_RESPONSABLE1" ManuallyRouted="false" />
         <AssociationConnector Association="dbModel.FK_TBL_ROL_ASEO_TBL_TIPO_ASEO" ManuallyRouted="false" />
         <AssociationConnector Association="dbModel.FK_TBL_ROL_ASEO_TBL_USUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbModel.TBL_ESTADO_CIVIL" Width="1.5" PointX="0.75" PointY="14.75" />
+        <AssociationConnector Association="dbModel.FK_TBL_PERSONA_TBL_ESTADO_CIVIL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

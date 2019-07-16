@@ -53,6 +53,7 @@ namespace CapaDatos
         public virtual DbSet<TBL_TIPO_IDENTIFICACION> TBL_TIPO_IDENTIFICACION { get; set; }
         public virtual DbSet<TBL_TIPO_MOTIVO_REGISTRO> TBL_TIPO_MOTIVO_REGISTRO { get; set; }
         public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
+        public virtual DbSet<TBL_ESTADO_CIVIL> TBL_ESTADO_CIVIL { get; set; }
     
         public virtual ObjectResult<string> BUCARPERSONA(string numducumento)
         {

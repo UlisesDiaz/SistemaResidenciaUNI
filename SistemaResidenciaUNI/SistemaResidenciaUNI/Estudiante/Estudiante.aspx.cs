@@ -78,7 +78,7 @@ namespace SistemaResidenciaUNI.Estudiante
             entidadPersona.PER_SEGUNDO_APELLIDO = txtPerSegundoApellido.Text.Trim();
             entidadPersona.PER_FECHA_NACIMIENTO = DateTime.Parse(txtPerFechaNacimiento.Value.ToString());
             entidadPersona.PER_ESTADO = true;
-            entidadPersona.EST_CIV_ID = 1; //???No veo el control para capturar el estado civil
+            entidadPersona.EST_CIV_ID = int.Parse(ddListEstadoCivil.SelectedValue); //???No veo el control para capturar el estado civil
             
             entidadEstudiante.TBL_PERSONA = entidadPersona; //pasando info sobre persona en estudiante (persona q es estudiante)
             //info sobre estudiante
@@ -186,6 +186,13 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataTextField = "COM_DESCRIPCION";
             ddlcompDescripcion.DataValueField = "COM_ID";
             ddlcompDescripcion.DataBind();
+
+            //Estado Civil de Personas
+            ddListEstadoCivil.DataSource =negocioEstudiante.ObtenerEstadoCivil();
+            ddListEstadoCivil.DataTextField = "EST_CIV_DESCRI";
+            ddListEstadoCivil.DataValueField = "EST_CIV_ID";
+            ddListEstadoCivil.DataBind();
+
        
         }
 

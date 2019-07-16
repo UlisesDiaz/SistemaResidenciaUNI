@@ -64,6 +64,13 @@
           <Property Name="DIR_DESCRIPCION" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="DIR_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="TBL_ESTADO_CIVIL">
+          <Key>
+            <PropertyRef Name="EST_CIV_ID" />
+          </Key>
+          <Property Name="EST_CIV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_CIV_DESCRI" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="TBL_ESTUDIANTE">
           <Key>
             <PropertyRef Name="EST_ID" />
@@ -479,6 +486,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TBL_PERSONA_TBL_ESTADO_CIVIL">
+          <End Role="TBL_ESTADO_CIVIL" Type="Self.TBL_ESTADO_CIVIL" Multiplicity="1" />
+          <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTADO_CIVIL">
+              <PropertyRef Name="EST_CIV_ID" />
+            </Principal>
+            <Dependent Role="TBL_PERSONA">
+              <PropertyRef Name="EST_CIV_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TBL_PERSONA_TBL_GENERO">
           <End Role="TBL_GENERO" Type="Self.TBL_GENERO" Multiplicity="1" />
           <End Role="TBL_PERSONA" Type="Self.TBL_PERSONA" Multiplicity="*" />
@@ -618,6 +637,7 @@
           <EntitySet Name="TBL_CUARTO" EntityType="Self.TBL_CUARTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_DIRECCION" EntityType="Self.TBL_DIRECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ESTADO_CIVIL" EntityType="Self.TBL_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_ESTUDIANTE" EntityType="Self.TBL_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_FRECUENCIA" EntityType="Self.TBL_FRECUENCIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_GENERO" EntityType="Self.TBL_GENERO" Schema="dbo" store:Type="Tables" />
@@ -708,6 +728,10 @@
           <AssociationSet Name="FK_TBL_PER_RELACION_TBL_TIP_PER_RELACION" Association="Self.FK_TBL_PER_RELACION_TBL_TIP_PER_RELACION">
             <End Role="TBL_TIP_PER_RELACION" EntitySet="TBL_TIP_PER_RELACION" />
             <End Role="TBL_PER_RELACION" EntitySet="TBL_PER_RELACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_PERSONA_TBL_ESTADO_CIVIL" Association="Self.FK_TBL_PERSONA_TBL_ESTADO_CIVIL">
+            <End Role="TBL_ESTADO_CIVIL" EntitySet="TBL_ESTADO_CIVIL" />
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_PERSONA_TBL_GENERO" Association="Self.FK_TBL_PERSONA_TBL_GENERO">
             <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
@@ -951,6 +975,7 @@
           <NavigationProperty Name="TBL_TIPO_IDENTIFICACION" Relationship="Self.FK_TBL_PERSONA_TBL_TIPO_IDENTIFICACION" FromRole="TBL_PERSONA" ToRole="TBL_TIPO_IDENTIFICACION" />
           <NavigationProperty Name="TBL_TELEFONO" Relationship="Self.FK_TBL_TELEFONO_TBL_PERSONA1" FromRole="TBL_PERSONA" ToRole="TBL_TELEFONO" />
           <Property Name="EST_CIV_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_ESTADO_CIVIL" Relationship="dbModel.FK_TBL_PERSONA_TBL_ESTADO_CIVIL" FromRole="TBL_PERSONA" ToRole="TBL_ESTADO_CIVIL" />
         </EntityType>
         <EntityType Name="TBL_RECINTO">
           <Key>
@@ -1587,6 +1612,11 @@
           <FunctionImport Name="spInfoEstudiante" ReturnType="Collection(dbModel.spInfoEstudiante_Result)">
           <Parameter Name="NumCarnet" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="TBL_ESTADO_CIVIL" EntityType="dbModel.TBL_ESTADO_CIVIL" />
+          <AssociationSet Name="FK_TBL_PERSONA_TBL_ESTADO_CIVIL" Association="dbModel.FK_TBL_PERSONA_TBL_ESTADO_CIVIL">
+            <End Role="TBL_ESTADO_CIVIL" EntitySet="TBL_ESTADO_CIVIL" />
+            <End Role="TBL_PERSONA" EntitySet="TBL_PERSONA" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1636,6 +1666,26 @@
           <Property Type="String" Name="REC_DESCRIPCION" Nullable="true" MaxLength="200" />
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="true" />
         </ComplexType>
+        <EntityType Name="TBL_ESTADO_CIVIL">
+          <Key>
+            <PropertyRef Name="EST_CIV_ID" />
+          </Key>
+          <Property Name="EST_CIV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_CIV_DESCRI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_PERSONA" Relationship="dbModel.FK_TBL_PERSONA_TBL_ESTADO_CIVIL" FromRole="TBL_ESTADO_CIVIL" ToRole="TBL_PERSONA" />
+        </EntityType>
+        <Association Name="FK_TBL_PERSONA_TBL_ESTADO_CIVIL">
+          <End Type="dbModel.TBL_ESTADO_CIVIL" Role="TBL_ESTADO_CIVIL" Multiplicity="1" />
+          <End Type="dbModel.TBL_PERSONA" Role="TBL_PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ESTADO_CIVIL">
+              <PropertyRef Name="EST_CIV_ID" />
+            </Principal>
+            <Dependent Role="TBL_PERSONA">
+              <PropertyRef Name="EST_CIV_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1975,6 +2025,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TBL_ESTADO_CIVIL">
+            <EntityTypeMapping TypeName="dbModel.TBL_ESTADO_CIVIL">
+              <MappingFragment StoreEntitySet="TBL_ESTADO_CIVIL">
+                <ScalarProperty Name="EST_CIV_DESCRI" ColumnName="EST_CIV_DESCRI" />
+                <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

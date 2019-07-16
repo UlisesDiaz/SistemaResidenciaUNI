@@ -295,6 +295,30 @@ namespace CapaDatos
                 throw ex;
             }
 
+          
+        }
+
+        public object ObtenerEstadoCivil()
+        {
+            Object estadoCivil = null;
+            
+            try
+            {
+
+                estadoCivil = dbResidencia.TBL_ESTADO_CIVIL.Select(dr => new
+                {
+                    dr.EST_CIV_ID,
+                    dr.EST_CIV_DESCRI
+
+                }).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return estadoCivil;
 
         }
     }

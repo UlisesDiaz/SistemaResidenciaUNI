@@ -117,6 +117,9 @@
     <Compile Include="TBL_DIRECCION.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TBL_ESTADO_CIVIL.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TBL_ESTUDIANTE.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

@@ -63,5 +63,9 @@ namespace CapaNegocio
             return datoEstudiante.InfoEstudiantePorCarnet(Ncarnet);
 
         }
+        public Object ObtenerEstadoCivil()
+        {
+            return datoEstudiante.ObtenerEstadoCivil();
+        }
     }
 }

@@ -15,14 +15,14 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="panel panel-primary">
+            <div class="panel panel-primary "  style="margin-right:50px;">
                 <div class="panel-heading">Información Estudiante (Nuevo Residente )</div>
                 <div class="panel-body">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblperFoto" class="col-sm-6 col-form-label">Foto</label>
+                                <label for="lblperFoto"   class="col-sm-6 col-form-label">Foto</label>
                                 <div class="col-sm-10">
                                     <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est" style="width: 180px; height: auto;">
                                     <asp:FileUpload ID="FilUpImagen" runat="server" onchange="OnChangeUpload(this);" />
@@ -79,7 +79,7 @@
                             <div class="form-group row">
                                 <label for="lblperPrimerNombre" class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerPrimerNombre" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerPrimerNombre" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPerSegundoNombre" ErrorMessage="Deve Ingresar letras" ValidationExpression="[A-Za-z]*"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerNombre"
                                         CssClass="text-danger" ErrorMessage="El campo Primer Nombre del Estudiante es requerido." />
@@ -91,7 +91,7 @@
                             <div class="form-group row">
                                 <label for="lblperSegundoNombre" class="col-sm-6 col-form-label">Segundo Nombre del Estudiante</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerSegundoNombre" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerSegundoNombre" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoNombre"
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Nombre del Estudiante es requerido." />
                                 </div>
@@ -105,7 +105,7 @@
                             <div class="form-group row">
                                 <label for="lblPerPrimerApellido" class="col-sm-6 col-form-label">Primer Apellido</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerPrimerApellido" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerPrimerApellido" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerApellido"
                                         CssClass="text-danger" ErrorMessage="El campo Primer Apellido del Estudiante es requerido." />
                                 </div>
@@ -116,7 +116,7 @@
                             <div class="form-group row">
                                 <label for="lblPerSegundoApellido" class="col-sm-6 col-form-label">Segundo Apellido</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerSegundoApellido" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerSegundoApellido" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoApellido"
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Apellido del Estudiante es requerido." />
                                 </div>
@@ -156,17 +156,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6 ">
+                              <div class="form-group row">
+                                  <div class="col-sm-10">
+                                       <label for="txtEstadoCivil" class=" col-sm-6 col-form-label">Estado Civil </label>
+                           
+                                   
+                                      <asp:DropDownList ID="ddListEstadoCivil" CssClass="form-control" runat="server"></asp:DropDownList>
+                                           <%-- <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+
+                                  </div>
+                           
+                                 
+                                  </div>
                         </div>
                     </div>
-
-
-            
-
                 </div>
             </div>
-
-
 
 
             <div class="panel panel-primary">
@@ -178,7 +184,7 @@
                                 <label for="lblTelNumero" class="col-sm-6 col-form-label">Número Telefónico</label>
                                 <div class="col-sm-10">
 
-                                    <asp:TextBox runat="server" ID="txtTelNumero" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
+                                    <asp:TextBox runat="server" ID="txtTelNumero" onkeypress="return justNumbers(event);" MaxLength="8" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
                                     
                                 </div>
                             </div>
@@ -201,8 +207,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
                     </div>
 
@@ -249,7 +253,7 @@
                             <div class="form-group row">
                                 <label for="lblNumeroCasa" class="col-sm-6 col-from-label">Número Casa </label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtNumCasa" CssClass="form-control" placeholder="Numero de Casa" />
+                                    <asp:TextBox runat="server" ID="txtNumCasa" onkeypress="return justNumbers(event);" CssClass ="form-control" placeholder="Numero de Casa" />
                                 </div>
                             </div>
                         </div>
@@ -314,6 +318,24 @@
         }
     </style>
         <script type="text/javascript">   
+
+            function justNumbers(e) {
+                var keynum = window.event ? window.event.keyCode : e.which;
+                if ((keynum == 8 || keynum == 48))
+                    return true;
+                if (keynum <= 47 || keynum >= 58) return false;
+                return /\d/.test(String.fromCharCode(keynum));
+            }
+
+
+            function soloLetras(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return true;
+
+                return false;
+            }
+
         $(document).ready(function () {
 
             function OnChangeUpload(o) {
