@@ -15,7 +15,7 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="panel panel-primary "  style="margin-right:50px;">
+            <div class="panel panel-primary ">
                 <div class="panel-heading">Información Estudiante (Nuevo Residente )</div>
                 <div class="panel-body">
 
@@ -24,7 +24,7 @@
                             <div class="form-group row">
                                 <label for="lblperFoto"   class="col-sm-6 col-form-label">Foto</label>
                                 <div class="col-sm-10">
-                                    <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est" style="width: 180px; height: auto;">
+                                    <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est">
                                     <asp:FileUpload ID="FilUpImagen" runat="server" onchange="OnChangeUpload(this);" />
 
                                 </div>

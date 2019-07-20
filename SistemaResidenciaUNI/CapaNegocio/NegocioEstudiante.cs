@@ -51,7 +51,7 @@ namespace CapaNegocio
         {
             return datoEstudiante.ObtenerListaCompañiaTelefonica();
         }
-        
+
         public List<EntidadPersona> ObtnerEstudiantePorCuarto(int Num)
         {
             return datoEstudiante.ObtnerEstudiantePorIdSpCuarto(Num);
@@ -63,9 +63,18 @@ namespace CapaNegocio
             return datoEstudiante.InfoEstudiantePorCarnet(Ncarnet);
 
         }
-        public Object ObtenerEstadoCivil()
+        public object ObtenerEstadoCivil()
         {
             return datoEstudiante.ObtenerEstadoCivil();
+        }
+
+        public List<EntidadEvento> ObtenerEventos(DateTime startD, DateTime endD)
+        {
+            return (new DatoEstudiante()).ObtenerEventos(startD, endD);
+        }
+        public List<EntidadDetalleAseoSegunEvento> ObtenerDetalleAseoSegunEvento(int cuaNum, DateTime starD)
+        {
+            return (new DatoEstudiante()).ObtenerDetalleAseoSegunEvento(cuaNum, starD);
         }
     }
 }

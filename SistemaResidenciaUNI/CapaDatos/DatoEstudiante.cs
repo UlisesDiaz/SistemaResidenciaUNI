@@ -295,13 +295,13 @@ namespace CapaDatos
                 throw ex;
             }
 
-          
+
         }
 
         public object ObtenerEstadoCivil()
         {
             Object estadoCivil = null;
-            
+
             try
             {
 
@@ -320,6 +320,26 @@ namespace CapaDatos
 
             return estadoCivil;
 
+        }
+
+        public List<EntidadEvento> ObtenerEventos(DateTime startD, DateTime endD)
+        {
+            return dbResidencia.spObtenerEventos(startD, endD).Select(dr => new EntidadEvento
+            {
+                id = dr.CUA_NUMERO,
+                start = dr.ROL_ASE_FECHA_INICIAL.ToString("yyyy-MM-dd")
+            }).ToList();
+        }
+
+        public List<EntidadDetalleAseoSegunEvento> ObtenerDetalleAseoSegunEvento(int cuaNum, DateTime starD)
+        {
+            return dbResidencia.spObtenerDetalleAseoSegunEvento(cuaNum, starD).Select(dr => new EntidadDetalleAseoSegunEvento
+            {
+                EST_ID = dr.EST_ID,
+                NOMBRE = dr.NOMBRE,
+                TIP_ASE_DESCRIPCION =dr.TIP_ASE_DESCRIPCION,
+                ROL_ASE_HORA = dr.ROL_ASE_HORA
+            }).ToList();
         }
     }
 }

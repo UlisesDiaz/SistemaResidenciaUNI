@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="223798ba871b4c18901428eb9c6c7272" Name="Diagram1">
-        <EntityTypeShape EntityType="dbModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_BARRIO" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_CARRERA" Width="1.5" PointX="6" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_COMPAÑIA" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
@@ -62,6 +61,8 @@
         <AssociationConnector Association="dbModel.FK_TBL_ROL_ASEO_TBL_USUARIO" ManuallyRouted="false" />
         <EntityTypeShape EntityType="dbModel.TBL_ESTADO_CIVIL" Width="1.5" PointX="0.75" PointY="14.75" />
         <AssociationConnector Association="dbModel.FK_TBL_PERSONA_TBL_ESTADO_CIVIL" />
+      </Diagram>
+      <Diagram DiagramId="ff7cdce9433346ca8046a1c1c4cb6b51" Name="Diagram2" >
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

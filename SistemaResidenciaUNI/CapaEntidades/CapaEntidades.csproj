@@ -46,8 +46,10 @@
     <Compile Include="EntidadCorreo.cs" />
     <Compile Include="EntidadCuarto.cs" />
     <Compile Include="EntidadDepartamento.cs" />
+    <Compile Include="EntidadDetalleAseoSegunEvento.cs" />
     <Compile Include="EntidadDireccion.cs" />
     <Compile Include="EntidadEstudiante.cs" />
+    <Compile Include="EntidadEvento.cs" />
     <Compile Include="EntidadFrecuencia.cs" />
     <Compile Include="EntidadGenero.cs" />
     <Compile Include="EntidadHisEstudianteCuarto.cs" />
