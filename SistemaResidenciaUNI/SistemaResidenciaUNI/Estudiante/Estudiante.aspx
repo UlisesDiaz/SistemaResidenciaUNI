@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Estudiante.aspx.cs" Inherits="SistemaResidenciaUNI.Estudiante.Estudiante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -22,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblperFoto"   class="col-sm-6 col-form-label">Foto</label>
+                                <label for="lblperFoto" class="col-sm-6 col-form-label">Foto</label>
                                 <div class="col-sm-10">
                                     <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est">
                                     <asp:FileUpload ID="FilUpImagen" runat="server" onchange="OnChangeUpload(this);" />
@@ -129,7 +128,7 @@
                             <div class="form-group row">
                                 <label for="lblPerFechaNacimiento" class="col-sm-6 col-form-label">Fecha de Nacimiento del Estudiante</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="txtPerFechaNacimiento" runat="server" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+                                    <input type="text" class="form-control datetimepicker" id="txtPerFechaNacimiento" runat="server" />
                                 </div>
                                 <!-- /.input group -->
                             </div>
@@ -157,18 +156,17 @@
                             </div>
                         </div>
                         <div class="col-sm-6 ">
-                              <div class="form-group row">
-                                  <div class="col-sm-10">
-                                       <label for="txtEstadoCivil" class=" col-sm-6 col-form-label">Estado Civil </label>
-                           
-                                   
-                                      <asp:DropDownList ID="ddListEstadoCivil" CssClass="form-control" runat="server"></asp:DropDownList>
-                                           <%-- <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <label for="txtEstadoCivil" class=" col-sm-6 col-form-label">Estado Civil </label>
 
-                                  </div>
-                           
-                                 
-                                  </div>
+
+                                    <asp:DropDownList ID="ddListEstadoCivil" CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <%-- <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,7 +183,7 @@
                                 <div class="col-sm-10">
 
                                     <asp:TextBox runat="server" ID="txtTelNumero" onkeypress="return justNumbers(event);" MaxLength="8" CssClass="form-control" TextMode="Phone" placeholder="Número Telefónico" />
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -253,7 +251,7 @@
                             <div class="form-group row">
                                 <label for="lblNumeroCasa" class="col-sm-6 col-from-label">Número Casa </label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtNumCasa" onkeypress="return justNumbers(event);" CssClass ="form-control" placeholder="Numero de Casa" />
+                                    <asp:TextBox runat="server" ID="txtNumCasa" onkeypress="return justNumbers(event);" CssClass="form-control" placeholder="Numero de Casa" />
                                 </div>
                             </div>
                         </div>
@@ -277,7 +275,7 @@
                 <div class="panel-heading">Listado de Estudiantes</div>
                 <div class="panel-body">
                     <div class="row">
-                        <asp:GridView ID="gvListaEstudiante"  runat="server" Width="95%" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
+                        <asp:GridView ID="gvListaEstudiante" runat="server" Width="95%" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
                             <Columns>
                                 <asp:BoundField DataField="EST_CARNET" HeaderText="Carnet Estudiante" SortExpression="EST_CARNET" />
                                 <asp:BoundField DataField="PER_IDENTIFICACION" HeaderText="Identificación" SortExpression="PER_IDENTIFICACION" />
@@ -314,27 +312,27 @@
     </asp:UpdatePanel>
     <style type="text/css">
         #gvListaEstudiante {
-            margin-left: 5px!important;
+            margin-left: 5px !important;
         }
     </style>
-        <script type="text/javascript">   
+    <script type="text/javascript">
 
-            function justNumbers(e) {
-                var keynum = window.event ? window.event.keyCode : e.which;
-                if ((keynum == 8 || keynum == 48))
-                    return true;
-                if (keynum <= 47 || keynum >= 58) return false;
-                return /\d/.test(String.fromCharCode(keynum));
-            }
+        function justNumbers(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8 || keynum == 48))
+                return true;
+            if (keynum <= 47 || keynum >= 58) return false;
+            return /\d/.test(String.fromCharCode(keynum));
+        }
 
 
-            function soloLetras(evt) {
-                var charCode = (evt.which) ? evt.which : event.keyCode
-                if (charCode > 31 && (charCode < 48 || charCode > 57))
-                    return true;
+        function soloLetras(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return true;
 
-                return false;
-            }
+            return false;
+        }
 
         $(document).ready(function () {
 
@@ -342,13 +340,6 @@
                 debugger;
                 $('#' + o.id + '').next().find('input').val($('#' + o.id + '').val());
             }
-
-            //Datemask dd/mm/yyyy
-            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
-            //Datemask2 mm/dd/yyyy
-            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
-            //Money Euro
-            $("[data-mask]").inputmask();
 
         });
     </script>
