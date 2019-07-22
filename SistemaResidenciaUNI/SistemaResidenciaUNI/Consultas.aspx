@@ -15,38 +15,6 @@
     </asp:UpdateProgress>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Asignaciones por Cuarto </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group row">
-
-                        <div class="col-md-3">
-                            <label for="lblBusqueda">Buscar Por Cuarto </label>
-                        </div>
-                        <div class="col-md-3">
-                            <asp:DropDownList ID="ddListaCuartos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddListaCuartos_SelectedIndexChanged"></asp:DropDownList>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <label for="lblNombres" class="col-md-5">Estudiantes Encontrados</label>
-                        <div>
-                            <label for="lblNombres" class="col-md-5">
-                                <asp:DropDownList ID="ddlNombres" CssClass="form-control" runat="server"></asp:DropDownList></label>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="panel panel-primary">
         <div class="panel panel-heading">Calendario de Aseo</div>
         <div class="panel-body">
             <div class="row" id="calendarioweb"></div>
@@ -63,8 +31,7 @@
                     right: 'month, basicWeek, basicDay, agendaWeek, agendaDay'
                 },
                 dayClick: function (date, jsEvent, view) {
-                    alert('Usted a seleccionado ' + date.format());
-                    $('#modalDatos').modal();
+
                 }
                 ,
                 events: function (start, end, timezone, callback) {
@@ -96,8 +63,9 @@
                     });
                 },
                 eventClick: function (CalEvent, jsEvent, view) {
+
                     $('#tituloEvento').html(CalEvent.title);
-                    $('#tableData tbody').empty();
+                    $('#tableData tbody tr').empty();
                     var obj = {};
                     obj.cuaNum = CalEvent.id;
                     obj.start = CalEvent.start.format();
@@ -116,10 +84,13 @@
                                     row += '<tr>'
                                     row += '<td> ' + dataj[ind].NOMBRE + ' </td>'
                                     row += '<td> ' + dataj[ind].TIP_ASE_DESCRIPCION + ' </td>'
+
                                     if (dataj[ind].ROL_ASE_HORA == null)
                                         row += '<td>N/D</td>'
                                     else
                                         row += '<td> ' + dataj[ind].ROL_ASE_HORA + ' </td>'
+                                    row += '<td> <input type="checkbox"></input> </td>'
+                                    row += '<td> <textarea></textarea></td>'
                                     row += '</tr>'
 
                                     $('#tableData tbody').append(row);
@@ -134,13 +105,6 @@
         });
 
     </script>
-
-
-    <!-- Ventana modal para Guardar Nuevos eventos de aseo en Residencia -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
-
     <!-- Modal -->
     <div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -158,16 +122,17 @@
                                 <th>Nombre Estudiante</th>
                                 <th>Tipo de Aseo</th>
                                 <th>Hora de Aseo</th>
+                                <th>Cumple?</th>
+                                <th>Observaciones</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
 
-                    <div id="decripcionEvento"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
                 </div>
             </div>
         </div>

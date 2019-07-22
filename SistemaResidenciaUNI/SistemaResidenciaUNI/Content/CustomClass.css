@@ -25,3 +25,7 @@
 .btn:hover {
   background-color: RoyalBlue;
 }
+
+.modal-content{
+    width: max-content!important;
+}
