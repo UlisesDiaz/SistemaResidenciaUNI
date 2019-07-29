@@ -76,5 +76,17 @@ namespace CapaNegocio
         {
             return (new DatoEstudiante()).ObtenerDetalleAseoSegunEvento(cuaNum, starD);
         }
+        public EntidadspMoverEstudianteDeCuarto N_obtenerInfoEstudianteAmover(string carnet)
+        {
+            return datoEstudiante.ObtenerInfoEstudianteAmover(carnet);
+
+        }
+
+        public List<EntidadHistorialCuarto> N_HistorialEstudianteCuarto(string carnet)
+        {
+            
+            return datoEstudiante.HistorialCuartoEstudiante(carnet);
+
+        }
     }
 }

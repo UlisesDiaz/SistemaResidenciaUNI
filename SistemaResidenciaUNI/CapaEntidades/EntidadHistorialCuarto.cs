@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
- public   class EntidadHisEstudianteCuarto
+  public  class EntidadHistorialCuarto
     {
-        public int USU_ID { get; set; }
-        public int CUA_ID { get; set; }
+
         public string PER_PRIMER_NOMBRE { get; set; }
         public string PER_SEGUNDO_NOMBRE { get; set; }
         public string PER_PRIMER_APELLIDO { get; set; }

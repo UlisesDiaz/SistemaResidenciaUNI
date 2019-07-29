@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblperPrimerNombre" class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
+                                <label for="txtPerPrimerNombre"  class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox runat="server" ID="txtPerPrimerNombre" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPerSegundoNombre" ErrorMessage="Deve Ingresar letras" ValidationExpression="[A-Za-z]*"></asp:RegularExpressionValidator>

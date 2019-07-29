@@ -23,6 +23,7 @@ namespace CapaEntidades
         public string TEL_NUMERO { get; set; }
         public string COM_DESCRIPCION { get; set; }
         public string CAR_DESCRIPCION { get; set; }
+        public string EST_CIVIL { get; set; }
         public string REC_DESCRIPCION { get; set; }
         public Nullable<int> CUA_NUMERO { get; set; }
 

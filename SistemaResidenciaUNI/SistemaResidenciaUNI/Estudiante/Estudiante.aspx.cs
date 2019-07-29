@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using CapaNegocio;
 using CapaEntidades;
 using System.IO;
+using System.Web.Script.Services;
 
 namespace SistemaResidenciaUNI.Estudiante
 {
@@ -243,16 +244,17 @@ namespace SistemaResidenciaUNI.Estudiante
             ObtenerBarrioPorMunicipioId((int.Parse(ddlMunicipio.SelectedValue)));
         }
 
+    
+
         void ListarEstudiantes()
         {
+ 
+           
             gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
             gvListaEstudiante.DataBind();
         }
 
-        void  d(int numCuarto)
-        {
-             
-        }
+        
 
     }
 }

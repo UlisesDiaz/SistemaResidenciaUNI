@@ -284,7 +284,12 @@ namespace CapaDatos
                     COM_DESCRIPCION = dr.COM_DESCRIPCION,
                     COR_DEFINICION = dr.COR_DEFINICION,
                     CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
-                    REC_DESCRIPCION = dr.REC_DESCRIPCION
+                    REC_DESCRIPCION = dr.REC_DESCRIPCION,
+
+
+
+
+
 
                 }).FirstOrDefault();
 
@@ -337,8 +342,43 @@ namespace CapaDatos
             {
                 EST_ID = dr.EST_ID,
                 NOMBRE = dr.NOMBRE,
-                TIP_ASE_DESCRIPCION =dr.TIP_ASE_DESCRIPCION,
+                TIP_ASE_DESCRIPCION = dr.TIP_ASE_DESCRIPCION,
                 ROL_ASE_HORA = dr.ROL_ASE_HORA
+            }).ToList();
+        }
+
+        public EntidadspMoverEstudianteDeCuarto ObtenerInfoEstudianteAmover(string carnet)
+        {
+
+            if (dbResidencia.spMoverEstudianteDeCuarto(carnet).Count().Equals(0))
+                throw new Exception(string.Format(Util.Exception.estudianteVSCarnetNoEncontrado, carnet));
+
+            return dbResidencia.spMoverEstudianteDeCuarto(carnet).Select(dr => new EntidadspMoverEstudianteDeCuarto
+            {
+
+                PER_ID = dr.PER_ID,
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
+                CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
+                CUA_NUMERO = dr.CUA_NUMERO
+            }).FirstOrDefault();
+
+        }
+
+        public List<EntidadHistorialCuarto> HistorialCuartoEstudiante(string carnet)
+        {
+            return dbResidencia.spHistorialCuarto(carnet).Select(dr => new EntidadHistorialCuarto
+            {
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                HIS_EST_CUA_FECHA_INICIAL = dr.HIS_EST_CUA_FECHA_INICIAL,
+                HIS_EST_CUA_FECHA_FINAL = dr.HIS_EST_CUA_FECHA_FINAL,
+                CUA_NUMERO = dr.CUA_NUMERO,
+                HIS_EST_CUA_ESTADO = dr.HIS_EST_CUA_ESTADO,
+                HIS_EST_CUA_DESRIPCION = dr.HIS_EST_CUA_DESRIPCION
             }).ToList();
         }
     }

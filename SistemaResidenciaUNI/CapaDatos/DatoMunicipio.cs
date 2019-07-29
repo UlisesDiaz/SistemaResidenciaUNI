@@ -39,9 +39,7 @@ namespace CapaDatos
                 resultado.esError = true;
                 resultado.mensaje = ex.Message + "  A ocurrido un error";
             }
-
             return resultado;
         }
-
     }
 }

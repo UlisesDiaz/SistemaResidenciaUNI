@@ -35,6 +35,7 @@
                 }
                 ,
                 events: function (start, end, timezone, callback) {
+
                     var obj = {};
                     obj.start = start.format();
                     obj.end = end.format();

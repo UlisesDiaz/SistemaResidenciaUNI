@@ -36,6 +36,8 @@ namespace SistemaResidenciaUNI
                     lblCorreo.Text = entPer.COR_DEFINICION == null ? string.Empty : entPer.COR_DEFINICION;
                     lblCompania.Text = entPer.COM_DESCRIPCION;
                     lblNombreCarrera.Text = entPer.CAR_DESCRIPCION;
+                    lblRecinto.Text =entPer.REC_DESCRIPCION;
+                    lblEstadoCivil.Text = entPer.EST_CIVIL;
 
                 }
                 else

@@ -655,10 +655,16 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spHistorialCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nunCarnet" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="spInfoEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumCarnet" Type="varchar" Mode="In" />
         </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spMoverEstudianteDeCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="carnet" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SPNuevoTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
         </Function>
@@ -1700,6 +1706,12 @@
             <Parameter Name="cuaNum" Mode="In" Type="Int32" />
             <Parameter Name="startD" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="spMoverEstudianteDeCuarto" ReturnType="Collection(dbModel.spMoverEstudianteDeCuarto_Result)">
+          <Parameter Name="carnet" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spHistorialCuarto" ReturnType="Collection(dbModel.spHistorialCuarto_Result)">
+            <Parameter Name="nunCarnet" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1789,6 +1801,25 @@
           <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="203" />
           <Property Type="String" Name="TIP_ASE_DESCRIPCION" Nullable="false" MaxLength="50" />
           <Property Type="Time" Name="ROL_ASE_HORA" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spMoverEstudianteDeCuarto_Result">
+          <Property Type="Int32" Name="PER_ID" Nullable="false" />
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CAR_DESCRIPCION" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spHistorialCuarto_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="HIS_EST_CUA_FECHA_INICIAL" Nullable="false" />
+          <Property Type="DateTime" Name="HIS_EST_CUA_FECHA_FINAL" Nullable="true" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+          <Property Type="Boolean" Name="HIS_EST_CUA_ESTADO" Nullable="false" />
+          <Property Type="String" Name="HIS_EST_CUA_DESRIPCION" Nullable="true" MaxLength="1000" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2177,6 +2208,33 @@
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="TIP_ASE_DESCRIPCION" ColumnName="TIP_ASE_DESCRIPCION" />
                 <ScalarProperty Name="ROL_ASE_HORA" ColumnName="ROL_ASE_HORA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spMoverEstudianteDeCuarto" FunctionName="dbModel.Store.spMoverEstudianteDeCuarto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spMoverEstudianteDeCuarto_Result">
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="CAR_DESCRIPCION" ColumnName="CAR_DESCRIPCION" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spHistorialCuarto" FunctionName="dbModel.Store.spHistorialCuarto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spHistorialCuarto_Result">
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="HIS_EST_CUA_FECHA_INICIAL" ColumnName="HIS_EST_CUA_FECHA_INICIAL" />
+                <ScalarProperty Name="HIS_EST_CUA_FECHA_FINAL" ColumnName="HIS_EST_CUA_FECHA_FINAL" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="HIS_EST_CUA_ESTADO" ColumnName="HIS_EST_CUA_ESTADO" />
+                <ScalarProperty Name="HIS_EST_CUA_DESRIPCION" ColumnName="HIS_EST_CUA_DESRIPCION" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

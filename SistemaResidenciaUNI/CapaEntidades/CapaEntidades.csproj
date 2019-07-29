@@ -55,6 +55,7 @@
     <Compile Include="EntidadHisEstudianteCuarto.cs" />
     <Compile Include="EntidadHisEstudianteRegistro.cs" />
     <Compile Include="EntidadHisRolAseo.cs" />
+    <Compile Include="EntidadHistorialCuarto.cs" />
     <Compile Include="EntidadInfoEstudianteSP.cs" />
     <Compile Include="EntidadMunicipio.cs" />
     <Compile Include="EntidadPerRelation.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="EntidadRecinto.cs" />
     <Compile Include="EntidadResponsable.cs" />
     <Compile Include="EntidadRolAseo.cs" />
+    <Compile Include="EntidadspMoverEstudianteDeCuarto.cs" />
     <Compile Include="EntidadTelefono.cs" />
     <Compile Include="EntidadTipoAreaResponsable.cs" />
     <Compile Include="EntidadTipoAseo.cs" />

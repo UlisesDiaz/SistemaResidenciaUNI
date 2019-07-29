@@ -84,10 +84,16 @@
     <Compile Include="spBuscarEstudiantePorCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spHistorialCuarto_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spInfoEstudiante_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spMostrarCuartosDisponibles_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spMoverEstudianteDeCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spObtenerDetalleAseoSegunEvento_Result.cs">

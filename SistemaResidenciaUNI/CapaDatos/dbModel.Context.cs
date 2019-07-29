@@ -341,5 +341,23 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spObtenerDetalleAseoSegunEvento_Result>("spObtenerDetalleAseoSegunEvento", cuaNumParameter, startDParameter);
         }
+    
+        public virtual ObjectResult<spMoverEstudianteDeCuarto_Result> spMoverEstudianteDeCuarto(string carnet)
+        {
+            var carnetParameter = carnet != null ?
+                new ObjectParameter("carnet", carnet) :
+                new ObjectParameter("carnet", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spMoverEstudianteDeCuarto_Result>("spMoverEstudianteDeCuarto", carnetParameter);
+        }
+    
+        public virtual ObjectResult<spHistorialCuarto_Result> spHistorialCuarto(string nunCarnet)
+        {
+            var nunCarnetParameter = nunCarnet != null ?
+                new ObjectParameter("nunCarnet", nunCarnet) :
+                new ObjectParameter("nunCarnet", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spHistorialCuarto_Result>("spHistorialCuarto", nunCarnetParameter);
+        }
     }
 }

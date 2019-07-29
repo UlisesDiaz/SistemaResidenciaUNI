@@ -15,16 +15,16 @@
                     <div class="col-md-5">
                         <asp:Label ID="lblBuscarCarnet" runat="server" class="col-sm-4 col-form-label" CssClass="text text-bold" Text="  Ingrese Carnet del Estudiante"></asp:Label>
                     </div>
-                   <div class="col-md-3">
-                       <asp:TextBox ID="txtNumCarnet" runat="server" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
-                   </div>
-                        
+                    <div class="col-md-3">
+                        <asp:TextBox ID="txtNumCarnet" runat="server" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
+                    </div>
+
                 </div>
 
                 <div class="col-md-6">
-                    <div class="col-md-6"> 
-                    <asp:Button ID="btnBuscarCarnet" runat="server" class="col-sm-4" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscarCarnet_Click" />
-                        </div>
+                    <div class="col-md-6">
+                        <asp:Button ID="btnBuscarCarnet" runat="server" class="col-sm-4" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscarCarnet_Click" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@
 
     <div class="panel panel-primary">
 
-        <div class="panel panel-heading "><i class="fas fa-info-circle">I</i> Información de la carrera</div>
+        <div class="panel panel-heading ">Información de la carrera</div>
         <div class="panel panel-body">
 
             <div class="row">
@@ -205,7 +205,15 @@
                 </div>
 
                 <div class="col-md-6">
+                    <div class="col-md-2">
+                        <asp:Label ID="Label2" runat="server" CssClass="text text-bold" Text="Recinto:"></asp:Label>
+                    </div>
+                    
+                        <div class="col-md-6">
+                            <asp:Label ID="lblRecinto" runat="server" Text=""></asp:Label>
+                        </div>
                 </div>
+
             </div>
 
 
