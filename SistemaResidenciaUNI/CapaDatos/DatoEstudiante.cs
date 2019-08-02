@@ -374,12 +374,32 @@ namespace CapaDatos
                 PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
                 PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
                 PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
-                HIS_EST_CUA_FECHA_INICIAL = dr.HIS_EST_CUA_FECHA_INICIAL,
-                HIS_EST_CUA_FECHA_FINAL = dr.HIS_EST_CUA_FECHA_FINAL,
+                HIS_EST_CUA_FECHA_INICIAL = dr.HIS_EST_CUA_FECHA_INICIAL.ToString("dd-MM-yyyy"),
+                HIS_EST_CUA_FECHA_FINAL = dr.HIS_EST_CUA_FECHA_FINAL.HasValue ? dr.HIS_EST_CUA_FECHA_FINAL.Value.ToString("dd-MM-yyyy") : string.Empty,
                 CUA_NUMERO = dr.CUA_NUMERO,
-                HIS_EST_CUA_ESTADO = dr.HIS_EST_CUA_ESTADO,
+                HIS_EST_CUA_ESTADO = dr.HIS_EST_CUA_ESTADO ? "Activo" : "Inactivo",
                 HIS_EST_CUA_DESRIPCION = dr.HIS_EST_CUA_DESRIPCION
             }).ToList();
+        }
+
+
+        public List<EntidadspEstudiantesGuardados> MostrarEstudianteGuardados()
+        {
+            return dbResidencia.spEstdianteGuardados().Select(dr => new EntidadspEstudiantesGuardados
+
+            {
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
+                CUA_NUMERO = dr.CUA_NUMERO,
+                CAR_DESCRIPCION = dr.CAR_DESCRIPCION
+
+
+            }
+
+            ).ToList();
+
         }
     }
 }

@@ -655,6 +655,7 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spEstdianteGuardados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spHistorialCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nunCarnet" Type="varchar" Mode="In" />
         </Function>
@@ -1710,8 +1711,9 @@
           <Parameter Name="carnet" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spHistorialCuarto" ReturnType="Collection(dbModel.spHistorialCuarto_Result)">
-            <Parameter Name="nunCarnet" Mode="In" Type="String" />
+          <Parameter Name="nunCarnet" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spEstdianteGuardados" ReturnType="Collection(dbModel.spEstdianteGuardados_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1820,6 +1822,14 @@
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
           <Property Type="Boolean" Name="HIS_EST_CUA_ESTADO" Nullable="false" />
           <Property Type="String" Name="HIS_EST_CUA_DESRIPCION" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="spEstdianteGuardados_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+          <Property Type="String" Name="CAR_DESCRIPCION" Nullable="false" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2235,6 +2245,18 @@
                 <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
                 <ScalarProperty Name="HIS_EST_CUA_ESTADO" ColumnName="HIS_EST_CUA_ESTADO" />
                 <ScalarProperty Name="HIS_EST_CUA_DESRIPCION" ColumnName="HIS_EST_CUA_DESRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEstdianteGuardados" FunctionName="dbModel.Store.spEstdianteGuardados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spEstdianteGuardados_Result">
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="CAR_DESCRIPCION" ColumnName="CAR_DESCRIPCION" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

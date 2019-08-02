@@ -16,6 +16,7 @@
         jQuery_382(document).ready(function () {
             jQuery_382('#buscar').on('click', function () {
                 LoadStudentInfo();
+                LoadStudentBedRoom();
             });
         });
 
@@ -28,12 +29,11 @@
                 data: JSON.stringify({ numCarnet: carnet }),
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);
                     if (!!result) {
 
                         var dataj = JSON.parse(result.d);
                         if (dataj.error != "") {
-                            alert(dataj.error);
+                            alert('Error: ' + dataj.error);
                             $('#lblIdPer').text('');
                             $('#lblPrimerNombre').text('');
                             $('#lblSegundoNombre').text('');
@@ -52,12 +52,84 @@
                         }
                     }
                 }, error: function (er) {
-                    alert(er);
+                    alert('Error: ' + er);
                 }
             });
 
         }
+        //tabla Historial
+        function LoadStudentBedRoom() {
+            var carnet = $('#txtNumCarnet').val();
+            jQuery.ajax({
+                type: "post",
+                url: 'CambioCuarto.aspx/ajaxHistorialCuaroEstudiante',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ numCarnet: carnet }),
+                dataType: "json",
+                success: function (result) {
+                    if (!!result) {
 
+                        var dataj = JSON.parse(result.d);
+                        if (dataj.error != "") {
+                            alert('Error: ' + dataj.error);
+                        } else {
+                            $('#tblHistorialCuarto').DataTable({
+                                "scrollY": "200px",
+                                "createdRow": function (row, data, index) {
+                                    if (data.HIS_EST_CUA_ESTADO == 'Activo') {
+                                        $(row).addClass('activeRow');
+                                    }
+                                },
+                                language: {
+                                    "decimal": "",
+                                    "emptyTable": "No hay información",
+                                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                    "infoEmpty": "Mostrando 0 de 0 de 0 Entradas",
+                                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                                    "infoPostFix": "",
+                                    "thousands": ",",
+                                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                                    "loadingRecords": "Cargando...",
+                                    "processing": "Procesando...",
+                                    "search": "Buscar:",
+                                    "zeroRecords": "Sin resultados encontrados",
+                                    "paginate": {
+                                        "first": "Primero",
+                                        "last": "Ultimo",
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+                                },
+                                destroy: true,
+                                responsive: true,
+                                "aaData": dataj.Data,
+                                "columns": [
+                        { data: "HIS_EST_CUA_DESRIPCION" },
+                        {
+                            data: 'HIS_EST_CUA_FECHA_INICIAL', render: function (data, type, row) {
+                                return data;
+                            }
+                        },
+                        { data: "HIS_EST_CUA_FECHA_FINAL" },
+                        { data: "CUA_NUMERO" },
+                        {
+                            data: 'HIS_EST_CUA_ESTADO', render: function (data, type, row) {
+                                return data;
+                            }
+                        }],
+                                dom: 'Bfrtip',
+                                buttons: [
+                                'copy', 'csv', 'excel', 'pdf', 'print'
+                                ]
+                            });
+                        }
+                    }
+                }, error: function (er) {
+                    alert(er);
+                }
+            });
+        }
+        <%--fin Tabla Historial--%>
     </script>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -71,13 +143,12 @@
                                 <asp:Label runat="server" label="txtNumCarnet" Font-Bold="true"> Ingrese el Carnet del estudiante</asp:Label>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="txtNumCarnet" style="height: 28px; width: 200px" autocomplete="on" placeholder="Eje:( 2019-0019U )"> </input>
+                                <input type="text" id="txtNumCarnet" class="form-control" placeholder="Eje:( 2019-0019U )"> </input>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="col-md-10">
-                                <input type="button" id="buscar" value="Buscar" class="btn btn-primary" style="width: 150px; height: 45px" />
-                            </div>
+                            <input type="button" id="buscar" value="Buscar" class="btn btn-primary" />
+
                         </div>
                     </div>
 
@@ -170,52 +241,21 @@
                 <div class="panel panel-primary">
                     <div class="panel panel-heading">Historial Estudiante Cuarto</div>
                     <div class="panel panel-body">
-                        <div class="row  ">
-                            <%--   <div class="col-md-12">
-                                <asp:GridView ID="gridEstudianteAmover" runat="server" AutoGenerateColumns="false" BackColor="#feffff" HeaderText="Carnet Estudiante"
-                                    CssClass="table table-hover table-bordered table-responsive table-striped">
-
-                                    <Columns>
-                                        <asp:BoundField DataField="PER_PRIMER_NOMBRE" HeaderText="Primer Nombre" SortExpression="PER_PRIMER_NOMBRE" />
-                                        <asp:BoundField DataField="PER_SEGUNDO_NOMBRE" HeaderText="Segundo Nombre" SortExpression="PER_SEGUNDO_NOMBRE" />
-                                        <asp:BoundField DataField="PER_PRIMER_APELLIDO" HeaderText="Primer Apellido" SortExpression="PER_PRIMER_APELLIDO" />
-                                        <asp:BoundField DataField="PER_SEGUNDO_APELLIDO" HeaderText="Segundo Apellido" SortExpression="PER_SEGUNDO_APELLIDO" />
-                                        <asp:BoundField DataField="CAR_DESCRIPCION" HeaderText="Carrera" SortExpression="CAR_DESCRIPCION" />
-                                        <asp:BoundField DataField="CUA_NUMERO" HeaderText="Cuarto Actual" SortExpression="CUA_NUMERO" />
-
-                                    </Columns>
-                            --%>
-                            <%-- </asp:GridView>--%>
-
-                            <table class="tab-content">
-
-                                <tr>
-                                    <th>Fecha Inicial</th>
-                                    
-                                    <th>Fecha Final</th>
-                                    <th>Cuarto</th>
-                                    <th>Estado del Cuarto</th>
-                                    <th>Descripcion</th>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-
-                                </tr>
+                        <div class="row">
+                            <table id="tblHistorialCuarto" class="table table-bordered table-condensed table-hover responsive">
+                                <thead class="background-thead">
+                                    <tr>
+                                        <th>Observación de Cambio de Cuarto</th>
+                                        <th>Fecha Ingreso de Cuarto</th>
+                                        <th>Fecha Salida de Cuarto</th>
+                                        <th>Número de Cuarto</th>
+                                        <th>Estado Detalle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
                             </table>
                         </div>
-                    </div>
-
-                </div>
-
-            </div>
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

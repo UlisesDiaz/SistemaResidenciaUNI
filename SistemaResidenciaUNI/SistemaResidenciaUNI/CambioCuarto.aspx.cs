@@ -18,18 +18,6 @@ namespace SistemaResidenciaUNI
         {
 
         }
-        void listaEstudiante()
-        {
-            //if (txtNumCarnet.Text.Trim().Equals(string.Empty))
-            //{
-            //    throw new Exception(Util.Exception.carnetVacio);
-            //}
-            //else
-            //{
-            //    gridEstudianteAmover.DataSource = negocioEstudiante.N_obtenerInfoEstudianteAmover(txtNumCarnet.Text);
-            //    gridEstudianteAmover.DataBind();
-            //}
-        }
 
         [System.Web.Services.WebMethod]
         [ScriptMethod()]
@@ -54,27 +42,22 @@ namespace SistemaResidenciaUNI
 
         [System.Web.Services.WebMethod]
         [ScriptMethod()]
-
-        public static string ajaxHistorialCuaroEstudiante(string carnet)
+        public static string ajaxHistorialCuaroEstudiante(string numCarnet)
         {
             var serializer = new JavaScriptSerializer();
             var json = string.Empty;
 
-            List<EntidadHistorialCuarto> histoerialCuarto = null;
+            List<EntidadHistorialCuarto> historialCuarto = null;
             try
             {
-                histoerialCuarto = (new NegocioEstudiante()).N_HistorialEstudianteCuarto(carnet);
-                json = serializer.Serialize(histoerialCuarto);
+                historialCuarto = (new NegocioEstudiante()).N_HistorialEstudianteCuarto(numCarnet);
+                json = serializer.Serialize(new { Data = historialCuarto, error = "" });
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
-                
+                json = serializer.Serialize(new { Data = json, error = ex.Message });
             }
-
-
             return json;
-
-
         }
     }
 }

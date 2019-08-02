@@ -9,6 +9,8 @@ using CapaNegocio;
 using CapaEntidades;
 using System.IO;
 using System.Web.Script.Services;
+using System.Web.Services;
+
 
 namespace SistemaResidenciaUNI.Estudiante
 {
@@ -53,12 +55,12 @@ namespace SistemaResidenciaUNI.Estudiante
             catch (Exception ex)
             {
 
-               string script = string.Format("alert('{0}');", ex.Message);
-               ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
-              
+                string script = string.Format("alert('{0}');", ex.Message);
+                ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+
             }
 
-         }
+        }
 
         Resultado GuardarEstudiante()
         {
@@ -80,7 +82,7 @@ namespace SistemaResidenciaUNI.Estudiante
             entidadPersona.PER_FECHA_NACIMIENTO = DateTime.Parse(txtPerFechaNacimiento.Value.ToString());
             entidadPersona.PER_ESTADO = true;
             entidadPersona.EST_CIV_ID = int.Parse(ddListEstadoCivil.SelectedValue); //???No veo el control para capturar el estado civil
-            
+
             entidadEstudiante.TBL_PERSONA = entidadPersona; //pasando info sobre persona en estudiante (persona q es estudiante)
             //info sobre estudiante
             //cuarto
@@ -189,12 +191,12 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlcompDescripcion.DataBind();
 
             //Estado Civil de Personas
-            ddListEstadoCivil.DataSource =negocioEstudiante.ObtenerEstadoCivil();
+            ddListEstadoCivil.DataSource = negocioEstudiante.ObtenerEstadoCivil();
             ddListEstadoCivil.DataTextField = "EST_CIV_DESCRI";
             ddListEstadoCivil.DataValueField = "EST_CIV_ID";
             ddListEstadoCivil.DataBind();
 
-       
+
         }
 
         void LimpiarControles()
@@ -244,17 +246,29 @@ namespace SistemaResidenciaUNI.Estudiante
             ObtenerBarrioPorMunicipioId((int.Parse(ddlMunicipio.SelectedValue)));
         }
 
-    
+
 
         void ListarEstudiantes()
         {
- 
-           
+
+
             gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
             gvListaEstudiante.DataBind();
         }
 
-        
+        [WebMethod]
+
+        public static Object MostrarEstudianteGuardados()
+        {
+            List<EntidadspEstudiantesGuardados> lista = new List<EntidadspEstudiantesGuardados>();
+
+            NegocioEstudiante nEstudiante = new NegocioEstudiante();
+            lista = nEstudiante.N_MostraEstudianteGuardados();
+            object json = new { data = lista };
+            return json;
+
+        }
+
 
     }
 }

@@ -162,8 +162,10 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\dataTables.bootstrap.min.js" />
     <Content Include="bootstrap\js\es.js" />
     <Content Include="bootstrap\js\fullcalendar.min.js" />
+    <Content Include="bootstrap\js\jquery.dataTables.min.js" />
     <Content Include="bootstrap\js\jquery.min.js" />
     <Content Include="bootstrap\js\moment.min.js" />
     <Content Include="bootstrap\js\npm.js" />
@@ -208,6 +210,7 @@
     <Content Include="dist\img\grupo.jpg" />
     <Content Include="dist\img\icons.png" />
     <Content Include="dist\img\loading.gif" />
+    <Content Include="dist\img\logoUni.jpg" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\sprite-skin-flat.png" />
@@ -877,6 +880,7 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="PruebaDatatable.aspx" />
     <Content Include="Rol Aseo\Rol Aseo.aspx" />
     <Content Include="Rol Aseo\RolDeAseo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -983,6 +987,13 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebaDatatable.aspx.cs">
+      <DependentUpon>PruebaDatatable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PruebaDatatable.aspx.designer.cs">
+      <DependentUpon>PruebaDatatable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Rol Aseo\Rol Aseo.aspx.cs">
       <DependentUpon>Rol Aseo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

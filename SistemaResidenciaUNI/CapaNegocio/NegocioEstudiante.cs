@@ -88,5 +88,14 @@ namespace CapaNegocio
             return datoEstudiante.HistorialCuartoEstudiante(carnet);
 
         }
+
+        public List<EntidadspEstudiantesGuardados> N_MostraEstudianteGuardados()
+        {
+            return datoEstudiante.MostrarEstudianteGuardados();
+
+        }
+
+
+
     }
 }

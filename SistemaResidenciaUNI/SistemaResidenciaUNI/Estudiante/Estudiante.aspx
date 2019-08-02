@@ -21,10 +21,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="lblperFoto" class="col-sm-6 col-form-label">Foto</label>
+                                <%--<label for="lblperFoto" class="col-sm-6 col-form-label">Foto</label>--%>
                                 <div class="col-sm-10">
-                                    <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est">
-                                    <asp:FileUpload ID="FilUpImagen" runat="server" onchange="OnChangeUpload(this);" />
+                                   <%-- <img src="../dist/img/grupo.jpg" class="img-responsive img-thumbnail" alt="Foto Est">
+                                    <asp:FileUpload ID="FilUpImagen" runat="server" onchange="OnChangeUpload(this);" />--%>
 
                                 </div>
                             </div>
@@ -307,16 +307,56 @@
                 </div>
             </div>
 
+
+            <div class="panel panel-primary">
+        <div class="panel panel-heading">Lista Aseo</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <table id="DTprueba" class="table table-bordered table-hover row-border" >
+
+                        <thead>
+                            <tr>
+                                <th>Primer Nombre</th>
+                                <th>Segundo Nombre</th>
+                                <th>Primer Apellido</th>
+                                <th>Segundo Apellido</th>
+                                  <th>Cuarto</th>
+                                  <th>Carrera</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-prueb"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <br />
+                <div class="col-md-6 col-md-offset-3">
+     
+                </div>
+            </div>
+        </div>
+    </div>
+
             <!-- ./wrapper -->
         </ContentTemplate>
     </asp:UpdatePanel>
     <style type="text/css">
+
+
+        
+
         #gvListaEstudiante {
             margin-left: 5px !important;
         }
     </style>
     <script type="text/javascript">
 
+       
+        
+      
         function justNumbers(e) {
             var keynum = window.event ? window.event.keyCode : e.which;
             if ((keynum == 8 || keynum == 48))

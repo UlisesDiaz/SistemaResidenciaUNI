@@ -84,6 +84,9 @@
     <Compile Include="spBuscarEstudiantePorCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spEstdianteGuardados_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spHistorialCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

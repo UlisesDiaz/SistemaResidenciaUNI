@@ -63,6 +63,7 @@
     <Compile Include="EntidadRecinto.cs" />
     <Compile Include="EntidadResponsable.cs" />
     <Compile Include="EntidadRolAseo.cs" />
+    <Compile Include="EntidadspEstudiantesGuardados.cs" />
     <Compile Include="EntidadspMoverEstudianteDeCuarto.cs" />
     <Compile Include="EntidadTelefono.cs" />
     <Compile Include="EntidadTipoAreaResponsable.cs" />

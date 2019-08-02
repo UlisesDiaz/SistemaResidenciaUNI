@@ -359,5 +359,10 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spHistorialCuarto_Result>("spHistorialCuarto", nunCarnetParameter);
         }
+    
+        public virtual ObjectResult<spEstdianteGuardados_Result> spEstdianteGuardados()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEstdianteGuardados_Result>("spEstdianteGuardados");
+        }
     }
 }
