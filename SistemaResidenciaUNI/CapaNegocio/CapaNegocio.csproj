@@ -47,7 +47,6 @@
     <Compile Include="NegocioMunicipio.cs" />
     <Compile Include="NegocioTipoAseo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebMethodAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
