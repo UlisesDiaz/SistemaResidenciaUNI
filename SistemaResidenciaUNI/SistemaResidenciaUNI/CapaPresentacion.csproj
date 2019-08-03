@@ -881,7 +881,6 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="PruebaDatatable.aspx" />
-    <Content Include="Rol Aseo\Rol Aseo.aspx" />
     <Content Include="Rol Aseo\RolDeAseo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -993,13 +992,6 @@
     </Compile>
     <Compile Include="PruebaDatatable.aspx.designer.cs">
       <DependentUpon>PruebaDatatable.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Rol Aseo\Rol Aseo.aspx.cs">
-      <DependentUpon>Rol Aseo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Rol Aseo\Rol Aseo.aspx.designer.cs">
-      <DependentUpon>Rol Aseo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Rol Aseo\RolDeAseo.aspx.cs">
       <DependentUpon>RolDeAseo.aspx</DependentUpon>

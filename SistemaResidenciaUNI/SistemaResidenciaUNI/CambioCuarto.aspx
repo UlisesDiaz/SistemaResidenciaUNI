@@ -118,8 +118,7 @@
                             }
                         }],
                                 dom: 'Bfrtip',
-                                buttons: [
-                                'copy', 'csv', 'excel', 'pdf', 'print'
+                                buttons: ['excel', 'pdf', 'print'
                                 ]
                             });
                         }
@@ -133,7 +132,7 @@
     </script>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-
+  
             <div class="panel panel-primary">
                 <div class="panel-heading text-bold">Cambio de Cuarto para Estudiante</div>
                 <div class="panel-body  ">
@@ -237,7 +236,6 @@
                 </div>
             </div>
 
-            <div>
                 <div class="panel panel-primary">
                     <div class="panel panel-heading">Historial Estudiante Cuarto</div>
                     <div class="panel panel-body">
