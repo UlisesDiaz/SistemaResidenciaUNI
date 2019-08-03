@@ -249,15 +249,12 @@ namespace CapaDatos
         {
 
             return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
-
             {
                 PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
                 PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
                 PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
                 PER_ID = dr.PER_ID
             }).ToList();
-
-
         }
 
 
@@ -265,8 +262,6 @@ namespace CapaDatos
         {
             try
             {
-
-
                 return dbResidencia.spInfoEstudiante(carnet).Select(dr => new EntidadInfoEstudianteSP
                 {
                     PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
@@ -284,13 +279,7 @@ namespace CapaDatos
                     COM_DESCRIPCION = dr.COM_DESCRIPCION,
                     COR_DEFINICION = dr.COR_DEFINICION,
                     CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
-                    REC_DESCRIPCION = dr.REC_DESCRIPCION,
-
-
-
-
-
-
+                    REC_DESCRIPCION = dr.REC_DESCRIPCION
                 }).FirstOrDefault();
 
             }
@@ -305,11 +294,10 @@ namespace CapaDatos
 
         public object ObtenerEstadoCivil()
         {
-            Object estadoCivil = null;
+            object estadoCivil = null;
 
             try
             {
-
                 estadoCivil = dbResidencia.TBL_ESTADO_CIVIL.Select(dr => new
                 {
                     dr.EST_CIV_ID,
@@ -332,10 +320,33 @@ namespace CapaDatos
             return dbResidencia.spObtenerEventos(startD, endD).Select(dr => new EntidadEvento
             {
                 id = dr.CUA_NUMERO,
-                start = dr.ROL_ASE_FECHA_INICIAL.ToString("yyyy-MM-dd")
+                start = dr.ROL_ASE_FECHA_INICIAL.ToString("yyyy-MM-dd"),
+                eventColor = ObtenerColorEventoSegunGenero(dr.GEN_DESCRIPCION)
             }).ToList();
-        }
 
+        }
+        string ObtenerColorEventoSegunGenero(string genero)
+        {
+            string color = string.Empty;
+
+            switch (genero)
+            {
+                case Util.Generos.Masculino:
+                    color = Util.EventColor.Masculino;
+                    break;
+                case Util.Generos.Femenino:
+                    color = Util.EventColor.Femenino;
+                    break;
+                case Util.Generos.SinEspecificar:
+                    color = Util.EventColor.SinEspecificar;
+                    break;
+
+                default:
+                    color = Util.EventColor.Masculino;
+                    break;
+            }
+            return color;
+        }
         public List<EntidadDetalleAseoSegunEvento> ObtenerDetalleAseoSegunEvento(int cuaNum, DateTime starD)
         {
             return dbResidencia.spObtenerDetalleAseoSegunEvento(cuaNum, starD).Select(dr => new EntidadDetalleAseoSegunEvento
@@ -351,7 +362,7 @@ namespace CapaDatos
         {
 
             if (dbResidencia.spMoverEstudianteDeCuarto(carnet).Count().Equals(0))
-                throw new Exception(string.Format(Util.Exception.estudianteVSCarnetNoEncontrado, carnet));
+                throw new Exception(string.Format(Util.Exception.EstudianteVSCarnetNoEncontrado, carnet));
 
             return dbResidencia.spMoverEstudianteDeCuarto(carnet).Select(dr => new EntidadspMoverEstudianteDeCuarto
             {

@@ -364,5 +364,18 @@ namespace CapaDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEstdianteGuardados_Result>("spEstdianteGuardados");
         }
+    
+        public virtual ObjectResult<spObtenerEventos1_Result> spObtenerEventos1(Nullable<System.DateTime> startD, Nullable<System.DateTime> endD)
+        {
+            var startDParameter = startD.HasValue ?
+                new ObjectParameter("startD", startD) :
+                new ObjectParameter("startD", typeof(System.DateTime));
+    
+            var endDParameter = endD.HasValue ?
+                new ObjectParameter("endD", endD) :
+                new ObjectParameter("endD", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spObtenerEventos1_Result>("spObtenerEventos1", startDParameter, endDParameter);
+        }
     }
 }

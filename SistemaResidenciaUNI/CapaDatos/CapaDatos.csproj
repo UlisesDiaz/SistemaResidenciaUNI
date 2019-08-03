@@ -102,6 +102,9 @@
     <Compile Include="spObtenerDetalleAseoSegunEvento_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spObtenerEventos1_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spObtenerEventos_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

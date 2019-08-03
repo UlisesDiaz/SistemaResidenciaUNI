@@ -55,7 +55,8 @@
                                         id: dataj[ind].id,
                                         title: dataj[ind].title,
                                         start: dataj[ind].start,
-                                        end: dataj[ind].start
+                                        end: dataj[ind].start,
+                                        color: dataj[ind].eventColor
                                     });
                                 }
 
@@ -138,7 +139,7 @@
                         }
                     });
 
-                    window.location.href ='#modalDatos';
+                    window.location.href = '#modalDatos';
                 }
             })
             // Order by the grouping

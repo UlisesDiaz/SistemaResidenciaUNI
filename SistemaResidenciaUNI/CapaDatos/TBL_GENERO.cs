@@ -18,6 +18,7 @@ namespace CapaDatos
         public TBL_GENERO()
         {
             this.TBL_PERSONA = new HashSet<TBL_PERSONA>();
+            this.TBL_CUARTO = new HashSet<TBL_CUARTO>();
         }
     
         public int GEN_ID { get; set; }
@@ -25,5 +26,7 @@ namespace CapaDatos
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_PERSONA> TBL_PERSONA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_CUARTO> TBL_CUARTO { get; set; }
     }
 }

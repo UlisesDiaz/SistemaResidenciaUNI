@@ -21,7 +21,7 @@ namespace SistemaResidenciaUNI
             try
             {
                 if (txtNumCarnet.Text.Trim().Equals(string.Empty))
-                    throw new Exception(Util.Exception.carnetVacio);
+                    throw new Exception(Util.Exception.CarnetVacio);
                 EntidadInfoEstudianteSP entPer = (new NegocioEstudiante()).InfoEstudiantePorCarnet(txtNumCarnet.Text);
                 
                 if (entPer != null)
@@ -42,7 +42,7 @@ namespace SistemaResidenciaUNI
                 }
                 else
                 {
-                    throw new Exception(string.Format(Util.Exception.estudianteVSCarnetNoEncontrado, txtNumCarnet.Text));
+                    throw new Exception(string.Format(Util.Exception.EstudianteVSCarnetNoEncontrado, txtNumCarnet.Text));
                 }
 
             }

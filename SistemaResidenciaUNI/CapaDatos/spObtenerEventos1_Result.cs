@@ -11,10 +11,10 @@ namespace CapaDatos
 {
     using System;
     
-    public partial class spObtenerEventos_Result
+    public partial class spObtenerEventos1_Result
     {
         public int CUA_NUMERO { get; set; }
         public System.DateTime ROL_ASE_FECHA_INICIAL { get; set; }
-        public string GEN_DESCRIPCION  { get; set; }
-}
+        public string GEN_DESCRIPCION { get; set; }
+    }
 }

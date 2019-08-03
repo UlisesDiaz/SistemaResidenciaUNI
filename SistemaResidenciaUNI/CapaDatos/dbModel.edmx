@@ -45,6 +45,7 @@
           <Property Name="CUA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CUA_NUMERO" Type="int" Nullable="false" />
           <Property Name="CUA_ESTADO" Type="bit" Nullable="false" />
+          <Property Name="GEN_ID" Type="int" />
         </EntityType>
         <EntityType Name="TBL_DEPARTAMENTO">
           <Key>
@@ -270,6 +271,18 @@
           <Property Name="USU_FECHA_FINAL" Type="date" />
           <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK__TBL_CUART__GEN_I__607251E5">
+          <End Role="TBL_GENERO" Type="Self.TBL_GENERO" Multiplicity="0..1" />
+          <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_GENERO">
+              <PropertyRef Name="GEN_ID" />
+            </Principal>
+            <Dependent Role="TBL_CUARTO">
+              <PropertyRef Name="GEN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TBL_CARRERA_TBL_RECINTO">
           <End Role="TBL_RECINTO" Type="Self.TBL_RECINTO" Multiplicity="1" />
           <End Role="TBL_CARRERA" Type="Self.TBL_CARRERA" Multiplicity="*" />
@@ -706,6 +719,10 @@
           <EntitySet Name="TBL_TIPO_IDENTIFICACION" EntityType="Self.TBL_TIPO_IDENTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TBL_CUART__GEN_I__607251E5" Association="Self.FK__TBL_CUART__GEN_I__607251E5">
+            <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
+            <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
+          </AssociationSet>
           <AssociationSet Name="FK_TBL_CARRERA_TBL_RECINTO" Association="Self.FK_TBL_CARRERA_TBL_RECINTO">
             <End Role="TBL_RECINTO" EntitySet="TBL_RECINTO" />
             <End Role="TBL_CARRERA" EntitySet="TBL_CARRERA" />
@@ -874,6 +891,8 @@
           <Property Name="CUA_NUMERO" Type="Int32" Nullable="false" />
           <Property Name="CUA_ESTADO" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TBL_HIS_ESTUDIANTE_CUARTO" Relationship="Self.FK_TBL_HIS_ESTUDIANTE_CUARTO_TBL_CUARTO" FromRole="TBL_CUARTO" ToRole="TBL_HIS_ESTUDIANTE_CUARTO" />
+          <Property Name="GEN_ID" Type="Int32" />
+          <NavigationProperty Name="TBL_GENERO" Relationship="dbModel.FK__TBL_CUART__GEN_I__607251E5" FromRole="TBL_CUARTO" ToRole="TBL_GENERO" />
         </EntityType>
         <EntityType Name="TBL_DEPARTAMENTO">
           <Key>
@@ -927,6 +946,7 @@
           <Property Name="GEN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GEN_DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TBL_PERSONA" Relationship="Self.FK_TBL_PERSONA_TBL_GENERO" FromRole="TBL_GENERO" ToRole="TBL_PERSONA" />
+          <NavigationProperty Name="TBL_CUARTO" Relationship="dbModel.FK__TBL_CUART__GEN_I__607251E5" FromRole="TBL_GENERO" ToRole="TBL_CUARTO" />
         </EntityType>
         <EntityType Name="TBL_HIS_ESTUDIANTE_CUARTO">
           <Key>
@@ -1714,6 +1734,10 @@
           <Parameter Name="nunCarnet" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spEstdianteGuardados" ReturnType="Collection(dbModel.spEstdianteGuardados_Result)" />
+          <AssociationSet Name="FK__TBL_CUART__GEN_I__607251E5" Association="dbModel.FK__TBL_CUART__GEN_I__607251E5">
+            <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
+            <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1794,10 +1818,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="spObtenerEventos_Result">
-          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
-          <Property Type="DateTime" Name="ROL_ASE_FECHA_INICIAL" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="spObtenerDetalleAseoSegunEvento_Result">
           <Property Type="Int32" Name="EST_ID" Nullable="false" />
           <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="203" />
@@ -1830,6 +1850,23 @@
           <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
           <Property Type="String" Name="CAR_DESCRIPCION" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <Association Name="FK__TBL_CUART__GEN_I__607251E5">
+          <End Type="dbModel.TBL_GENERO" Role="TBL_GENERO" Multiplicity="0..1" />
+          <End Type="dbModel.TBL_CUARTO" Role="TBL_CUARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_GENERO">
+              <PropertyRef Name="GEN_ID" />
+            </Principal>
+            <Dependent Role="TBL_CUARTO">
+              <PropertyRef Name="GEN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spObtenerEventos_Result">
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+          <Property Type="DateTime" Name="ROL_ASE_FECHA_INICIAL" Nullable="false" />
+          <Property Type="String" Name="GEN_DESCRIPCION" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1877,6 +1914,7 @@
           <EntitySetMapping Name="TBL_CUARTO">
             <EntityTypeMapping TypeName="dbModel.TBL_CUARTO">
               <MappingFragment StoreEntitySet="TBL_CUARTO">
+                <ScalarProperty Name="GEN_ID" ColumnName="GEN_ID" />
                 <ScalarProperty Name="CUA_ID" ColumnName="CUA_ID" />
                 <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
                 <ScalarProperty Name="CUA_ESTADO" ColumnName="CUA_ESTADO" />
@@ -2203,14 +2241,6 @@
           <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="dbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="dbModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="SPNuevoTipoAseo" FunctionName="dbModel.Store.SPNuevoTipoAseo" />
-          <FunctionImportMapping FunctionImportName="spObtenerEventos" FunctionName="dbModel.Store.spObtenerEventos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.spObtenerEventos_Result">
-                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
-                <ScalarProperty Name="ROL_ASE_FECHA_INICIAL" ColumnName="ROL_ASE_FECHA_INICIAL" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spObtenerDetalleAseoSegunEvento" FunctionName="dbModel.Store.spObtenerDetalleAseoSegunEvento">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.spObtenerDetalleAseoSegunEvento_Result">
@@ -2257,6 +2287,15 @@
                 <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
                 <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
                 <ScalarProperty Name="CAR_DESCRIPCION" ColumnName="CAR_DESCRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spObtenerEventos" FunctionName="dbModel.Store.spObtenerEventos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spObtenerEventos_Result">
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="ROL_ASE_FECHA_INICIAL" ColumnName="ROL_ASE_FECHA_INICIAL" />
+                <ScalarProperty Name="GEN_DESCRIPCION" ColumnName="GEN_DESCRIPCION" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

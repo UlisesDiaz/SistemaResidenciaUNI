@@ -23,8 +23,10 @@ namespace CapaDatos
         public int CUA_ID { get; set; }
         public int CUA_NUMERO { get; set; }
         public bool CUA_ESTADO { get; set; }
+        public Nullable<int> GEN_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_HIS_ESTUDIANTE_CUARTO> TBL_HIS_ESTUDIANTE_CUARTO { get; set; }
+        public virtual TBL_GENERO TBL_GENERO { get; set; }
     }
 }

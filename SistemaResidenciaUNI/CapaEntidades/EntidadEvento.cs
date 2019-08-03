@@ -12,5 +12,6 @@ namespace CapaEntidades
         public string start { get; set; }
         public string end { get; set; }
         public string title { get { return "Aseo para el cuarto: " + this.id; } }
+        public string eventColor { get; set; }
     }
 }
