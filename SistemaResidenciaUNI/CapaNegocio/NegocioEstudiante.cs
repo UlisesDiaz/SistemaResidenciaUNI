@@ -30,7 +30,6 @@ namespace CapaNegocio
             return datoEstudiante.ObtenerPersonas();
         }
 
-
         public object ObtenerListaEstudiantes()
 
         {
@@ -94,8 +93,5 @@ namespace CapaNegocio
             return datoEstudiante.MostrarEstudianteGuardados();
 
         }
-
-
-
     }
 }

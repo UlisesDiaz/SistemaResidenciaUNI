@@ -36,7 +36,7 @@
         <div class="panel panel-body">
 
             <div class="row photo-right">
-                <img src="../dist/img/grupo.jpg" class="img-circle" alt="Foto Est" style="width: 180px; height: 170px">
+                <img src="../dist/img/avatar5.png" class="img-circle" alt="Foto Est" style="width: 180px; height: 170px">
             </div>
 
             <div class="row marginRow">

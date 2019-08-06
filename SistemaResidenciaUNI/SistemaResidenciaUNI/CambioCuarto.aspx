@@ -235,7 +235,6 @@
                     </div>
                 </div>
             </div>
-
                 <div class="panel panel-primary">
                     <div class="panel panel-heading">Historial Estudiante Cuarto</div>
                     <div class="panel panel-body">
@@ -251,7 +250,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                </tbody>
+                               </tbody>
                             </table>
                         </div>
         </ContentTemplate>
