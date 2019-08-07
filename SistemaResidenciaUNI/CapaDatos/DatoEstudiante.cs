@@ -269,7 +269,6 @@ namespace CapaDatos
                     PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
                     PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
                     PER_FECHA_NACIMIENTO = dr.PER_FECHA_NACIMIENTO,
-
                     GEN_DESCRIPCION = dr.GEN_DESCRIPCION,
                     DIR_DESCRIPCION = dr.DIR_DESCRIPCION,
                     BAR_NOMBRE = dr.BAR_NOMBRE,
@@ -279,7 +278,10 @@ namespace CapaDatos
                     COM_DESCRIPCION = dr.COM_DESCRIPCION,
                     COR_DEFINICION = dr.COR_DEFINICION,
                     CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
-                    REC_DESCRIPCION = dr.REC_DESCRIPCION
+                    REC_DESCRIPCION = dr.REC_DESCRIPCION,
+                    
+                    
+                
                 }).FirstOrDefault();
 
             }

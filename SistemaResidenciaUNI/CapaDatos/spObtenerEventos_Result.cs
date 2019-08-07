@@ -15,6 +15,6 @@ namespace CapaDatos
     {
         public int CUA_NUMERO { get; set; }
         public System.DateTime ROL_ASE_FECHA_INICIAL { get; set; }
-        public string GEN_DESCRIPCION  { get; set; }
-}
+        public string GEN_DESCRIPCION { get; set; }
+    }
 }

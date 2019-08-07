@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <label for="lblperCedula" class="col-sm-6 col-form-label">Identificación</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerCedula" CssClass="form-control" placeholder="Ingrese Identificación  del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerCedula" MaxLength="20" CssClass="form-control" placeholder="Ingrese Identificación  del Estudiante" />
                                     <asp:RequiredFieldValidator ControlToValidate="txtPerCedula" runat="server" CssClass="text-danger" ErrorMessage="El Campo Identificación deve ser llenado "></asp:RequiredFieldValidator>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="form-group row">
                                 <label for="txtPerPrimerNombre"  class="col-sm-6 col-form-label">Primer Nombre del Estudiante</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerPrimerNombre" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerPrimerNombre" MaxLength="50" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Nombre del Estudiante" />
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPerSegundoNombre" ErrorMessage="Deve Ingresar letras" ValidationExpression="[A-Za-z]*"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerNombre"
                                         CssClass="text-danger" ErrorMessage="El campo Primer Nombre del Estudiante es requerido." />
@@ -90,7 +90,7 @@
                             <div class="form-group row">
                                 <label for="lblperSegundoNombre" class="col-sm-6 col-form-label">Segundo Nombre del Estudiante</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerSegundoNombre" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerSegundoNombre" MaxLength="50" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Nombre del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoNombre"
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Nombre del Estudiante es requerido." />
                                 </div>
@@ -104,7 +104,7 @@
                             <div class="form-group row">
                                 <label for="lblPerPrimerApellido" class="col-sm-6 col-form-label">Primer Apellido</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerPrimerApellido" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerPrimerApellido" MaxLength="50" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Primer Apellido del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerPrimerApellido"
                                         CssClass="text-danger" ErrorMessage="El campo Primer Apellido del Estudiante es requerido." />
                                 </div>
@@ -115,7 +115,7 @@
                             <div class="form-group row">
                                 <label for="lblPerSegundoApellido" class="col-sm-6 col-form-label">Segundo Apellido</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox runat="server" ID="txtPerSegundoApellido" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
+                                    <asp:TextBox runat="server" ID="txtPerSegundoApellido" MaxLength="50" onkeypress="return soloLetras(event);" CssClass="form-control" placeholder="Segundo Apellido del Estudiante" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPerSegundoApellido"
                                         CssClass="text-danger" ErrorMessage="El campo Segundo Apellido del Estudiante es requerido." />
                                 </div>
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-
+                       
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="lblcompDescripcion" class="col-sm-6 col-form-label">Compañía Descripción</label>
@@ -270,27 +270,8 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">Listado de Estudiantes</div>
-                <div class="panel-body">
-                    <div class="row">
-                        <asp:GridView ID="gvListaEstudiante" runat="server" Width="95%" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-responsive table-striped">
-                            <Columns>
-                                <asp:BoundField DataField="EST_CARNET" HeaderText="Carnet Estudiante" SortExpression="EST_CARNET" />
-                                <asp:BoundField DataField="PER_IDENTIFICACION" HeaderText="Identificación" SortExpression="PER_IDENTIFICACION" />
-                                <asp:BoundField DataField="NOMBRE_COMPLETO" HeaderText="Nombre Estudiante" SortExpression="NOMBRE_COMPLETO" />
-                                <asp:BoundField DataField="GEN_DESCRIPCION" HeaderText="Género" SortExpression="GEN_DESCRIPCION" />
-                                <asp:BoundField DataField="EST_FECHA_INICIAL" HeaderText="Fecha de Inicio" SortExpression="EST_FECHA_INICIAL" />
-                                <asp:BoundField DataField="COR_DEFINICION" HeaderText="Correo Estudiante" SortExpression="COR_DEFINICION" />
-                                <asp:BoundField DataField="DIR_DESCRIPCION" HeaderText="Dirección Estudiante" SortExpression="PER_PRIMER_NOMBRE" />
-
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                </div>
-            </div>
+             </div>
+         
             <div class="panel panel-primary">
                 <div class="panel-heading">Operaciones</div>
                 <div class="panel-body">
@@ -308,37 +289,7 @@
             </div>
 
 
-            <div class="panel panel-primary">
-        <div class="panel panel-heading">Lista Aseo</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-10">
-                    <table id="DTprueba" class="table table-bordered table-hover row-border" >
-
-                        <thead>
-                            <tr>
-                                <th>Primer Nombre</th>
-                                <th>Segundo Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                  <th>Cuarto</th>
-                                  <th>Carrera</th>
-
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-prueb"></tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <br />
-                <br />
-                <div class="col-md-6 col-md-offset-3">
-     
-                </div>
-            </div>
-        </div>
-    </div>
+         
 
             <!-- ./wrapper -->
         </ContentTemplate>

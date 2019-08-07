@@ -43,12 +43,16 @@ namespace SistemaResidenciaUNI.Estudiante
                 if (resultado.esError)
                 {
                     throw new Exception(resultado.mensaje);
+
                 }
                 else
                 {
+
+                   
                     LimpiarControles();
                     string script = string.Format("alert('{0}');", resultado.mensaje);
                     ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);
+                  
                 }
 
             }
@@ -202,7 +206,16 @@ namespace SistemaResidenciaUNI.Estudiante
         void LimpiarControles()
         {
             EnlazarListas();
+            txtPerCedula.Text = string.Empty;
             txtEstCarnet.Text = string.Empty;
+            txtPerPrimerNombre.Text = string.Empty;
+            txtPerSegundoNombre.Text= string.Empty;
+            txtPerPrimerApellido.Text= string.Empty;
+            txtPerSegundoApellido.Text= string.Empty;
+            txtTelNumero.Text =string.Empty;
+            txtNumCasa.Text = string.Empty;
+            txtDireccion.InnerText = string.Empty;
+            Response.Write("<script>alert('El estudiante se ha Guardado Correctamente!')</script>");
         }
 
         void ObtenerMunicipiosPorDepartamentoId(int depID)
@@ -252,8 +265,8 @@ namespace SistemaResidenciaUNI.Estudiante
         {
 
 
-            gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
-            gvListaEstudiante.DataBind();
+            //gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
+            //gvListaEstudiante.DataBind();
         }
 
         [WebMethod]
