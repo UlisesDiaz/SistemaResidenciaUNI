@@ -682,6 +682,9 @@
         <Function Name="SPNuevoTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spNumeroCuartoPorIDEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_EST" Type="int" Mode="In" />
+        </Function>
         <Function Name="spObtenerDetalleAseoSegunEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cuaNum" Type="int" Mode="In" />
           <Parameter Name="startD" Type="date" Mode="In" />
@@ -1738,6 +1741,9 @@
             <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
             <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
           </AssociationSet>
+          <FunctionImport Name="spNumeroCuartoPorIDEST" ReturnType="Collection(Int32)">
+          <Parameter Name="ID_EST" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2299,6 +2305,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spNumeroCuartoPorIDEST" FunctionName="dbModel.Store.spNumeroCuartoPorIDEST" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

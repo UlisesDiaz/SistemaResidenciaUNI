@@ -151,21 +151,24 @@ namespace CapaDatos
         public object ObtenerListaEstudiantes()
 
         {
+
+
             object estudiantes = null;
             try
             {
                 estudiantes = dbResidencia.TBL_ESTUDIANTE.Select(dr => new
                 {
-                    dr.EST_CARNET,
                     NOMBRE_COMPLETO = dr.TBL_PERSONA.PER_PRIMER_NOMBRE + " " + dr.TBL_PERSONA.PER_SEGUNDO_NOMBRE + " " + dr.TBL_PERSONA.PER_PRIMER_APELLIDO + " " + dr.TBL_PERSONA.PER_SEGUNDO_APELLIDO,
-                    DIR_DESCRIPCION = dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION == null ? "N/D" : dr.TBL_PERSONA.TBL_DIRECCION.FirstOrDefault().DIR_DESCRIPCION,
-                    dr.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION,
-                    dr.TBL_PERSONA.PER_IDENTIFICACION,
-                    COR_DEFINICION = dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION == null ? "N/D" : dr.TBL_PERSONA.TBL_CORREO.FirstOrDefault().COR_DEFINICION,
-                    dr.EST_FECHA_INICIAL,
-                    dr.EST_FECHA_FINAL,
-                    dr.TBL_CARRERA.CAR_DESCRIPCION
+                    carrera = dr.TBL_CARRERA.CAR_DESCRIPCION,
+                    carnet = dr.EST_CARNET,
+                    telefono = dr.TBL_PERSONA.TBL_TELEFONO.Select(tel=>tel.TEL_NUMERO).FirstOrDefault(),
+                    recinto=dr.TBL_CARRERA.TBL_RECINTO.REC_DESCRIPCION,
+                    compania=dr.TBL_PERSONA.TBL_TELEFONO.Select(comp=>comp.TBL_COMPAÑIA.COM_DESCRIPCION),
+                    departamento=dr.TBL_PERSONA.TBL_DIRECCION.Select(dep=>dep.TBL_BARRIO.TBL_MUNICIPIO.TBL_DEPARTAMENTO.DEP_NOMBRE),
+                    municipio=dr.TBL_PERSONA.TBL_DIRECCION.Select(mun=>mun.TBL_BARRIO.TBL_MUNICIPIO.MUN_NOMBRE),
+                    Cuarto=dr.TBL_HIS_ESTUDIANTE_CUARTO.Where(cua=>cua.HIS_EST_CUA_ESTADO==true).Select(num=>num.TBL_CUARTO.CUA_NUMERO).FirstOrDefault()
                 }).ToList();
+
             }
             catch (Exception ex)
             {
@@ -279,9 +282,9 @@ namespace CapaDatos
                     COR_DEFINICION = dr.COR_DEFINICION,
                     CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
                     REC_DESCRIPCION = dr.REC_DESCRIPCION,
-                    
-                    
-                
+
+
+
                 }).FirstOrDefault();
 
             }

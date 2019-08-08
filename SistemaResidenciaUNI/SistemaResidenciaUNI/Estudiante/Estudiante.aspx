@@ -207,14 +207,8 @@
                         </div>
 
                     </div>
-
                 </div>
-
-
             </div>
-
-
-
             <div class="panel panel-primary">
                 <div class="panel-heading">Dirección(Nuevo)</div>
                 <div class="panel-body">
@@ -288,26 +282,16 @@
                 </div>
             </div>
 
-
-         
-
             <!-- ./wrapper -->
         </ContentTemplate>
     </asp:UpdatePanel>
     <style type="text/css">
-
-
-        
-
         #gvListaEstudiante {
             margin-left: 5px !important;
         }
     </style>
     <script type="text/javascript">
 
-       
-        
-      
         function justNumbers(e) {
             var keynum = window.event ? window.event.keyCode : e.which;
             if ((keynum == 8 || keynum == 48))

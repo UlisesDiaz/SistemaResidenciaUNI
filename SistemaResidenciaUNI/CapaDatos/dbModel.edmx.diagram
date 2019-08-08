@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="dbModel.TBL_CUARTO" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_DEPARTAMENTO" Width="1.5" PointX="1.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_DIRECCION" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbModel.TBL_ESTUDIANTE" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.TBL_ESTUDIANTE" Width="1.75" PointX="8.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_FRECUENCIA" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_GENERO" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.TBL_HIS_ESTUDIANTE_CUARTO" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />

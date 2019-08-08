@@ -111,7 +111,11 @@
                             }
                         },
                         { data: "HIS_EST_CUA_FECHA_FINAL" },
-                        { data: "CUA_NUMERO" },
+                        {
+                            data: "CUA_NUMERO", render: function (data, type, row) {
+
+                                return data; }
+                        },
                         {
                             data: 'HIS_EST_CUA_ESTADO', render: function (data, type, row) {
                                 return data;

@@ -49,6 +49,8 @@ namespace SistemaResidenciaUNI.Estudiante
                 {
 
                    
+                  
+                    GuardarEstudiante();
                     LimpiarControles();
                     string script = string.Format("alert('{0}');", resultado.mensaje);
                     ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);

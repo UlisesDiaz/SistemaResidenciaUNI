@@ -364,5 +364,14 @@ namespace CapaDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEstdianteGuardados_Result>("spEstdianteGuardados");
         }
+    
+        public virtual ObjectResult<Nullable<int>> spNumeroCuartoPorIDEST(Nullable<int> iD_EST)
+        {
+            var iD_ESTParameter = iD_EST.HasValue ?
+                new ObjectParameter("ID_EST", iD_EST) :
+                new ObjectParameter("ID_EST", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spNumeroCuartoPorIDEST", iD_ESTParameter);
+        }
     }
 }

@@ -176,6 +176,7 @@
     <Content Include="Content\CustomClass.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Cuarto\AgregarCuarto.aspx" />
+    <Content Include="Detalle_Estudiante.aspx" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\skins\skin-black.css" />
@@ -958,6 +959,13 @@
     </Compile>
     <Compile Include="Cuarto\AgregarCuarto.aspx.designer.cs">
       <DependentUpon>AgregarCuarto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Detalle_Estudiante.aspx.cs">
+      <DependentUpon>Detalle_Estudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalle_Estudiante.aspx.designer.cs">
+      <DependentUpon>Detalle_Estudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Estudiante\Estudiante.aspx.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>
