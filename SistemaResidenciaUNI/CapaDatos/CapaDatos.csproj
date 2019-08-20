@@ -56,6 +56,7 @@
     <Compile Include="DatoDepartamento.cs" />
     <Compile Include="DatoEstudiante.cs" />
     <Compile Include="DatoMunicipio.cs" />
+    <Compile Include="DatoRolAseo.cs" />
     <Compile Include="DatoTipoAseo.cs" />
     <Compile Include="dbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -73,6 +74,9 @@
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="ListadoEstuCuartoSP_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MostarEstuAsignacionSP_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -65,10 +65,26 @@ namespace CapaDatos
                 CUA_ID = dr.CUA_ID,
                 CUA_NUMERO = dr.CUA_NUMERO,
                 CUA_ESTADO = dr.CUA_ESTADO
-    }).ToList();
-}
+            }).ToList();
+        }
 
-       
+
+
+
+        public List<EntidadEstudianteCuartoSP> ListarEstuCuarto(int n)
+        {
+
+            return dbResidencia.ListadoEstuCuartoSP(n).Select(dr => new EntidadEstudianteCuartoSP
+            {
+                PER_ID = dr.PER_ID,
+                PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
+                PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
+                PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO
+
+            }).ToList();
+        }
+
+
 
     }
 }

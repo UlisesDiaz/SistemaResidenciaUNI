@@ -48,7 +48,9 @@
     <Compile Include="EntidadDepartamento.cs" />
     <Compile Include="EntidadDetalleAseoSegunEvento.cs" />
     <Compile Include="EntidadDireccion.cs" />
+    <Compile Include="EntidadEstuCantidadAsignada.cs" />
     <Compile Include="EntidadEstudiante.cs" />
+    <Compile Include="EntidadEstudianteCuartoSP.cs" />
     <Compile Include="EntidadEvento.cs" />
     <Compile Include="EntidadFrecuencia.cs" />
     <Compile Include="EntidadGenero.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="EntidadTelefono.cs" />
     <Compile Include="EntidadTipoAreaResponsable.cs" />
     <Compile Include="EntidadTipoAseo.cs" />
+    <Compile Include="EntidadTipoAseosp.cs" />
     <Compile Include="EntidadTipoIdentificacion.cs" />
     <Compile Include="EntidadTipoMotivoRegistro.cs" />
     <Compile Include="EntidadTipPerRelation.cs" />

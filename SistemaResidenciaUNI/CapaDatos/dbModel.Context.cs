@@ -414,5 +414,14 @@ namespace CapaDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spCuartosDisponiblesCambioEstudiante_Result>("spCuartosDisponiblesCambioEstudiante");
         }
+    
+        public virtual ObjectResult<MostarEstuAsignacionSP_Result> MostarEstuAsignacionSP(Nullable<int> iD_Cuar)
+        {
+            var iD_CuarParameter = iD_Cuar.HasValue ?
+                new ObjectParameter("ID_Cuar", iD_Cuar) :
+                new ObjectParameter("ID_Cuar", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MostarEstuAsignacionSP_Result>("MostarEstuAsignacionSP", iD_CuarParameter);
+        }
     }
 }

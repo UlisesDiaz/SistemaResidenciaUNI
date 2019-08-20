@@ -271,7 +271,7 @@
           <Property Name="USU_FECHA_FINAL" Type="date" />
           <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__TBL_CUART__GEN_I__607251E5">
+        <Association Name="FK__TBL_CUART__GEN_I__6E01572D">
           <End Role="TBL_GENERO" Type="Self.TBL_GENERO" Multiplicity="0..1" />
           <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -638,6 +638,9 @@
         <Function Name="ListadoEstuCuartoSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="MostarEstuAsignacionSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Cuar" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -671,7 +674,6 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
-        <Function Name="spCuartosDisponiblesCambioEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPDeletelogicaAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoAseo" Type="int" Mode="In" />
         </Function>
@@ -690,12 +692,6 @@
         <Function Name="SPMostrarTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spMoverEstudianteDeCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="carnet" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="SPNuevoTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="spNumeroCuartoPorIDEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_EST" Type="int" Mode="In" />
         </Function>
         <Function Name="spObtenerDetalleAseoSegunEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cuaNum" Type="int" Mode="In" />
@@ -734,7 +730,7 @@
           <EntitySet Name="TBL_TIPO_IDENTIFICACION" EntityType="Self.TBL_TIPO_IDENTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__TBL_CUART__GEN_I__607251E5" Association="Self.FK__TBL_CUART__GEN_I__607251E5">
+          <AssociationSet Name="FK__TBL_CUART__GEN_I__6E01572D" Association="Self.FK__TBL_CUART__GEN_I__6E01572D">
             <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
             <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
           </AssociationSet>
@@ -1768,6 +1764,9 @@
           </FunctionImport>
           <FunctionImport Name="SPMostrarTipoAseo" ReturnType="Collection(dbModel.SPMostrarTipoAseo_Result)" />
           <FunctionImport Name="spCuartosDisponiblesCambioEstudiante" ReturnType="Collection(dbModel.spCuartosDisponiblesCambioEstudiante_Result)" />
+          <FunctionImport Name="MostarEstuAsignacionSP" ReturnType="Collection(dbModel.MostarEstuAsignacionSP_Result)">
+            <Parameter Name="ID_Cuar" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1912,6 +1911,13 @@
         <ComplexType Name="spCuartosDisponiblesCambioEstudiante_Result">
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
           <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MostarEstuAsignacionSP_Result">
+          <Property Type="Int32" Name="EST_ID" Nullable="true" />
+          <Property Type="String" Name="EST_CARNET" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Estudiante" Nullable="true" MaxLength="152" />
+          <Property Type="Int32" Name="Cantidad_de_Aseos_Asignados" Nullable="true" />
+          <Property Type="String" Name="COR_DEFINICION" Nullable="true" MaxLength="40" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2285,7 +2291,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="dbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="dbModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="SPNuevoTipoAseo" FunctionName="dbModel.Store.SPNuevoTipoAseo" />
           <FunctionImportMapping FunctionImportName="spObtenerDetalleAseoSegunEvento" FunctionName="dbModel.Store.spObtenerDetalleAseoSegunEvento">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.spObtenerDetalleAseoSegunEvento_Result">
@@ -2344,7 +2349,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spNumeroCuartoPorIDEST" FunctionName="dbModel.Store.spNumeroCuartoPorIDEST" />
           <FunctionImportMapping FunctionImportName="ListadoEstuCuartoSP" FunctionName="dbModel.Store.ListadoEstuCuartoSP">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.ListadoEstuCuartoSP_Result">
@@ -2366,11 +2370,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spCuartosDisponiblesCambioEstudiante" FunctionName="dbModel.Store.spCuartosDisponiblesCambioEstudiante">
+          <FunctionImportMapping FunctionImportName="MostarEstuAsignacionSP" FunctionName="dbModel.Store.MostarEstuAsignacionSP">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.spCuartosDisponiblesCambioEstudiante_Result">
-                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              <ComplexTypeMapping TypeName="dbModel.MostarEstuAsignacionSP_Result">
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="EST_CARNET" ColumnName="EST_CARNET" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="Cantidad_de_Aseos_Asignados" ColumnName="Cantidad de Aseos Asignados" />
+                <ScalarProperty Name="COR_DEFINICION" ColumnName="COR_DEFINICION" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

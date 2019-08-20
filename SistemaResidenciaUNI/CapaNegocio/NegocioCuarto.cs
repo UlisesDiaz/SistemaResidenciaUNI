@@ -20,7 +20,7 @@ namespace CapaNegocio
                 resul = datoCuarto.GuardarNuevoCuarto(entidadCuarto);
 
             }
-            catch 
+            catch
             {
 
                 throw new Exception(resul.mensaje);
@@ -37,5 +37,12 @@ namespace CapaNegocio
         {
             return datoCuarto.ObtnerCuartoPorSp();
         }
+
+
+        public List<EntidadEstudianteCuartoSP> ListadoCuarto(int n)
+        {
+            return datoCuarto.ListarEstuCuarto(n);
+        }
+
     }
 }

@@ -30,7 +30,10 @@
     <link href="../../Content/CustomClass.css" rel="stylesheet" />
     <%--    <link href="../../fontawesome/css/all.css" rel="stylesheet" />--%>
 
-    <%--Nuevas ref--%>
+    <%--Nuevas ref DATEPICKER--%>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
 
     <%--    FULL CALENDAR--%>
     <link href="../../bootstrap/css/fullcalendar.min.css" rel="stylesheet" />
@@ -301,6 +304,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    
+    
+    
+  <%--  SCRIPTDATEPICKER Y ASEO--%>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="Jquery/json2.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="Jquery/TipoAseo.js"></script>
+    <script src="Jquery/AsignacionAseo.js"></script>
+    
+
+
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js" type="text/javascript"></script>
     <%--  <script src="../../plugins/morris/morris.js"></script>--%>
@@ -308,7 +324,14 @@
         change_layout('fixed');
 
         $(function () {
-            $('.datetimepicker').datetimepicker();
+            $('.datetimepicker').datetimepicker({
+
+                timepicker: false,
+                format: 'd-m-Y',
+                autoclose: true,
+                maxDate: 'now'
+
+            });
         });
     </script>
 </body>

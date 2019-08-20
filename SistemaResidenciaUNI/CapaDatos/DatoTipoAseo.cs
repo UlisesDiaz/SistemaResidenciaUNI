@@ -12,56 +12,79 @@ namespace CapaDatos
 
         dbResidenciaEntities dbRecidencia = new dbResidenciaEntities();
 
-        public Resultado GuardarNuevoTipoAseo(EntidadTipoAseo EntidadTipoAseo)
+
+        public Resultado GuardarTipoAseo(EntidadTipoAseo entidadtipoaseo)
         {
-
-
             Resultado resultado = new Resultado();
-
             TBL_TIPO_ASEO TBL_TIPO_ASEO = new TBL_TIPO_ASEO();
-
-            try {
-
-                TBL_TIPO_ASEO.TIP_ASE_DESCRIPCION = EntidadTipoAseo.TIP_ASE_DESCRIPCION;
+            try
+            {
+                TBL_TIPO_ASEO.TIP_ASE_DESCRIPCION = entidadtipoaseo.TIP_ASE_DESCRIPCION;
                 TBL_TIPO_ASEO.TIP_ASE_ESTADO = true;
+
+
+                bool AseoExistente = dbRecidencia.TBL_TIPO_ASEO.Where(fila => fila.TIP_ASE_DESCRIPCION.Equals(entidadtipoaseo.TIP_ASE_DESCRIPCION)).Count() > 0;
+                if (AseoExistente)
+                    throw new Exception("Ya existe este aseo en sistema");
+
                 dbRecidencia.TBL_TIPO_ASEO.Add(TBL_TIPO_ASEO);
                 dbRecidencia.SaveChanges();
+
                 resultado.esError = false;
+                resultado.mensaje = "Se ha añadido correctamente el nuevo de aseo";
 
             }
 
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 resultado.esError = true;
-                resultado.mensaje = "Ha ocurrido un error al momento de almacenar el Tipo Aseo: " + ex.Message;
+                resultado.mensaje = "Hubo un error, no se logro guardar el nuevo de aseo" + ex.Message;
+                throw new Exception(resultado.mensaje);
             }
-
-
 
             return resultado;
 
+
         }
 
-        public List<EntidadTipoAseo> ObtenerTipoAseo()
+
+        public List<EntidadTipoAseosp> ObtenerAseoPorSP()
         {
 
-            List<EntidadTipoAseo> TipoAseolista = new List<EntidadTipoAseo>();
-
-            dbRecidencia.TBL_TIPO_ASEO.OrderBy(fila => fila.TIP_ASE_DESCRIPCION).ToList().ForEach(fila =>
+            return dbRecidencia.SPMostrarTipoAseo().Select(dr => new EntidadTipoAseosp
             {
-
-                EntidadTipoAseo cadatipoaseo = new EntidadTipoAseo();
-
-                cadatipoaseo.TIP_ASE_ID = fila.TIP_ASE_ID;
-                cadatipoaseo.TIP_ASE_DESCRIPCION = fila.TIP_ASE_DESCRIPCION;
-                cadatipoaseo.TIP_ASE_ESTADO = fila.TIP_ASE_ESTADO;
+                TIP_ASE_ID = dr.TIP_ASE_ID,
+                TIP_ASE_DESCRIPCION = dr.TIP_ASE_DESCRIPCION,
+                ESTADO = dr.ESTADO
 
 
-                TipoAseolista.Add(cadatipoaseo);
+
+            }).ToList();
 
 
-            });
+        }
 
-            return TipoAseolista;
+        public bool EliminarTipoAseo(int id)
+        {
+            bool transac = false;
+            Resultado resultado = new Resultado();
+            try
+            {
+                dbRecidencia.SPDeletelogicaAseo(id);
+                dbRecidencia.SaveChanges();
+                transac = true;
+                resultado.esError = false;
+                resultado.mensaje = "Se ha Modifico correctamente el  aseo";
+            }
+            catch (Exception ex)
+            {
+                transac = false;
+                resultado.esError = true;
+                resultado.mensaje = "Hubo un error, no se logro Modificar el aseo" + ex.Message;
+                throw new Exception(ex.Message);
+            }
+
+            return transac;
 
         }
 
@@ -72,13 +95,39 @@ namespace CapaDatos
 
         }
 
+        public bool EditarTipoAseo(int id, string descrip)
+        {
+            Resultado resultado = new Resultado();
+            bool transac = false;
+
+            try
+            {
+                dbRecidencia.SPModificacionAseo(id, descrip);
+                dbRecidencia.SaveChanges();
+
+                transac = true;
+                resultado.esError = false;
+                resultado.mensaje = "Se ha Modifico correctamente el  aseo";
+
+
+            }
+            catch (Exception ex)
+            {
+                transac = false;
+                resultado.esError = true;
+                resultado.mensaje = "Hubo un error, no se logro Modificar el aseo" + ex.Message;
+                throw new Exception(resultado.mensaje);
+            }
+
+            return transac;
+        }
+
 
 
     }
 
 
 
-   
+
 }
-    
 

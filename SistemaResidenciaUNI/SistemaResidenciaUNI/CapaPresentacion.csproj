@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AsignacionAseo.aspx" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\css\fullcalendar.min.css" />
@@ -254,8 +255,13 @@
     <Content Include="composer.json" />
     <Content Include="InfoEstudiante.aspx" />
     <Content Include="InfoResidencia.aspx" />
+    <Content Include="Jquery\AsignacionAseo.js" />
+    <Content Include="Jquery\StyleLogin.css" />
+    <Content Include="Jquery\TipoAseo.js" />
+    <Content Include="LoginPage.aspx" />
     <Content Include="package.json" />
     <Content Include="Home.Master" />
+    <Content Include="PlantillaMail.html" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
     <Content Include="plugins\ckeditor\LICENSE.md" />
     <Content Include="plugins\ckeditor\plugins\scayt\LICENSE.md" />
@@ -917,7 +923,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="TipoAseo.aspx" />
-    <Content Include="TipoDeAseo.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -939,6 +944,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AsignacionAseo.aspx.cs">
+      <DependentUpon>AsignacionAseo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignacionAseo.aspx.designer.cs">
+      <DependentUpon>AsignacionAseo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CambioCuarto.aspx.cs">
       <DependentUpon>CambioCuarto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -991,6 +1003,13 @@
     <Compile Include="InfoResidencia.aspx.designer.cs">
       <DependentUpon>InfoResidencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Mobile.Master.cs">
@@ -1007,13 +1026,6 @@
     </Compile>
     <Compile Include="TipoAseo.aspx.designer.cs">
       <DependentUpon>TipoAseo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TipoDeAseo.aspx.cs">
-      <DependentUpon>TipoDeAseo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TipoDeAseo.aspx.designer.cs">
-      <DependentUpon>TipoDeAseo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

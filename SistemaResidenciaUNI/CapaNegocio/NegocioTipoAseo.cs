@@ -14,17 +14,17 @@ namespace CapaNegocio
         DatoTipoAseo datotipoaseo = new DatoTipoAseo();
 
 
-        public Resultado GuardarNuevoTipoAseo(EntidadTipoAseo entidadTipoAseo)
+        public Resultado GuardarNuevoAseo(EntidadTipoAseo entidadTipoAseo)
         {
-            Resultado resul= new Resultado();
+            Resultado resul = new Resultado();
 
             try
             {
-                resul = datotipoaseo.GuardarNuevoTipoAseo(entidadTipoAseo);
+                resul = datotipoaseo.GuardarTipoAseo(entidadTipoAseo);
 
             }
 
-            catch 
+            catch
             {
                 throw new Exception(resul.mensaje);
 
@@ -36,10 +36,70 @@ namespace CapaNegocio
         }
 
 
-        public List<EntidadTipoAseo> ObtenerTipoAseo()
+        public List<EntidadTipoAseosp> ObtenerTipoAseo()
         {
-            return datotipoaseo.ObtenerTipoAseo();
+            return datotipoaseo.ObtenerAseoPorSP();
 
+        }
+
+        public void EliminarTipAseo(int id)
+        {
+            Resultado resul = new Resultado();
+            try
+            {
+
+                datotipoaseo.EliminarTipoAseo(id);
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ModificarTipAseo(int id, string descrip)
+        {
+
+            Resultado resul = new Resultado();
+            bool transac;
+            try
+            {
+
+                transac = datotipoaseo.EditarTipoAseo(id, descrip);
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+            return transac;
+        }
+
+
+        public bool EliminarAseo(int id)
+        {
+
+            Resultado resul = new Resultado();
+            bool transac;
+            try
+            {
+
+                transac = datotipoaseo.EliminarTipoAseo(id);
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+            return transac;
         }
 
     }
