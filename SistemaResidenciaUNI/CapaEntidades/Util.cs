@@ -13,7 +13,6 @@ namespace CapaEntidades
         {
 
         }
-
         public class Generos
         {
             public const string Masculino = "Masculino";
@@ -25,7 +24,15 @@ namespace CapaEntidades
             public const string Masculino = "#2037F5";
             public const string Femenino = "#F520BE";
             public const string SinEspecificar = "#A220F5";
+        }
 
+        public class  cc
+        {
+            public cc()
+            {
+
+            }
+                
         }
     }
 }

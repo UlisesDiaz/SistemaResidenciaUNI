@@ -156,7 +156,6 @@
 
     </script>
     <!-- Modal -->
-
     <div id="modalDatos" class="modalDialog">
         <div>
             <a href="#close" title="Close" class="close">X</a>
@@ -174,5 +173,4 @@
             </table>
         </div>
     </div>
-
 </asp:Content>

@@ -635,6 +635,9 @@
           <Parameter Name="numducumento" Type="varchar" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="ListadoEstuCuartoSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumCuarto" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -668,6 +671,10 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spCuartosDisponiblesCambioEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPDeletelogicaAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipoAseo" Type="int" Mode="In" />
+        </Function>
         <Function Name="spEstdianteGuardados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spHistorialCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nunCarnet" Type="varchar" Mode="In" />
@@ -675,7 +682,12 @@
         <Function Name="spInfoEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumCarnet" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SPModificacionAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipoAseo" Type="int" Mode="In" />
+          <Parameter Name="NuevaDescrip" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPMostrarTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spMoverEstudianteDeCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="carnet" Type="varchar" Mode="In" />
         </Function>
@@ -1744,6 +1756,18 @@
           <FunctionImport Name="spNumeroCuartoPorIDEST" ReturnType="Collection(Int32)">
           <Parameter Name="ID_EST" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ListadoEstuCuartoSP" ReturnType="Collection(dbModel.ListadoEstuCuartoSP_Result)">
+          <Parameter Name="NumCuarto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPDeletelogicaAseo">
+          <Parameter Name="idTipoAseo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPModificacionAseo">
+            <Parameter Name="idTipoAseo" Mode="In" Type="Int32" />
+            <Parameter Name="NuevaDescrip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPMostrarTipoAseo" ReturnType="Collection(dbModel.SPMostrarTipoAseo_Result)" />
+          <FunctionImport Name="spCuartosDisponiblesCambioEstudiante" ReturnType="Collection(dbModel.spCuartosDisponiblesCambioEstudiante_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1873,6 +1897,21 @@
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
           <Property Type="DateTime" Name="ROL_ASE_FECHA_INICIAL" Nullable="false" />
           <Property Type="String" Name="GEN_DESCRIPCION" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ListadoEstuCuartoSP_Result">
+          <Property Type="Int32" Name="PER_ID" Nullable="false" />
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SPMostrarTipoAseo_Result">
+          <Property Type="Int32" Name="TIP_ASE_ID" Nullable="false" />
+          <Property Type="String" Name="TIP_ASE_DESCRIPCION" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="spCuartosDisponiblesCambioEstudiante_Result">
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2306,6 +2345,35 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spNumeroCuartoPorIDEST" FunctionName="dbModel.Store.spNumeroCuartoPorIDEST" />
+          <FunctionImportMapping FunctionImportName="ListadoEstuCuartoSP" FunctionName="dbModel.Store.ListadoEstuCuartoSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.ListadoEstuCuartoSP_Result">
+                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPDeletelogicaAseo" FunctionName="dbModel.Store.SPDeletelogicaAseo" />
+          <FunctionImportMapping FunctionImportName="SPModificacionAseo" FunctionName="dbModel.Store.SPModificacionAseo" />
+          <FunctionImportMapping FunctionImportName="SPMostrarTipoAseo" FunctionName="dbModel.Store.SPMostrarTipoAseo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.SPMostrarTipoAseo_Result">
+                <ScalarProperty Name="TIP_ASE_ID" ColumnName="TIP_ASE_ID" />
+                <ScalarProperty Name="TIP_ASE_DESCRIPCION" ColumnName="TIP_ASE_DESCRIPCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCuartosDisponiblesCambioEstudiante" FunctionName="dbModel.Store.spCuartosDisponiblesCambioEstudiante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spCuartosDisponiblesCambioEstudiante_Result">
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

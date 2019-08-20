@@ -47,34 +47,27 @@ namespace SistemaResidenciaUNI.Estudiante
                 }
                 else
                 {
-
-                   
-                  
                     GuardarEstudiante();
                     LimpiarControles();
+
                     string script = string.Format("alert('{0}');", resultado.mensaje);
                     ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);
-                  
                 }
 
             }
             catch (Exception ex)
             {
-
                 string script = string.Format("alert('{0}');", ex.Message);
                 ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
-
             }
-
         }
 
         Resultado GuardarEstudiante()
         {
 
             NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
-
-
             EntidadEstudiante entidadEstudiante = new EntidadEstudiante();
+
             //info sobre persona
             EntidadPersona entidadPersona = new EntidadPersona();
 
@@ -112,7 +105,7 @@ namespace SistemaResidenciaUNI.Estudiante
 
             //info básica de contacto correo, direccion, tele etc
             EntidadCorreo entCorreo = new EntidadCorreo(); //aquì solo se pide un correo, pero la estructura  puede ser una lista uno a muchos
-            entCorreo.COR_DEFINICION = string.Empty; // ni idea donde està ese control q pide el correo al usuario por eso lo mando vacio
+            entCorreo.COR_DEFINICION = TextCorDefinicion.Text; // ni idea donde està ese control q pide el correo al usuario por eso lo mando vacio
             entCorreo.COR_ESTADO = true;
 
             List<EntidadCorreo> lisEntCorreo = new List<EntidadCorreo>();
@@ -201,59 +194,53 @@ namespace SistemaResidenciaUNI.Estudiante
             ddListEstadoCivil.DataTextField = "EST_CIV_DESCRI";
             ddListEstadoCivil.DataValueField = "EST_CIV_ID";
             ddListEstadoCivil.DataBind();
-
-
         }
-
         void LimpiarControles()
         {
-            EnlazarListas();
-            txtPerCedula.Text = string.Empty;
-            txtEstCarnet.Text = string.Empty;
-            txtPerPrimerNombre.Text = string.Empty;
-            txtPerSegundoNombre.Text= string.Empty;
-            txtPerPrimerApellido.Text= string.Empty;
-            txtPerSegundoApellido.Text= string.Empty;
-            txtTelNumero.Text =string.Empty;
-            txtNumCasa.Text = string.Empty;
-            txtDireccion.InnerText = string.Empty;
-            Response.Write("<script>alert('El estudiante se ha Guardado Correctamente!')</script>");
+                    EnlazarListas();
+                    txtPerCedula.Text = string.Empty;
+                    txtEstCarnet.Text = string.Empty;
+                    txtPerPrimerNombre.Text = string.Empty;
+                    txtPerSegundoNombre.Text= string.Empty;
+                    txtPerPrimerApellido.Text= string.Empty;
+                    txtPerSegundoApellido.Text= string.Empty;
+                    txtTelNumero.Text =string.Empty;
+                    txtNumCasa.Text = string.Empty;
+                    txtDireccion.InnerText = string.Empty;
+                    Response.Write("<script>alert('El estudiante se ha Guardado Correctamente!')</script>");
         }
-
         void ObtenerMunicipiosPorDepartamentoId(int depID)
         {
-            //LLenar lista de municipios según Departamento
-            NegocioMunicipio negocioMunicipio = new NegocioMunicipio();
-            ddlMunicipio.DataSource = negocioMunicipio.ObtenerMunicipioPorDepartamentoId(depID).data as List<EntidadMunicipio>;
-            ddlMunicipio.DataTextField = "MUN_NOMBRE";
-            ddlMunicipio.DataValueField = "MUN_ID";
-            ddlMunicipio.DataBind();
+                    //LLenar lista de municipios según Departamento
+                    NegocioMunicipio negocioMunicipio = new NegocioMunicipio();
+                    ddlMunicipio.DataSource = negocioMunicipio.ObtenerMunicipioPorDepartamentoId(depID).data as List<EntidadMunicipio>;
+                    ddlMunicipio.DataTextField = "MUN_NOMBRE";
+                    ddlMunicipio.DataValueField = "MUN_ID";
+                    ddlMunicipio.DataBind();
         }
 
         void ObtenerBarrioPorMunicipioId(int munId)
         {
-            //LLenar lista de municipios según Departamento
-            NegocioBarrio negocioBarrio = new NegocioBarrio();
-            ddlBarrio.DataSource = negocioBarrio.ObtenerBarrioPorMunicipioId(munId).data as List<EntidadBarrio>;
-            ddlBarrio.DataTextField = "BAR_NOMBRE";
-            ddlBarrio.DataValueField = "BAR_ID";
-            ddlBarrio.DataBind();
+                    //LLenar lista de municipios según Departamento
+                    NegocioBarrio negocioBarrio = new NegocioBarrio();
+                    ddlBarrio.DataSource = negocioBarrio.ObtenerBarrioPorMunicipioId(munId).data as List<EntidadBarrio>;
+                    ddlBarrio.DataTextField = "BAR_NOMBRE";
+                    ddlBarrio.DataValueField = "BAR_ID";
+                    ddlBarrio.DataBind();
         }
 
         protected void dllDepNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ObtenerMunicipiosPorDepartamentoId(int.Parse(ddlDepNombre.SelectedValue));
+                     ObtenerMunicipiosPorDepartamentoId(int.Parse(ddlDepNombre.SelectedValue));
         }
 
         byte[] ObtenerIMagenByteArray(Stream stream)
         {
-            int streamLength = int.Parse(stream.Length.ToString());
-            byte[] fileData = new byte[streamLength];
-
-            stream.Read(fileData, 0, streamLength);
-            stream.Close();
-
-            return fileData;
+                    int streamLength = int.Parse(stream.Length.ToString());
+                    byte[] fileData = new byte[streamLength];
+                    stream.Read(fileData, 0, streamLength);
+                    stream.Close();
+                    return fileData;
         }
 
         protected void ddlMunicipio_SelectedIndexChanged(object sender, EventArgs e)
@@ -265,8 +252,6 @@ namespace SistemaResidenciaUNI.Estudiante
 
         void ListarEstudiantes()
         {
-
-
             //gvListaEstudiante.DataSource = negocioEstudiante.ObtenerListaEstudiantes();
             //gvListaEstudiante.DataBind();
         }
@@ -275,15 +260,11 @@ namespace SistemaResidenciaUNI.Estudiante
 
         public static Object MostrarEstudianteGuardados()
         {
-            List<EntidadspEstudiantesGuardados> lista = new List<EntidadspEstudiantesGuardados>();
-
-            NegocioEstudiante nEstudiante = new NegocioEstudiante();
-            lista = nEstudiante.N_MostraEstudianteGuardados();
-            object json = new { data = lista };
-            return json;
-
+                List<EntidadspEstudiantesGuardados> lista = new List<EntidadspEstudiantesGuardados>();
+                NegocioEstudiante nEstudiante = new NegocioEstudiante();
+                lista = nEstudiante.N_MostraEstudianteGuardados();
+                object json = new { data = lista };
+                return json;
         }
-
-
     }
 }

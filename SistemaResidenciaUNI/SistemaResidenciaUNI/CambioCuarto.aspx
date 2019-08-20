@@ -15,10 +15,35 @@
     <script type="text/javascript">
         jQuery_382(document).ready(function () {
             jQuery_382('#buscar').on('click', function () {
+
+         
                 LoadStudentInfo();
                 LoadStudentBedRoom();
             });
         });
+
+        function CuartosDisponibles() {
+
+            jQuery.ajax({
+                type: "post",
+                url: 'CambioCuarto.aspx/ajaxMustraCuartosDisponibles',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ }),
+                dataType: "json",
+                success: function (result) {
+                  
+                   
+                        var dataj = JSON.parse(result.d);
+                        console.log(dataj.d);
+                        //$('#DdlCuarDis').text(dataj.Data.CUA_NUMERO);
+                    
+                }, error: function (er) {
+                    alert('Error: ' + er);
+                }
+            });
+
+
+        }
 
         function LoadStudentInfo() {
             var carnet = $('#txtNumCarnet').val();
@@ -30,7 +55,6 @@
                 dataType: "json",
                 success: function (result) {
                     if (!!result) {
-
                         var dataj = JSON.parse(result.d);
                         if (dataj.error != "") {
                             alert('Error: ' + dataj.error);
@@ -55,7 +79,6 @@
                     alert('Error: ' + er);
                 }
             });
-
         }
         //tabla Historial
         function LoadStudentBedRoom() {
@@ -133,6 +156,7 @@
             });
         }
         <%--fin Tabla Historial--%>
+
     </script>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -197,6 +221,11 @@
                                     <asp:Label runat="server">Cuarto Actual</asp:Label>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <asp:Label runat="server">Cuarto Disponible</asp:Label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -233,6 +262,12 @@
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <span id="lblCuarto"></span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group row">
+                                <div class="col-sm-5">
+                                    <select id="DdlCuarDis" runat="server" class="form-control"></select>
                                 </div>
                             </div>
                         </div>

@@ -7,27 +7,21 @@ using System.Linq;
 namespace CapaDatos
 {
     public class DatoEstudiante
-    {
-        dbResidenciaEntities dbResidencia = new dbResidenciaEntities();
-        Resultado resultado = new Resultado();
-        public Resultado GuardarNuevoEstudiante(EntidadEstudiante EntidadEstudiante)
         {
-
+                        dbResidenciaEntities dbResidencia = new dbResidenciaEntities();
+                        Resultado resultado = new Resultado();
+    public Resultado GuardarNuevoEstudiante(EntidadEstudiante EntidadEstudiante)
+        {
             DatoCuarto datoCuarto = new DatoCuarto();
             resultado = new Resultado();
             TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
             TBL_ESTUDIANTE TBL_ESTUDIANTE = new TBL_ESTUDIANTE();
-
             try
             {
-
                 GuardarNuevaPersona(EntidadEstudiante.TBL_PERSONA);
 
                 int PER_ID = ObtenerUltimoIdPersona();
-
-
                 TBL_HIS_ESTUDIANTE_CUARTO hisEstCua = new TBL_HIS_ESTUDIANTE_CUARTO();
-
                 hisEstCua.CUA_ID = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.CUA_ID).FirstOrDefault();
                 hisEstCua.EST_ID = PER_ID;
                 hisEstCua.HIS_EST_CUA_DESRIPCION = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.HIS_EST_CUA_DESRIPCION).FirstOrDefault();
@@ -158,15 +152,15 @@ namespace CapaDatos
             {
                 estudiantes = dbResidencia.TBL_ESTUDIANTE.Select(dr => new
                 {
-                    NOMBRE_COMPLETO = dr.TBL_PERSONA.PER_PRIMER_NOMBRE + " " + dr.TBL_PERSONA.PER_SEGUNDO_NOMBRE + " " + dr.TBL_PERSONA.PER_PRIMER_APELLIDO + " " + dr.TBL_PERSONA.PER_SEGUNDO_APELLIDO,
-                    carrera = dr.TBL_CARRERA.CAR_DESCRIPCION,
-                    carnet = dr.EST_CARNET,
-                    telefono = dr.TBL_PERSONA.TBL_TELEFONO.Select(tel=>tel.TEL_NUMERO).FirstOrDefault(),
-                    recinto=dr.TBL_CARRERA.TBL_RECINTO.REC_DESCRIPCION,
-                    compania=dr.TBL_PERSONA.TBL_TELEFONO.Select(comp=>comp.TBL_COMPAÑIA.COM_DESCRIPCION),
-                    departamento=dr.TBL_PERSONA.TBL_DIRECCION.Select(dep=>dep.TBL_BARRIO.TBL_MUNICIPIO.TBL_DEPARTAMENTO.DEP_NOMBRE),
-                    municipio=dr.TBL_PERSONA.TBL_DIRECCION.Select(mun=>mun.TBL_BARRIO.TBL_MUNICIPIO.MUN_NOMBRE),
-                    Cuarto=dr.TBL_HIS_ESTUDIANTE_CUARTO.Where(cua=>cua.HIS_EST_CUA_ESTADO==true).Select(num=>num.TBL_CUARTO.CUA_NUMERO).FirstOrDefault()
+                            NOMBRE_COMPLETO = dr.TBL_PERSONA.PER_PRIMER_NOMBRE + " " + dr.TBL_PERSONA.PER_SEGUNDO_NOMBRE + " " + dr.TBL_PERSONA.PER_PRIMER_APELLIDO + " " + dr.TBL_PERSONA.PER_SEGUNDO_APELLIDO,
+                            carrera = dr.TBL_CARRERA.CAR_DESCRIPCION,
+                            carnet = dr.EST_CARNET,
+                            telefono = dr.TBL_PERSONA.TBL_TELEFONO.Select(tel=>tel.TEL_NUMERO).FirstOrDefault(),
+                            recinto=dr.TBL_CARRERA.TBL_RECINTO.REC_DESCRIPCION,
+                            compania=dr.TBL_PERSONA.TBL_TELEFONO.Select(comp=>comp.TBL_COMPAÑIA.COM_DESCRIPCION),
+                            departamento=dr.TBL_PERSONA.TBL_DIRECCION.Select(dep=>dep.TBL_BARRIO.TBL_MUNICIPIO.TBL_DEPARTAMENTO.DEP_NOMBRE),
+                            municipio=dr.TBL_PERSONA.TBL_DIRECCION.Select(mun=>mun.TBL_BARRIO.TBL_MUNICIPIO.MUN_NOMBRE),
+                            Cuarto=dr.TBL_HIS_ESTUDIANTE_CUARTO.Where(cua=>cua.HIS_EST_CUA_ESTADO==true).Select(num=>num.TBL_CUARTO.CUA_NUMERO).FirstOrDefault()
                 }).ToList();
 
             }
@@ -253,6 +247,7 @@ namespace CapaDatos
 
             return dbResidencia.spBuscarEstudiantePorCuarto(NumCuarto).Select(dr => new EntidadPersona
             {
+                
                 PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
                 PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
                 PER_PRIMER_APELLIDO = dr.PER_PRIMER_APELLIDO,
@@ -282,19 +277,13 @@ namespace CapaDatos
                     COR_DEFINICION = dr.COR_DEFINICION,
                     CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
                     REC_DESCRIPCION = dr.REC_DESCRIPCION,
-
-
-
                 }).FirstOrDefault();
 
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
-
         }
 
         public object ObtenerEstadoCivil()
@@ -402,7 +391,6 @@ namespace CapaDatos
         public List<EntidadspEstudiantesGuardados> MostrarEstudianteGuardados()
         {
             return dbResidencia.spEstdianteGuardados().Select(dr => new EntidadspEstudiantesGuardados
-
             {
                 PER_PRIMER_NOMBRE = dr.PER_PRIMER_NOMBRE,
                 PER_SEGUNDO_NOMBRE = dr.PER_SEGUNDO_NOMBRE,
@@ -410,12 +398,35 @@ namespace CapaDatos
                 PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
                 CUA_NUMERO = dr.CUA_NUMERO,
                 CAR_DESCRIPCION = dr.CAR_DESCRIPCION
-
-
             }
 
             ).ToList();
+        }
 
+        public  object infoRecidencia()
+        {
+            dbResidenciaEntities Recidencia = new dbResidenciaEntities();
+            object resul = null;
+            int totalMujeres = 0;
+            int totalVarones = 0;
+            int totalFinal = 0;
+
+            try
+            {
+                totalMujeres = Recidencia.TBL_ESTUDIANTE.Where(est => est.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION.Equals(Util.Generos.Femenino) && est.EST_ESTADO.Equals(true)).Count();
+                totalVarones = Recidencia.TBL_ESTUDIANTE.Where(est => est.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION.Equals(Util.Generos.Masculino) && est.EST_ESTADO.Equals(true)).Count();
+                totalFinal =totalVarones+totalMujeres;
+                resul = new { TotalMujeres = totalMujeres, TotalVarones = totalVarones,TotalFinal= totalFinal, Error = string.Empty };
+                return resul;
+
+            }
+            catch (Exception ex)
+            {
+                resul = new { TotalMujeres = totalMujeres, TotalVarones = 0, total = 0, Error = ex.Message };
+            }
+
+            return resul;
         }
     }
 }
+

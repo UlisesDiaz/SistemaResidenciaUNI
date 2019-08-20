@@ -72,6 +72,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ListadoEstuCuartoSP_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +87,9 @@
     <Compile Include="spBuscarEstudiantePorCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spCuartosDisponiblesCambioEstudiante_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spEstdianteGuardados_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -94,6 +100,9 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spMostrarCuartosDisponibles_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPMostrarTipoAseo_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spMoverEstudianteDeCuarto_Result.cs">

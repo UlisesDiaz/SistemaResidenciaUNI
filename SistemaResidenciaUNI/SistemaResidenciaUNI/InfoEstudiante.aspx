@@ -16,7 +16,7 @@
                         <asp:Label ID="lblBuscarCarnet" runat="server" class="col-sm-4 col-form-label" CssClass="text text-bold" Text="  Ingrese Carnet del Estudiante"></asp:Label>
                     </div>
                     <div class="col-md-3">
-                        <asp:TextBox ID="txtNumCarnet" runat="server" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
+                        <asp:TextBox ID="txtNumCarnet" runat="server" MaxLength="10" CssClass="form-control" placeholder="Ingrese Carnet"></asp:TextBox>
                     </div>
 
                 </div>

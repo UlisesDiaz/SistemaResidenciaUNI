@@ -10,24 +10,15 @@
 namespace SistemaResidenciaUNI {
     
     
-    public partial class Detalle_Estudiante {
+    public partial class InfoResidencia {
         
         /// <summary>
-        /// Control ScriptManagerDetalleEstudiante.
+        /// Control aa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManagerDetalleEstudiante;
-        
-        /// <summary>
-        /// Control UpdatePanelDetalleEstudiante.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelDetalleEstudiante;
+        protected global::System.Web.UI.ScriptManager aa;
     }
 }

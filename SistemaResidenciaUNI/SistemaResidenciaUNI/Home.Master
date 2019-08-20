@@ -190,7 +190,7 @@
                                 <li><a href="../CambioCuarto.aspx"><i class="fa fa-circle-o"></i>Cambio de Cuarto </a></li>
                                 <li><a href="../InfoEstudiante.aspx"><i class="fa fa-circle-o"></i>Info Estudiante</a></li>
                                 <li><a href="../PruebaDatatable.aspx"><i class="fa fa-circle-o"></i>(Tipo de Aseo)</a></li>
-                                 <li><a href="../Detalle_Estudiante.aspx"><i class="fa fa-circle-o"></i>Detalle Estudiantes</a></li>
+                                 <li><a href="../InfoResidencia.aspx"><i class="fa fa-circle-o"></i>Informacion Residencia</a></li>
 
                             </ul>
                         </li>

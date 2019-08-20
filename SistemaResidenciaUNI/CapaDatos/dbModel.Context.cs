@@ -373,5 +373,46 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spNumeroCuartoPorIDEST", iD_ESTParameter);
         }
+    
+        public virtual ObjectResult<ListadoEstuCuartoSP_Result> ListadoEstuCuartoSP(Nullable<int> numCuarto)
+        {
+            var numCuartoParameter = numCuarto.HasValue ?
+                new ObjectParameter("NumCuarto", numCuarto) :
+                new ObjectParameter("NumCuarto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListadoEstuCuartoSP_Result>("ListadoEstuCuartoSP", numCuartoParameter);
+        }
+    
+        public virtual int SPDeletelogicaAseo(Nullable<int> idTipoAseo)
+        {
+            var idTipoAseoParameter = idTipoAseo.HasValue ?
+                new ObjectParameter("idTipoAseo", idTipoAseo) :
+                new ObjectParameter("idTipoAseo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPDeletelogicaAseo", idTipoAseoParameter);
+        }
+    
+        public virtual int SPModificacionAseo(Nullable<int> idTipoAseo, string nuevaDescrip)
+        {
+            var idTipoAseoParameter = idTipoAseo.HasValue ?
+                new ObjectParameter("idTipoAseo", idTipoAseo) :
+                new ObjectParameter("idTipoAseo", typeof(int));
+    
+            var nuevaDescripParameter = nuevaDescrip != null ?
+                new ObjectParameter("NuevaDescrip", nuevaDescrip) :
+                new ObjectParameter("NuevaDescrip", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPModificacionAseo", idTipoAseoParameter, nuevaDescripParameter);
+        }
+    
+        public virtual ObjectResult<SPMostrarTipoAseo_Result> SPMostrarTipoAseo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPMostrarTipoAseo_Result>("SPMostrarTipoAseo");
+        }
+    
+        public virtual ObjectResult<spCuartosDisponiblesCambioEstudiante_Result> spCuartosDisponiblesCambioEstudiante()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spCuartosDisponiblesCambioEstudiante_Result>("spCuartosDisponiblesCambioEstudiante");
+        }
     }
 }

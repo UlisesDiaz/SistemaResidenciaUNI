@@ -93,5 +93,13 @@ namespace CapaNegocio
             return datoEstudiante.MostrarEstudianteGuardados();
 
         }
+        public object N_infoRecidencia()
+        {
+            return datoEstudiante.infoRecidencia();
+
+        }
+
+      
+      
     }
 }
