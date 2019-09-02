@@ -14,7 +14,7 @@ namespace SistemaResidenciaUNI
             settings.AutoRedirectMode = RedirectMode.Off;
             routes.EnableFriendlyUrls(settings);
 
-            routes.MapPageRoute("default", "", "~/Estudiante/Estudiante.aspx");
+            routes.MapPageRoute("index", "", "~/LoginPage.aspx");
         }
     }
 }
