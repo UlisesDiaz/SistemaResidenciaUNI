@@ -14,6 +14,7 @@
 
     <script type="text/javascript">
         jQuery_382(document).ready(function () {
+           
             jQuery_382('#buscar').on('click', function () {
 
          
@@ -44,6 +45,8 @@
 
 
         }
+
+       
 
         function LoadStudentInfo() {
             var carnet = $('#txtNumCarnet').val();
@@ -149,14 +152,20 @@
                                 ]
                             });
                         }
+                      
                     }
+
                 }, error: function (er) {
                     alert(er);
                 }
+                 
             });
+            $('.p').mask('0000-0000-S');
         }
         <%--fin Tabla Historial--%>
 
+
+      
     </script>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -167,10 +176,10 @@
                     <div class="row  ">
                         <div class="col-md-6">
                             <div class="col-md-5">
-                                <asp:Label runat="server" label="txtNumCarnet" Font-Bold="true"> Ingrese el Carnet del estudiante</asp:Label>
+                                <asp:Label runat="server"  label="txtNumCarnet" Font-Bold="true"> Ingrese el Carnet del estudiante</asp:Label>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="txtNumCarnet" class="form-control" placeholder="Eje:( 2019-0019U )"> </input>
+                                <input type="text" id="txtNumCarnet" style="text-transform:uppercase" class="form-control p" placeholder="Eje:( 2019-0019U )"> </input>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -20,6 +20,7 @@ body{
     margin-top: 25px;
     display: flex;
     border-radius: 20px;
+   border-color:red;
     overflow: hidden;
     
 }
@@ -102,7 +103,7 @@ input[type="submit"]:hover{
 .Content-Text{
     
     width: 100%;
-    background-image:url(../dist/img/Student.jpg);
+    background-image:url(../dist/img/student.jpg);
     background-position: center;
     background-size: cover;
     padding: 40px;
@@ -116,7 +117,7 @@ input[type="submit"]:hover{
     top: 0;
     left: 0;
     background: linear-gradient(90deg,#E30F87,#0476D9);
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
 .Title-des{
@@ -126,6 +127,8 @@ input[type="submit"]:hover{
     color: white;
     font-weight: 300;
     font-size: 40px;
+    color:#fff
+  
 }
 
 .Text-Des{
@@ -134,6 +137,11 @@ input[type="submit"]:hover{
     color: white;
     font-size: 18px;
     font-weight: 200;
+}
+#TitleDecoration{
+
+
+
 }
 
 /*media*/
@@ -150,4 +158,6 @@ input[type="submit"]:hover{
         background: white;
         
     }
+  
 }
+  

@@ -91,6 +91,9 @@
     <Compile Include="spBuscarEstudiantePorCuarto_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spCuartosDisponiblesCambioEstudiante1_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spCuartosDisponiblesCambioEstudiante_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,12 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spInfoEstudiante_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spInfoMujeresActivasR_Result.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spInfoMujeresActivas_Result.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spMostrarCuartosDisponibles_Result.cs">

@@ -17,15 +17,6 @@ namespace SistemaResidenciaUNI
 
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            TextBox User = (TextBox)LoginUser.FindControl("txtuser");
-            TextBox Password = (TextBox)LoginUser.FindControl("txtPassword");
-
-            bool Auth = Membership.ValidateUser(User.Text,Password.Text);
-
-            if (Auth)
-            {
-
-            }
 
         }
     }

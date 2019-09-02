@@ -50,12 +50,42 @@ namespace CapaDatos
             return cuartoLista;
         }
 
+        public List<EntidadCuarto> CambioCuartosDispibles(int idGenero)
+        {
+
+
+            List<EntidadCuarto> cuartoList = new List<EntidadCuarto>();
+
+            if (idGenero == Util.GenerosID.Femenino)
+            {
+                dbResidencia.TBL_CUARTO.OrderBy(orden => orden.CUA_NUMERO).Where(cua => cua.CUA_ESTADO == true && cua.CUA_NUMERO >= 22 && cua.CUA_NUMERO < 30).ToList().ForEach(fila =>
+                {
+
+                    EntidadCuarto cadaCuarto = new EntidadCuarto();
+                    cadaCuarto.CUA_ID = fila.CUA_ID;
+                    cadaCuarto.CUA_NUMERO = fila.CUA_NUMERO;
+
+                    cuartoList.Add(cadaCuarto);
+
+                });
+            }
+            else if (idGenero == Util.GenerosID.Masculino)
+            {
+                dbResidencia.TBL_CUARTO.OrderBy(orden => orden.CUA_NUMERO).Where(cua => cua.CUA_ESTADO == true && cua.CUA_NUMERO >= 1 && cua.CUA_NUMERO < 29).ToList().ForEach(fila =>
+                {
+                    EntidadCuarto cadaCuarto = new EntidadCuarto();
+                    cadaCuarto.CUA_ID = fila.CUA_ID;
+                    cadaCuarto.CUA_NUMERO = fila.CUA_NUMERO;
+                    cuartoList.Add(cadaCuarto);
+                });
+            }
+            return cuartoList;
+        }
+
         public int ObtenerUltimoIdCuarto()
         {
             return dbResidencia.TBL_CUARTO.OrderByDescending(dr => dr.CUA_ID).Select(dr => dr.CUA_ID).First();
         }
-
-
 
         //    Procedimiento Mostrar Cuartos
         public List<EntidadCuarto> ObtnerCuartoPorSp()
@@ -67,13 +97,8 @@ namespace CapaDatos
                 CUA_ESTADO = dr.CUA_ESTADO
             }).ToList();
         }
-
-
-
-
         public List<EntidadEstudianteCuartoSP> ListarEstuCuarto(int n)
         {
-
             return dbResidencia.ListadoEstuCuartoSP(n).Select(dr => new EntidadEstudianteCuartoSP
             {
                 PER_ID = dr.PER_ID,
@@ -84,7 +109,22 @@ namespace CapaDatos
             }).ToList();
         }
 
+        //public   object mostrarCuartosPorGenero()
+        //{
+        //    object numeroCuarto=null;
 
+        //    var cuarto = from c in dbResidencia.TBL_CUARTO
+        //                 where c.CUA_ESTADO==true && c.CUA_NUMERO >=22 && c.CUA_NUMERO<30 
+        //                 select c;
+        //       foreach(var c in cuarto)
+        //        {
+        //          numeroCuarto = c;      
+
+        //        }
+        //    return numeroCuarto;
+        //    }
 
     }
+
 }
+

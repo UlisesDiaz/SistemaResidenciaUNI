@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 
 namespace CapaDatos
 {
@@ -255,7 +256,6 @@ namespace CapaDatos
             }).ToList();
         }
 
-
         public EntidadInfoEstudianteSP InfoEstudiantePorCarnet(string carnet)
         {
             try
@@ -368,6 +368,9 @@ namespace CapaDatos
                 PER_SEGUNDO_APELLIDO = dr.PER_SEGUNDO_APELLIDO,
                 CAR_DESCRIPCION = dr.CAR_DESCRIPCION,
                 CUA_NUMERO = dr.CUA_NUMERO
+                
+                
+                
             }).FirstOrDefault();
 
         }
@@ -409,14 +412,15 @@ namespace CapaDatos
             object resul = null;
             int totalMujeres = 0;
             int totalVarones = 0;
-            int totalFinal = 0;
-
+            int totalVarones_Mujeres = 0;
+            String nombres =string.Empty;
             try
             {
                 totalMujeres = Recidencia.TBL_ESTUDIANTE.Where(est => est.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION.Equals(Util.Generos.Femenino) && est.EST_ESTADO.Equals(true)).Count();
+             
                 totalVarones = Recidencia.TBL_ESTUDIANTE.Where(est => est.TBL_PERSONA.TBL_GENERO.GEN_DESCRIPCION.Equals(Util.Generos.Masculino) && est.EST_ESTADO.Equals(true)).Count();
-                totalFinal =totalVarones+totalMujeres;
-                resul = new { TotalMujeres = totalMujeres, TotalVarones = totalVarones,TotalFinal= totalFinal, Error = string.Empty };
+                totalVarones_Mujeres = totalVarones+totalMujeres;
+                resul = new { TotalMujeres = totalMujeres, TotalVarones = totalVarones,TotalFinalVaronesYmujeres= totalVarones_Mujeres, Error = string.Empty };
                 return resul;
 
             }
@@ -426,6 +430,18 @@ namespace CapaDatos
             }
 
             return resul;
+        }
+     
+        public List<EntidadInfoMujeres> infoREsidenteMujeres(string Genero)
+        {
+            return dbResidencia.spInfoMujeresActivasR(Genero).Select(wo => new EntidadInfoMujeres
+            { 
+
+                PER_PRIMER_NOMBRE=wo.PER_PRIMER_NOMBRE +" "+ wo.PER_SEGUNDO_NOMBRE +" "+  wo.PER_PRIMER_APELLIDO +" "+ wo.PER_SEGUNDO_APELLIDO,
+                CUA_NUMERO=wo.CUA_NUMERO,
+                EST_CARNET=wo.EST_CARNET
+
+            }).ToList();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace SistemaResidenciaUNI
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             return jSon;
         }
@@ -57,12 +57,30 @@ namespace SistemaResidenciaUNI
             return json;
         }
 
+        [System.Web.Services.WebMethod]
+        [ScriptMethod()]
+        public static string ModalInfo(string Genero)
+        {
+            object ModalInfo = null;
+            var serializer = new JavaScriptSerializer();
+            var Json = string.Empty;
 
+            try
+            {
+
+                ModalInfo = (new NegocioEstudiante().N_InfoResidentesMujeres(Genero));
+                Json = serializer.Serialize(new { Data = ModalInfo, error = "" });
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Ha Ocurrido un inconveniente " + ex.Message + " " + ex.StackTrace);
+
+            }
+            return Json;
+
+        }
     }
 }
-
-    
-
-
-
 

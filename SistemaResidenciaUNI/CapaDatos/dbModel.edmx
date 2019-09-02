@@ -271,7 +271,7 @@
           <Property Name="USU_FECHA_FINAL" Type="date" />
           <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__TBL_CUART__GEN_I__6E01572D">
+        <Association Name="FK__TBL_CUART__GEN_I__607251E5">
           <End Role="TBL_GENERO" Type="Self.TBL_GENERO" Multiplicity="0..1" />
           <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -674,6 +674,7 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
+        <Function Name="spCuartosDisponiblesCambioEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPDeletelogicaAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoAseo" Type="int" Mode="In" />
         </Function>
@@ -684,6 +685,9 @@
         <Function Name="spInfoEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumCarnet" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spInfoMujeresActivasR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="genero" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SPModificacionAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoAseo" Type="int" Mode="In" />
           <Parameter Name="NuevaDescrip" Type="varchar" Mode="In" />
@@ -692,6 +696,12 @@
         <Function Name="SPMostrarTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spMoverEstudianteDeCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="carnet" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPNuevoTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spNumeroCuartoPorIDEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_EST" Type="int" Mode="In" />
         </Function>
         <Function Name="spObtenerDetalleAseoSegunEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cuaNum" Type="int" Mode="In" />
@@ -730,7 +740,7 @@
           <EntitySet Name="TBL_TIPO_IDENTIFICACION" EntityType="Self.TBL_TIPO_IDENTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__TBL_CUART__GEN_I__6E01572D" Association="Self.FK__TBL_CUART__GEN_I__6E01572D">
+          <AssociationSet Name="FK__TBL_CUART__GEN_I__607251E5" Association="Self.FK__TBL_CUART__GEN_I__607251E5">
             <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
             <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
           </AssociationSet>
@@ -1765,7 +1775,18 @@
           <FunctionImport Name="SPMostrarTipoAseo" ReturnType="Collection(dbModel.SPMostrarTipoAseo_Result)" />
           <FunctionImport Name="spCuartosDisponiblesCambioEstudiante" ReturnType="Collection(dbModel.spCuartosDisponiblesCambioEstudiante_Result)" />
           <FunctionImport Name="MostarEstuAsignacionSP" ReturnType="Collection(dbModel.MostarEstuAsignacionSP_Result)">
-            <Parameter Name="ID_Cuar" Mode="In" Type="Int32" />
+          <Parameter Name="ID_Cuar" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spCuartosDisponiblesCambioEstudiante1" ReturnType="Collection(dbModel.spCuartosDisponiblesCambioEstudiante1_Result)" />
+          <FunctionImport Name="SPNuevoTipoAseo1">
+          <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spNumeroCuartoPorIDEST1" ReturnType="Collection(Int32)">
+          <Parameter Name="ID_EST" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInfoMujeresActivas" ReturnType="Collection(dbModel.spInfoMujeresActivas_Result)" />
+          <FunctionImport Name="spInfoMujeresActivasR" ReturnType="Collection(dbModel.spInfoMujeresActivasR_Result)" >
+          <Parameter Name="genero" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1918,6 +1939,25 @@
           <Property Type="String" Name="Estudiante" Nullable="true" MaxLength="152" />
           <Property Type="Int32" Name="Cantidad_de_Aseos_Asignados" Nullable="true" />
           <Property Type="String" Name="COR_DEFINICION" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="spCuartosDisponiblesCambioEstudiante1_Result">
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="false" />
+          <Property Type="Int32" Name="CUA_NUMERO1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spInfoMujeresActivas_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spInfoMujeresActivasR_Result">
+          <Property Type="String" Name="PER_PRIMER_NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PER_PRIMER_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EST_CARNET" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="CUA_NUMERO" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2378,6 +2418,28 @@
                 <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
                 <ScalarProperty Name="Cantidad_de_Aseos_Asignados" ColumnName="Cantidad de Aseos Asignados" />
                 <ScalarProperty Name="COR_DEFINICION" ColumnName="COR_DEFINICION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCuartosDisponiblesCambioEstudiante1" FunctionName="dbModel.Store.spCuartosDisponiblesCambioEstudiante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spCuartosDisponiblesCambioEstudiante1_Result">
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
+                <ScalarProperty Name="CUA_NUMERO1" ColumnName="CUA_NUMERO1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPNuevoTipoAseo1" FunctionName="dbModel.Store.SPNuevoTipoAseo" />
+          <FunctionImportMapping FunctionImportName="spNumeroCuartoPorIDEST1" FunctionName="dbModel.Store.spNumeroCuartoPorIDEST" />
+          <FunctionImportMapping FunctionImportName="spInfoMujeresActivasR" FunctionName="dbModel.Store.spInfoMujeresActivasR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.spInfoMujeresActivasR_Result">
+                <ScalarProperty Name="PER_PRIMER_NOMBRE" ColumnName="PER_PRIMER_NOMBRE" />
+                <ScalarProperty Name="PER_SEGUNDO_NOMBRE" ColumnName="PER_SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PER_PRIMER_APELLIDO" ColumnName="PER_PRIMER_APELLIDO" />
+                <ScalarProperty Name="PER_SEGUNDO_APELLIDO" ColumnName="PER_SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="EST_CARNET" ColumnName="EST_CARNET" />
+                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

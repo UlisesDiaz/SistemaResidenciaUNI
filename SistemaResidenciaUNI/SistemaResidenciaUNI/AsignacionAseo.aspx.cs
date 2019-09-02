@@ -440,7 +440,7 @@ namespace SistemaResidenciaUNI
             catch (Exception ex)
             {
 
-
+                Console.WriteLine("Algo ha salido mal " + ex.Message+" "+"En la Linia"+ex.StackTrace);
                 string enviado = "El envio Fallo Verifique la Conexion a Internet o que el Correo sea Valido";
                 string script = string.Format("alert('{0}');", enviado);
                 ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);

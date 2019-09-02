@@ -19,6 +19,12 @@ namespace CapaEntidades
             public const string Femenino = "Femenino";
             public const string SinEspecificar = "Sin especificar";
         }
+        public class GenerosID
+        {
+            public const int Masculino =1;
+            public const int Femenino = 2;
+            public const int SinEspecificar =3;
+        }
         public class EventColor
         {
             public const string Masculino = "#2037F5";

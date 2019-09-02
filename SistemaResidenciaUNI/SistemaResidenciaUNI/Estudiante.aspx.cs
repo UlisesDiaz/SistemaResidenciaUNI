@@ -19,6 +19,8 @@ namespace SistemaResidenciaUNI.Estudiante
         NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
         protected void Page_Load(object sender, EventArgs e)
         {
+             
+         
             try
             {
                 Page.Form.Attributes.Add("enctype", "multipart/form-data");
@@ -37,6 +39,7 @@ namespace SistemaResidenciaUNI.Estudiante
 
         protected void GuardarEstudiante_Click(object sender, EventArgs e)
         {
+           
             try
             {
                 Resultado resultado = GuardarEstudiante();
@@ -49,7 +52,7 @@ namespace SistemaResidenciaUNI.Estudiante
                 {
                     GuardarEstudiante();
                     LimpiarControles();
-
+                   
                     string script = string.Format("alert('{0}');", resultado.mensaje);
                     ClientScript.RegisterClientScriptBlock(typeof(Page), "successfull", script, true);
                 }
@@ -139,6 +142,19 @@ namespace SistemaResidenciaUNI.Estudiante
             return negocioEstudiante.GuardarNuevoEstudiante(entidadEstudiante);
         }
 
+        void cuartosDisponibles()
+        {
+
+            int IdGen = int.Parse(ddlGenId.SelectedValue);
+            NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
+
+            ddlGenId.DataSource = negocioEstudiante.CambioCuartosDisponibles(IdGen);
+            ddlGenId.DataTextField = "CUA_NUMERO";
+            ddlGenId.DataValueField = "CUA_ID";
+            ddlGenId.DataBind();
+
+        }
+
         void EnlazarListas()
         {
             //llenar ddl de personas
@@ -149,6 +165,11 @@ namespace SistemaResidenciaUNI.Estudiante
             //ddlPersona.DataValueField = "PER_ID";
             //ddlPersona.DataBind();
 
+
+
+
+
+
             //LLenar ddl de cuartos
             NegocioCuarto negocioCuarto = new NegocioCuarto();
 
@@ -156,6 +177,10 @@ namespace SistemaResidenciaUNI.Estudiante
             ddlNumeroCuarto.DataTextField = "CUA_NUMERO";
             ddlNumeroCuarto.DataValueField = "CUA_ID";
             ddlNumeroCuarto.DataBind();
+
+
+
+
 
             //LLenar Departamentos
             NegocioDepartamento negocioDepartamento = new NegocioDepartamento();
@@ -266,5 +291,7 @@ namespace SistemaResidenciaUNI.Estudiante
                 object json = new { data = lista };
                 return json;
         }
+      
+       
     }
 }

@@ -286,8 +286,10 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <style type="text/css">
+
         #gvListaEstudiante {
             margin-left: 5px !important;
+            
         }
     </style>
     <script type="text/javascript">
@@ -316,6 +318,11 @@
                 $('#' + o.id + '').next().find('input').val($('#' + o.id + '').val());
             }
 
+
+            $('#txtEstCarnet').mask('0000-0000-S');
+
         });
+
+      
     </script>
 </asp:Content>

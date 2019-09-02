@@ -99,7 +99,18 @@ namespace CapaNegocio
 
         }
 
-      
-      
+       
+        public List<EntidadCuarto> CambioCuartosDisponibles(int IdGenero)
+        {
+            DatoCuarto Cuarto = new DatoCuarto();
+            return Cuarto.CambioCuartosDispibles(IdGenero);
+        }
+
+       
+        public List<EntidadInfoMujeres> N_InfoResidentesMujeres(string Genero)
+        {
+
+            return datoEstudiante.infoREsidenteMujeres(Genero);
+        }
     }
 }

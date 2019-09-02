@@ -59,6 +59,7 @@
     <Compile Include="EntidadHisRolAseo.cs" />
     <Compile Include="EntidadHistorialCuarto.cs" />
     <Compile Include="EntidadInfoEstudianteSP.cs" />
+    <Compile Include="EntidadInfoMujeres.cs" />
     <Compile Include="EntidadMunicipio.cs" />
     <Compile Include="EntidadPerRelation.cs" />
     <Compile Include="EntidadPersona.cs" />

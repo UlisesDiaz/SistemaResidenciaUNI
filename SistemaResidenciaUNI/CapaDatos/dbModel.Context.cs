@@ -423,5 +423,42 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MostarEstuAsignacionSP_Result>("MostarEstuAsignacionSP", iD_CuarParameter);
         }
+    
+        public virtual ObjectResult<spCuartosDisponiblesCambioEstudiante1_Result> spCuartosDisponiblesCambioEstudiante1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spCuartosDisponiblesCambioEstudiante1_Result>("spCuartosDisponiblesCambioEstudiante1");
+        }
+    
+        public virtual int SPNuevoTipoAseo1(string descripcion)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPNuevoTipoAseo1", descripcionParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> spNumeroCuartoPorIDEST1(Nullable<int> iD_EST)
+        {
+            var iD_ESTParameter = iD_EST.HasValue ?
+                new ObjectParameter("ID_EST", iD_EST) :
+                new ObjectParameter("ID_EST", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spNumeroCuartoPorIDEST1", iD_ESTParameter);
+        }
+    
+        public virtual ObjectResult<spInfoMujeresActivas_Result> spInfoMujeresActivas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInfoMujeresActivas_Result>("spInfoMujeresActivas");
+        }
+    
+        public virtual ObjectResult<spInfoMujeresActivasR_Result> spInfoMujeresActivasR(string genero)
+        {
+            var generoParameter = genero != null ?
+                new ObjectParameter("genero", genero) :
+                new ObjectParameter("genero", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInfoMujeresActivasR_Result>("spInfoMujeresActivasR", generoParameter);
+        }
     }
 }

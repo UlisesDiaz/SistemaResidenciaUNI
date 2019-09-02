@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using CapaNegocio;
 using CapaEntidades;
 using System.Web.Script.Services;
@@ -17,6 +13,18 @@ namespace SistemaResidenciaUNI
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            cuartosDisponibles();
+
+        }
+
+        void cuartosDisponibles()
+        {
+            NegocioEstudiante negocioEstudiante = new NegocioEstudiante();
+
+            DdlCuarDis.DataSource = negocioEstudiante.CambioCuartosDisponibles(1);
+            DdlCuarDis.DataTextField = "CUA_NUMERO";
+            DdlCuarDis.DataValueField = "CUA_ID";
+            DdlCuarDis.DataBind();
         }
 
         [System.Web.Services.WebMethod]
@@ -59,7 +67,6 @@ namespace SistemaResidenciaUNI
             }
             return json;
         }
-
 
     }
 }
