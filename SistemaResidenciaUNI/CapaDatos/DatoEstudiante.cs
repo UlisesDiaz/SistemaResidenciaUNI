@@ -443,6 +443,62 @@ namespace CapaDatos
 
             }).ToList();
         }
+
+        //Para Jquery
+        public bool SaveNuevoEstudiante(EntidadEstudiante EntidadEstudiante)
+        {
+            DatoCuarto datoCuarto = new DatoCuarto();
+            bool Resul = false;
+            TBL_PERSONA TBL_PERSONA = new TBL_PERSONA();
+            TBL_ESTUDIANTE TBL_ESTUDIANTE = new TBL_ESTUDIANTE();
+            try
+            {
+                GuardarNuevaPersona(EntidadEstudiante.TBL_PERSONA);
+
+                int PER_ID = ObtenerUltimoIdPersona();
+                TBL_HIS_ESTUDIANTE_CUARTO hisEstCua = new TBL_HIS_ESTUDIANTE_CUARTO();
+                hisEstCua.CUA_ID = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.CUA_ID).FirstOrDefault();
+                hisEstCua.EST_ID = PER_ID;
+                hisEstCua.HIS_EST_CUA_DESRIPCION = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.HIS_EST_CUA_DESRIPCION).FirstOrDefault();
+                hisEstCua.HIS_EST_CUA_ESTADO = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.HIS_EST_CUA_ESTADO).FirstOrDefault();
+                hisEstCua.USU_ID = EntidadEstudiante.TBL_HIS_ESTUDIANTE_CUARTO.Select(dr => dr.USU_ID).FirstOrDefault();
+
+                List<TBL_HIS_ESTUDIANTE_CUARTO> listHisEstC = new List<TBL_HIS_ESTUDIANTE_CUARTO>();
+                listHisEstC.Add(hisEstCua);
+
+                TBL_ESTUDIANTE.EST_ID = PER_ID;
+                //TBL_ESTUDIANTE. = datoCuarto.ObtenerUltimoIdCuarto();
+                TBL_ESTUDIANTE.EST_CARNET = EntidadEstudiante.EST_CARNET;
+                TBL_ESTUDIANTE.CAR_ID = EntidadEstudiante.CAR_ID;
+                TBL_ESTUDIANTE.EST_FECHA_FINAL = EntidadEstudiante.EST_FECHA_FINAL;
+                TBL_ESTUDIANTE.EST_ESTADO = true;
+                TBL_ESTUDIANTE.TBL_HIS_ESTUDIANTE_CUARTO = listHisEstC;
+                bool existeEstudiante = dbResidencia.TBL_ESTUDIANTE.Where(fila => fila.EST_ID.Equals(PER_ID)).Count() > 0;
+                if (existeEstudiante)
+                    Resul = false;
+
+                dbResidencia.TBL_ESTUDIANTE.Add(TBL_ESTUDIANTE);
+                dbResidencia.SaveChanges();
+
+
+                Resul = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                Resul = false;
+
+
+                throw ex;
+            }
+
+            return Resul;
+        }
+
+
+
+
     }
 }
 

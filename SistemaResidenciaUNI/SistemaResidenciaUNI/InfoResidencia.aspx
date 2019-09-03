@@ -43,7 +43,7 @@
                     <div class="icon">
                         <i class="fa fa-bar-chart" style="color: #1E8449"></i>
                     </div>
-                    <a href="#menAndWoman" class="small-box-footer" id="precionar" style="border-radius: 15px">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a  onclick="DetalleEstudianteModal(this)" class="small-box-footer"  val="AmbosGeneros" text="Detalle de Estudiantes Varones y Mujeres Activas en Residencia" id="precionar" style="border-radius: 15px">Mas info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

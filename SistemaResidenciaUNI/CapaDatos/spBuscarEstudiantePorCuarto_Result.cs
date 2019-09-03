@@ -13,9 +13,10 @@ namespace CapaDatos
     
     public partial class spBuscarEstudiantePorCuarto_Result
     {
-        public int PER_ID { get; set; }
         public string PER_PRIMER_NOMBRE { get; set; }
         public string PER_SEGUNDO_NOMBRE { get; set; }
         public string PER_PRIMER_APELLIDO { get; set; }
+
+        public int PER_ID { get; set; }
     }
 }

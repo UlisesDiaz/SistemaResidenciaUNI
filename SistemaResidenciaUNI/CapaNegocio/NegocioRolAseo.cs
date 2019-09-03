@@ -44,5 +44,11 @@ namespace CapaNegocio
 
         }
 
+        public bool UpdateMail(int IDEstu, string NewMail)
+        {
+
+            return RolAseo.ModificarCorreo(IDEstu, NewMail);
+        }
+
     }
 }

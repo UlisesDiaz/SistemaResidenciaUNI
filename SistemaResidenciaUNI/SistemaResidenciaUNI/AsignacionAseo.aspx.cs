@@ -36,13 +36,13 @@ namespace SistemaResidenciaUNI
                 string script = string.Format("alert('{0}');", ex.Message);
                 ClientScript.RegisterClientScriptBlock(typeof(Page), "PageLoadError", script, true);
             }
-            
+
 
         }
 
-       
 
-      
+
+
         void ListarEstudiantesCuarto(int Cuarto)
         {
 
@@ -52,7 +52,7 @@ namespace SistemaResidenciaUNI
             ddlEstu.DataTextField = "PER_PRIMER_NOMBRE";
             ddlEstu.DataValueField = "PER_ID";
             ddlEstu.DataBind();
-       
+
         }
 
         void LlenarListas()
@@ -104,8 +104,8 @@ namespace SistemaResidenciaUNI
             EntiRolAseo.EST_ID = int.Parse(ddlEstu.SelectedValue);
             EntiRolAseo.USU_ID = 2;
             EntiRolAseo.TIP_ASE_ID = int.Parse(ddlTipoAseo.SelectedValue);
-            EntiRolAseo.ROL_ASE_FECHA_INICIAL = DateTime.Parse(TxtFechaIni.Value.ToString());
-            EntiRolAseo.ROL_ASE_FECHA_FINAL = DateTime.Parse(TxtFechaFin.Value.ToString());
+            EntiRolAseo.ROL_ASE_FECHA_INICIAL = DateTime.Parse(TxtFechaIni.Text);
+            EntiRolAseo.ROL_ASE_FECHA_FINAL = DateTime.Parse(TxtFechaFin.Text);
 
             //Poner Hora caja  no olvidar
             EntiRolAseo.ROL_ASE_HORA = null;
@@ -165,7 +165,7 @@ namespace SistemaResidenciaUNI
         }
 
 
-        
+
 
         public static string ConvertToHtmlFile(DataTable targetTable)
         {
@@ -185,7 +185,7 @@ namespace SistemaResidenciaUNI
             //Get a worker object.
             StringBuilder myBuilder = new StringBuilder();
 
-            
+
             //Open tags and write the top portion.
             myBuilder.Append("<html xmlns='http://www.w3.org/1999/xhtml'>");
             myBuilder.Append("<head>");
@@ -194,26 +194,26 @@ namespace SistemaResidenciaUNI
             myBuilder.Append(Guid.NewGuid().ToString());
             myBuilder.Append("</title>");
             myBuilder.Append("</head>");
-            
+
 
             //inicioPrueba
-            myBuilder.Append("<body style='margin: 0; padding: 0;'>");
-            myBuilder.Append("<style type='text/css>'");
-            myBuilder.Append("@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900i&display=swap');");
-            myBuilder.Append("*{font - family: 'Roboto', sans-serif;}");
-            myBuilder.Append("</style>");
-            myBuilder.Append("<table align='center' border='1' cellpadding='0' cellspacing='0' ; style='border-collapse: collapse;'>");
+            myBuilder.Append("<body border='0px' style='margin: 0; padding: 0;'>");
+            //myBuilder.Append("<style type='text/css>'");
+            //myBuilder.Append(" @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900i&display=swap');");
+            //myBuilder.Append(" *{font-family: 'Roboto', sans-serif;}");
+            //myBuilder.Append("</style>");
+            myBuilder.Append("<table align='center' border='0px' cellpadding='0' cellspacing='0' ; style='border-collapse: collapse;'>");
             myBuilder.Append("<tr>");
             myBuilder.Append("<td bgcolor='#FFFFFF' align='center' style=' padding: 10px 0 10px 0;'>");
 
             myBuilder.Append("<img src='https://dl.dropboxusercontent.com/s/qn425djksovlzp8/UNI-LOGO-1024x764.png' alt='LogoUNI' width='150' height='100' style='display: block;'>");
-            
+
             myBuilder.Append("</td>");
 
             myBuilder.Append("</tr>");
 
             myBuilder.Append("<tr>");
-            myBuilder.Append("<td bgcolor='#091C65' align='center' style='border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 10px 0 10px 0;'>");
+            myBuilder.Append("<td bgcolor='#091C65' align='center' style='  border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 10px 0 10px 0;'>");
             myBuilder.Append("<h3 style='color: white;'>Universidad Nacional De Ingenieria</h3>");
             myBuilder.Append("</td>");
             myBuilder.Append("</tr>");
@@ -224,7 +224,7 @@ namespace SistemaResidenciaUNI
 
             myBuilder.Append("<tr width='500'>");
             myBuilder.Append("<td bgcolor='#D5D5D5' align='center'>");
-            myBuilder.Append("<img src='https://dl.dropboxusercontent.com/s/2wown7ekeh46rtv/email.png'  alt='LogoRLP' width='700' height='200' style='display: block;'>");
+            myBuilder.Append("<img src='https://dl.dropboxusercontent.com/s/yu0y56rq1rqw6ku/EDIFICIO-RIGOBERTO-L%C3%93PEZ-P%C3%89REZ.png'  alt='LogoRLP' width='700' height='200' style='display: block;'>");
             myBuilder.Append("</td>");
             myBuilder.Append("</tr> ");
 
@@ -236,8 +236,8 @@ namespace SistemaResidenciaUNI
             myBuilder.Append("</tr>");
 
             myBuilder.Append("<tr width='500'>");
-            myBuilder.Append("<td bgcolor='#EFEFEF' align='center' style='font-family:sans-serif;'>");
-            myBuilder.Append("<h4>Se te han asignado roles de Aseo Abajo se te mostraran tus actividades!</h4>");
+            myBuilder.Append("<td  bgcolor='#EFEFEF' align='center' style='font-family:sans-serif;'>");
+            myBuilder.Append("<h4 style='color: black;'>Te han Asignado Actividades de Aseo!</h4>");
             myBuilder.Append("</td>");
             myBuilder.Append("</tr>");//Tabla c# despues de esta linea
 
@@ -251,7 +251,7 @@ namespace SistemaResidenciaUNI
             myBuilder.Append("</tr>");
             myBuilder.Append("<tr>");
             myBuilder.Append("<td bgcolor='#D5D5D5'>");
-            myBuilder.Append("<table border='1px' cellpadding='5' cellspacing='0' width='100%' >");
+            myBuilder.Append("<table border='0px' cellpadding='15' cellspacing='0' width='100%' >");
 
             //Add the headings row.
 
@@ -278,7 +278,7 @@ namespace SistemaResidenciaUNI
 
                 foreach (DataColumn myColumn in targetTable.Columns)
                 {
-                    myBuilder.Append("<td align='left' valign='top' bgcolor='#D5D5D5'>");
+                    myBuilder.Append("<td style='color: black;' align='left' valign='top' bgcolor='#D5D5D5'>");
                     myBuilder.Append(myRow[myColumn.ColumnName].ToString());
                     myBuilder.Append("</td>");
                 }
@@ -301,7 +301,7 @@ namespace SistemaResidenciaUNI
 
 
             //finprueba
-            
+
             //Get the string for return.
             myHtmlFile = myBuilder.ToString();
 
@@ -309,73 +309,14 @@ namespace SistemaResidenciaUNI
             return myHtmlFile;
         }
 
-        //protected void pruebabtn_Click(object sender, EventArgs e)
-        //{
 
-        //    SqlConnection Conexion= new SqlConnection("Data Source=.;Initial Catalog=dbResidencia;Integrated Security=True");
-        //    Conexion.Open();
-        //    SqlCommand cmd = new SqlCommand("SpMostrarAsignacion",Conexion);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.Add(new SqlParameter("@Estudent", 1020));
-        //    SqlDataAdapter cm = new SqlDataAdapter(cmd);
+        [WebMethod]
+        public static bool SENDMAIL(string IDEstu, string correoEstu)
+        {
 
-           
-
-        //    DataTable dt = new DataTable();
-        //    cm.Fill(dt);
-
-        //    Conexion.Close();
-
-        //    String datos = ConvertToHtmlFile(dt);
-
-        //    MailMessage msg = new MailMessage();
-
-        //    msg.To.Add("jacuabarrios@gmail.com");
-        //    msg.From = new MailAddress("jonathanacunabarrios@gmail.com", "Jonathan Acuña Barrios", Encoding.UTF8);
-        //    msg.Subject = "PRUEBA";
-        //    msg.SubjectEncoding = Encoding.UTF8;
-        //    msg.Body = datos;
-        //    msg.IsBodyHtml = true;
-        //    //msg.BodyEncoding = Encoding.UTF8;
-            
-
-        //    SmtpClient clienteSmtp = new SmtpClient();
-        //    clienteSmtp.EnableSsl = true;
-        //    clienteSmtp.UseDefaultCredentials = false;
-        //    clienteSmtp.Port = 587;
-        //    clienteSmtp.Host = "smtp.gmail.com";
-
-        //    // Este es el código nuevo
-
-        //    clienteSmtp.Credentials = new NetworkCredential("jonathanacunabarrios@gmail.com", "Jacua1197");
-
-
-        //    try
-        //    {
-
-        //        clienteSmtp.Send(msg);
-        //        string enviado = "correcto";
-        //        string script = string.Format("alert('{0}');",enviado );
-        //        ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-
-
-        //        string enviado = "fallo";
-        //        string script = string.Format("alert('{0}');", enviado);
-        //        ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
-
-
-        //    }
-
-        //}
-
-            [WebMethod]
-        public static void SENDMAIL (string IDEstu, string correoEstu) {
 
             ClientScriptManager ClientScript = null;
+            bool Res = false;
 
             int EstID = int.Parse(IDEstu);
             string CorreoTo = correoEstu;
@@ -406,9 +347,9 @@ namespace SistemaResidenciaUNI
 
             MailMessage msg = new MailMessage();
 
-            msg.To.Add("jacuabarrios@gmail.com");
-            msg.From = new MailAddress("jonathanacunabarrios@gmail.com", "Jonathan Acuña Barrios", Encoding.UTF8);
-            msg.Subject = "PRUEBA";
+            msg.To.Add(CorreoTo);
+            msg.From = new MailAddress("sisresuni@gmail.com", "Sistema Residencia UNI", Encoding.UTF8);
+            msg.Subject = "Asignacion De Aseo";
             msg.SubjectEncoding = Encoding.UTF8;
             msg.Body = datos;
             msg.IsBodyHtml = true;
@@ -423,31 +364,37 @@ namespace SistemaResidenciaUNI
 
             // Este es el código nuevo
 
-            clienteSmtp.Credentials = new NetworkCredential("jonathanacunabarrios@gmail.com", "Jacua1197");
+            clienteSmtp.Credentials = new NetworkCredential("sisresuni@gmail.com", "SisresUNI2@19");
 
-            
+
 
             try
             {
-                
+
 
                 clienteSmtp.Send(msg);
-                string enviado = "Notificacion por Correo Enviada Exitosamente";
-                string script = string.Format("alert('{0}');", enviado);
-                ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+                //string enviado = "Notificacion por Correo Enviada Exitosamente";
+                //string script = string.Format("alert('{0}');", enviado);
+                //ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+                Res = true;
             }
 
             catch (Exception ex)
             {
 
-                Console.WriteLine("Algo ha salido mal " + ex.Message+" "+"En la Linia"+ex.StackTrace);
-                string enviado = "El envio Fallo Verifique la Conexion a Internet o que el Correo sea Valido";
-                string script = string.Format("alert('{0}');", enviado);
-                ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+
+                Res = false;
+                //string enviado = "El envio Fallo Verifique la Conexion a Internet o que el Correo sea Valido";
+                //string script = string.Format("alert('{0}');", enviado);
+                //ClientScript.RegisterClientScriptBlock(typeof(Page), "error", script, true);
+
+
+                Console.WriteLine("Algo ha salido mal " + ex.Message + " " + "En la Linia" + ex.StackTrace);
 
 
             }
 
+            return Res;
         }
 
         [WebMethod]
@@ -455,7 +402,7 @@ namespace SistemaResidenciaUNI
         {
             NegocioCuarto Cuarto = new NegocioCuarto();
 
-            
+
 
             object JSON = new { data = Cuarto.ObtenerCuartos() };
 
@@ -463,13 +410,14 @@ namespace SistemaResidenciaUNI
         }
 
         [WebMethod]
-        public static Object ListarCantAseo(string idCuarto) {
+        public static Object ListarCantAseo(string idCuarto)
+        {
 
             NegocioRolAseo Rol = new NegocioRolAseo();
 
             int CuartoID = int.Parse(idCuarto);
 
-            
+
 
             object JSON = new { data = Rol.ListarCantAsignacion(CuartoID) };
 
@@ -477,6 +425,31 @@ namespace SistemaResidenciaUNI
 
         }
 
+        [WebMethod]
+        public static bool UpdateCorreo(string id, string correo)
+        {
+
+            bool Res = false;
+
+
+            try
+            {
+                NegocioRolAseo RolAseo = new NegocioRolAseo();
+                int IDEstu = int.Parse(id);
+                string cor = correo.ToString();
+
+                Res = RolAseo.UpdateMail(IDEstu, cor);
+            }
+            catch (Exception ex)
+            {
+
+                Res = false;
+
+            }
+
+            return Res;
+
+        }
 
     }
 }

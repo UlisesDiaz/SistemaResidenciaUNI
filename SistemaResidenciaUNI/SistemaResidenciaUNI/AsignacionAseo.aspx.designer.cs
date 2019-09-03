@@ -64,7 +64,7 @@ namespace SistemaResidenciaUNI {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtFechaIni;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaIni;
         
         /// <summary>
         /// Control TxtFechaFin.
@@ -73,7 +73,7 @@ namespace SistemaResidenciaUNI {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtFechaFin;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaFin;
         
         /// <summary>
         /// Control TxtDia.
@@ -101,5 +101,23 @@ namespace SistemaResidenciaUNI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DdlCuartoEstu;
+        
+        /// <summary>
+        /// Control TxtCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCorreo;
+        
+        /// <summary>
+        /// Control TxtEditCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtEditCorreo;
     }
 }

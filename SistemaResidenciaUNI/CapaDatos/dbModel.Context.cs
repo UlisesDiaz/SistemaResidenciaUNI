@@ -460,5 +460,27 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInfoMujeresActivasR_Result>("spInfoMujeresActivasR", generoParameter);
         }
+    
+        //public virtual ObjectResult<SpMostrarAsignacion_Result> SpMostrarAsignacion(Nullable<int> estudent)
+        //{
+        //    var estudentParameter = estudent.HasValue ?
+        //        new ObjectParameter("Estudent", estudent) :
+        //        new ObjectParameter("Estudent", typeof(int));
+    
+        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpMostrarAsignacion_Result>("SpMostrarAsignacion", estudentParameter);
+        //}
+    
+        public virtual int UpdateCorreo(Nullable<int> estuID, string newMail)
+        {
+            var estuIDParameter = estuID.HasValue ?
+                new ObjectParameter("EstuID", estuID) :
+                new ObjectParameter("EstuID", typeof(int));
+    
+            var newMailParameter = newMail != null ?
+                new ObjectParameter("NewMail", newMail) :
+                new ObjectParameter("NewMail", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCorreo", estuIDParameter, newMailParameter);
+        }
     }
 }

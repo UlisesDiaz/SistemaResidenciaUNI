@@ -1,0 +1,44 @@
+﻿.Btn-Ayuda {
+    position:fixed;
+    right:0;
+    top:35%;
+    font-size: 1.5rem;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    z-index:100;
+
+}
+
+.icon {
+
+    color:white;
+    text-decoration:none;
+    padding: .7rem;
+    display:flex;
+    transition: all .5s;
+    font-size:25px;
+}
+
+.icon-help-with-circle {
+
+    background:#21A4F1;
+
+}
+
+.icon:first-child {
+    border-radius: 1rem 0 0 0;
+
+}
+
+.icon:last-child {
+
+    border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+    color:white;
+    padding-right: 3rem;
+    border-radius:1rem 0 0 1rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.42);
+}

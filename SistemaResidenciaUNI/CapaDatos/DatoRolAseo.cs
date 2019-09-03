@@ -111,9 +111,34 @@ namespace CapaDatos
                 EST_CARNET = dr.EST_CARNET,
                 Estudiante = dr.Estudiante,
                 Cantidad_de_Aseos_Asignados = dr.Cantidad_de_Aseos_Asignados.HasValue ? dr.Cantidad_de_Aseos_Asignados.Value : 0,
-                COR_DEFINICION =dr.COR_DEFINICION
+                COR_DEFINICION = dr.COR_DEFINICION
 
             }).ToList();
+
+        }
+
+        public bool ModificarCorreo(int ID, string Correo)
+        {
+            bool Res = false;
+
+
+            try
+            {
+                dbResidencia.UpdateCorreo(ID, Correo);
+                dbResidencia.SaveChanges();
+
+                Res = true;
+            }
+            catch (Exception ex)
+            {
+                resultado.esError = true;
+                resultado.mensaje = "Hubo un error, no se logro Modificar el aseo" + ex.Message;
+                throw new Exception(resultado.mensaje);
+               
+            }
+
+            return Res;
+
 
         }
 

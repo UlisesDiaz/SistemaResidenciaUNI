@@ -4,21 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True">
     </asp:ScriptManager> 
-    
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1"><br /></div>
-                    <div class="col-md-10">
-                        <div role="tabpanel">
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#TipoAseo" aria-controls="TipoAseo" data-toggle="tab" role="tab">Nuevo Tipo de Aseo</a></li>
-                                <li role="presentation"><a href="#ListarAseo" aria-controls="ListarAseo" data-toggle="tab" role="tab">Lista de Aseos en Sistema</a></li>
-                            </ul>
-                            
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="TipoAseo">
-                                   
-                                    <br />
+        
                                     
                                     <div class="panel panel-primary">
                                                 <div class="panel-heading">Agregar Nuevo Aseo</div>
@@ -36,26 +22,18 @@
 
                                             </div>
 
-                                    
-
-
-                                </div>
-                                
-                                <div role="tabpanel" class="tab-pane" id="ListarAseo">
-                                    <br><br>
-
                                    <%--                ------------COMIENZO DE DATATABLE----------------------------------%>
 
                                           <div class="panel panel-primary">
                                         <div class="panel panel-heading text-center">Lista Aseo</div>
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="col-md-1"><br /></div>
-                                                <div class="col-md-10">
-                                                    <table id="DTListar" class="table table-bordered table-hover table-responsive" style="width:100%;">
+                                                <%--<div class="col-md-1"><br /></div>
+                                                <div class="col-md-10">--%>
+                                                    <table id="DTListar" class="table table-bordered table-hover table-responsive" style="width:100%; text-align:center;">
 
                                                         <thead class="text-center">
-                                                            <tr class="text-center">
+                                                            <tr class=" text-center">
                                                                 <th>Codigo</th>
                                                                 <th>Descripcion</th>
                                                                 <th>Estado</th>
@@ -67,16 +45,15 @@
                                                         </thead>
                                                         <tbody id="tbody-Listar"></tbody>
                                                     </table>
-                                                </div>
-                                                 <div class="col-md-1"><br /></div>
+                                               <%-- </div>--%>
+                                                <%-- <div class="col-md-1"><br /></div>--%>
                                             </div>
             
                                         </div>
                                     </div> <%--fin panel datatable--%>
  
                                             
-                               </div>
-                            </div>
+                              
                         </div>
                     </div>
                    <div class="col-md-1"><br /></div>
@@ -197,4 +174,6 @@
             </div>
         </div>
     </div>
+
+
 </asp:Content>

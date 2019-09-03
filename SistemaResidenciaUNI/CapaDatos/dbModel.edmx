@@ -271,7 +271,7 @@
           <Property Name="USU_FECHA_FINAL" Type="date" />
           <Property Name="USU_ESTADO" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__TBL_CUART__GEN_I__607251E5">
+        <Association Name="FK__TBL_CUART__GEN_I__6E01572D">
           <End Role="TBL_GENERO" Type="Self.TBL_GENERO" Multiplicity="0..1" />
           <End Role="TBL_CUARTO" Type="Self.TBL_CUARTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -674,7 +674,6 @@
         <Function Name="spBuscarEstudiantePorCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumeroCuarto" Type="int" Mode="In" />
         </Function>
-        <Function Name="spCuartosDisponiblesCambioEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPDeletelogicaAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoAseo" Type="int" Mode="In" />
         </Function>
@@ -692,16 +691,13 @@
           <Parameter Name="idTipoAseo" Type="int" Mode="In" />
           <Parameter Name="NuevaDescrip" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SpMostrarAsignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Estudent" Type="int" Mode="In" />
+        </Function>
         <Function Name="spMostrarCuartosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPMostrarTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spMoverEstudianteDeCuarto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="carnet" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="SPNuevoTipoAseo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="spNumeroCuartoPorIDEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_EST" Type="int" Mode="In" />
         </Function>
         <Function Name="spObtenerDetalleAseoSegunEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cuaNum" Type="int" Mode="In" />
@@ -712,6 +708,10 @@
           <Parameter Name="endD" Type="date" Mode="In" />
         </Function>
         <Function Name="TotalPersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateCorreo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EstuID" Type="int" Mode="In" />
+          <Parameter Name="NewMail" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="dbModelStoreContainer">
           <EntitySet Name="TBL_BARRIO" EntityType="Self.TBL_BARRIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_CARRERA" EntityType="Self.TBL_CARRERA" Schema="dbo" store:Type="Tables" />
@@ -740,7 +740,7 @@
           <EntitySet Name="TBL_TIPO_IDENTIFICACION" EntityType="Self.TBL_TIPO_IDENTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_TIPO_MOTIVO_REGISTRO" EntityType="Self.TBL_TIPO_MOTIVO_REGISTRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__TBL_CUART__GEN_I__607251E5" Association="Self.FK__TBL_CUART__GEN_I__607251E5">
+          <AssociationSet Name="FK__TBL_CUART__GEN_I__6E01572D" Association="Self.FK__TBL_CUART__GEN_I__6E01572D">
             <End Role="TBL_GENERO" EntitySet="TBL_GENERO" />
             <End Role="TBL_CUARTO" EntitySet="TBL_CUARTO" />
           </AssociationSet>
@@ -1788,6 +1788,13 @@
           <FunctionImport Name="spInfoMujeresActivasR" ReturnType="Collection(dbModel.spInfoMujeresActivasR_Result)" >
           <Parameter Name="genero" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SpMostrarAsignacion" ReturnType="Collection(dbModel.SpMostrarAsignacion_Result)">
+            <Parameter Name="Estudent" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCorreo">
+            <Parameter Name="EstuID" Mode="In" Type="Int32" />
+            <Parameter Name="NewMail" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1958,6 +1965,13 @@
           <Property Type="String" Name="PER_SEGUNDO_APELLIDO" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="EST_CARNET" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="CUA_NUMERO" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SpMostrarAsignacion_Result">
+          <Property Type="String" Name="Carnet" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre_Y_Apellido" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Aseo_Asignado" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha_de_Inicio" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_de_Finalizacion" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2421,16 +2435,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spCuartosDisponiblesCambioEstudiante1" FunctionName="dbModel.Store.spCuartosDisponiblesCambioEstudiante">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="dbModel.spCuartosDisponiblesCambioEstudiante1_Result">
-                <ScalarProperty Name="CUA_NUMERO" ColumnName="CUA_NUMERO" />
-                <ScalarProperty Name="CUA_NUMERO1" ColumnName="CUA_NUMERO1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPNuevoTipoAseo1" FunctionName="dbModel.Store.SPNuevoTipoAseo" />
-          <FunctionImportMapping FunctionImportName="spNumeroCuartoPorIDEST1" FunctionName="dbModel.Store.spNumeroCuartoPorIDEST" />
           <FunctionImportMapping FunctionImportName="spInfoMujeresActivasR" FunctionName="dbModel.Store.spInfoMujeresActivasR">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbModel.spInfoMujeresActivasR_Result">
@@ -2443,6 +2447,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpMostrarAsignacion" FunctionName="dbModel.Store.SpMostrarAsignacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbModel.SpMostrarAsignacion_Result">
+                <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+                <ScalarProperty Name="Nombre_Y_Apellido" ColumnName="Nombre Y Apellido" />
+                <ScalarProperty Name="Aseo_Asignado" ColumnName="Aseo Asignado" />
+                <ScalarProperty Name="Fecha_de_Inicio" ColumnName="Fecha de Inicio" />
+                <ScalarProperty Name="Fecha_de_Finalizacion" ColumnName="Fecha de Finalizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateCorreo" FunctionName="dbModel.Store.UpdateCorreo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

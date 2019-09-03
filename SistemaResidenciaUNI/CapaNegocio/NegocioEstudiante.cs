@@ -112,5 +112,27 @@ namespace CapaNegocio
 
             return datoEstudiante.infoREsidenteMujeres(Genero);
         }
+
+        public bool GuardarEstudiante(EntidadEstudiante entidadEstudiante)
+        {
+            bool Resul = false;
+
+            try
+            {
+                Resul = datoEstudiante.SaveNuevoEstudiante(entidadEstudiante);
+            }
+
+            catch (Exception ex)
+            {
+                Resul = false;
+                throw ex;
+
+            }
+
+            return Resul;
+
+        }
+
+
     }
 }

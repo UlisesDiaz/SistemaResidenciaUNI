@@ -1,20 +1,19 @@
 ﻿
 jQuery_382(document).ready(function () {
 
-    var DATOS, Table;
+    var DATOS, Table, Auxiliar, Correo;
 
     FillDDL();
 
-    function FillDDL()
-    {
+
+    function FillDDL() {
         $.ajax({
 
-            type:"POST",
+            type: "POST",
             url: "../AsignacionAseo.aspx/ListarCuarto",
             contentType: 'application/json; charset=uft-8',
             datatype: "json",
-            success: function (data)
-            {
+            success: function (data) {
                 console.log(data.d);
                 $("#DdlCuartoEstu").html('');
                 $("#DdlCuartoEstu").append("<option value='0'>---Selecione un Cuarto---</option");
@@ -27,11 +26,11 @@ jQuery_382(document).ready(function () {
             }
 
         })
-    
+
     }//fin fill
 
     $("#DdlCuartoEstu").on('change', function () {
-        
+
         if ($(this).val() == "0") {
 
             $("#DdlCuartoEstu").empty();
@@ -42,28 +41,31 @@ jQuery_382(document).ready(function () {
         }
 
         var CuartoSelect = $("#DdlCuartoEstu option:selected").val();
+        Auxiliar = CuartoSelect;
         console.log(CuartoSelect);
         ExtraerData(CuartoSelect);
+
 
     });//fin llenar DATATABLE
 
 
 
     function ExtraerData(CuartoSele) {
-        
+
         var params = new Object();
         params.idCuarto = CuartoSele;
         params = JSON.stringify(params);
         $.ajax({
 
-            type:"POST",
+            type: "POST",
             url: "../AsignacionAseo.aspx/ListarCantAseo",
-            data:params,
+            data: params,
             contentType: 'application/json; charset=utf-8',
-            datatype:"json",
+            datatype: "json",
             success: function (data) {
 
                 FillDataTable(data.d.data);
+                Auxiliar = data.d.data;
             }
 
 
@@ -74,10 +76,10 @@ jQuery_382(document).ready(function () {
 
     function FillDataTable(data) {
 
-         Table = $("#DTCantidadAsignacion").DataTable({
+        Table = $("#DTCantidadAsignacion").DataTable({
 
             destroy: true,
-            responsive:true,
+            responsive: true,
             "ScrollCollapse": true,
             "paging": false,
             "language": {
@@ -95,16 +97,91 @@ jQuery_382(document).ready(function () {
 
             {
                 "defaultContent": '<button value="Notificar" title="Notificar" class="btn-mail btn btn-primary"><i class="fa fa-paper-plane"></i></button>'
-                
+
+            },
+            {
+                "defaultContent": '<button value="Actualizar" title="Actualizar" class="btn-EditCo btn btn-primary" data-target="#ModificarCorre" data-toggle="modal" ><i class="fa fa-pencil-square-o"></i></button>'
+
             }
 
 
-        ]
+            ]
 
 
         });
 
     }
+
+
+
+    //evento para el boton actualizar
+
+    $(document).on('click', '.btn-EditCo', function (e) {
+
+        e.preventDefault();
+
+
+        DATOS = Table.row($(this).parents("tr")).data();
+
+        //var descrip = val(data.COR_DEFINICION);
+
+        if (DATOS.COR_DEFINICION === null || DATOS.COR_DEFINICION === "") {
+            $("#TxtCorreo").val("SIN ESPECIFICAR");
+
+        }
+        $("#TxtCorreo").val(DATOS.COR_DEFINICION);
+
+
+
+    });
+
+    $("#btnsavesMail").click(function (e) {
+
+        e.preventDefault();
+
+        updateDataAjax();
+
+        console.log(DATOS.EST_ID);
+
+
+
+
+
+    });
+
+
+    function updateDataAjax() {
+
+        var obj = JSON.stringify({ id: JSON.stringify(DATOS.EST_ID), correo: $("#TxtEditCorreo").val() });
+
+
+
+        $.ajax({
+
+            type: "POST",
+            url: "../AsignacionAseo.aspx/UpdateCorreo",
+            data: obj,
+            contentType: 'application/json; charset=utf-8',
+            datatype: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+            },
+            success: function (response) {
+                if (response.d) {
+
+                    alert("Registro actualizado de manera correcta.");
+                    $(".Limpiar").val('');
+
+                } else {
+                    alert("No se pudo actualizar el registro.");
+                }
+            }
+
+        });
+
+    }
+
+
 
 
     //evento para el boton enviar correo
@@ -115,33 +192,61 @@ jQuery_382(document).ready(function () {
         console.log("click en boton actualizar");
 
         DATOS = Table.row($(this).parents("tr")).data();
-        
-        
+
+
         console.log(DATOS.COR_DEFINICION);
 
-        SendMail(DATOS.COR_DEFINICION, DATOS.EST_ID);
+        Correo = DATOS.COR_DEFINICION;
+
+        SendMail();
 
 
 
     });
 
 
-    function SendMail (Correo,IdEstudent)
-    {
-        var obj= JSON.stringify({IDEstu:JSON.stringify(2068), correoEstu:JSON.stringify("jacuabarrios@gmail.com")});
-    
+    function SendMail() {
+        var params = new Object();
+        params.IDEstu = DATOS.EST_ID;
+        params.correoEstu = Correo;
+        params = JSON.stringify(params);
+
+
+
         $.ajax({
-        
-            type:"POST",
-            url:"../AsignacionAseo.aspx/SENDMAIL",
-            data:obj,
-            contentType:'application/json; charset=utf-8',
-            datatype:"json",
+
+            type: "POST",
+            url: "../AsignacionAseo.aspx/SENDMAIL",
+            data: params,
+            contentType: 'application/json; charset=utf-8',
+            datatype: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+            },
+            success: function (response) {
+                if (response.d) {
+                    Swal.fire({
+
+                        type: 'success',
+                        title: 'El Estudiante Ha Sido Notificado',
+                        showConfirmButton: false,
+                        timer: 3500
+                    });
+                } else {
+                    Swal.fire({
+
+                        type: 'Fallo',
+                        title: 'El Correo no Pudo Ser Enviado, Verifique Su Conexion a Internet o Que el Correo Sea Valido',
+                        showConfirmButton: false,
+                        timer: 3500
+                    });
+                }
+            }
 
 
         });
-    
-    
+
+
     }
 
 

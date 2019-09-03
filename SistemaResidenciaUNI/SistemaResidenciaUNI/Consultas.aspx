@@ -22,6 +22,79 @@
     </div>
     <script type="text/javascript">
         jQuery_382(document).ready(function () {
+
+            //comienza edcion
+            $("#Btn_ayuda").on('click', function (e) {
+
+                e.preventDefault();
+                TourCalendario();
+
+
+
+            });
+
+            //INICIO DE TUTORIAL
+                function TourCalendario() {
+
+                    //initialize instance
+                    var enjoyhint_instance = new EnjoyHint({});
+                    //simple config. 
+                    //Only one step - highlighting(with description) "New" button 
+                    //hide EnjoyHint after a click on the button.
+                    var enjoyhint_script_steps = [
+                      {
+                          'next .panel-heading': 'Bienvenido Al Calendario de Asignaciones, Aca Podra Visualizar Las Asignaciones que esten en un Determinado Dia',
+                          "nextButton": { className: "myNext", text: "Siguiente" },
+                          "skipButton": { className: "mySkip", text: "Omitir" },
+                          'arrowColor': '0,255,255',
+                          'textColor': '0,255,0'
+
+                      },
+                      {
+                          'click .fc-next-button': 'Comencemos por la Navegacion por Meses!, Preciona este boton para ver los Aseo del Mes Siguiente',
+                          "shape": "circle",
+                          "radius": 40,
+                          "skipButton": { className: "mySkip", text: "Omitir" },
+
+                      },
+
+                      {
+                          'click .fc-prev-button': 'De Igual Forma, Puedes Ver Las Asignaciones Pasadas con Solo Presionar Este Boton',
+                          "shape": "circle",
+                          "radius": 40,
+                          "skipButton": { className: "mySkip", text: "Omitir" },
+
+                      },
+
+                      {
+                          'next td.fc-today': 'Aca Podras visualizar las Asignaciones del dia, si las hay',
+                          "nextButton": { className: "myNext", text: "Siguiente" },
+                          "skipButton": { className: "mySkip", text: "Omitir" },
+
+                      },
+                      {
+                          'click .fc-day-grid-event': 'Puedes Hacer Clic en Aca, Para ver Detalles de la Asignacion',
+                          "nextButton": { className: "myNext", text: "Siguiente" },
+                          "skipButton": { className: "mySkip", text: "Omitir" },
+
+                      },
+
+                    ];
+
+                    //set script config
+                    enjoyhint_instance.set(enjoyhint_script_steps);
+
+                    //run Enjoyhint script
+                    enjoyhint_instance.run();
+                }
+
+            //FIN TUTORIAL
+
+
+            //finaliza
+
+
+
             var groupColumn = 1;
             var table = '';
             jQuery_382('#calendarioweb').fullCalendar({
